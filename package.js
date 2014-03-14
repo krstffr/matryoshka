@@ -3,5 +3,5 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-
+	api.add_files(['client/views/boxcms__rootContainer.html', 'client/views/boxcms__rootContainer.html'], 'client');
 });

@@ -1,0 +1,142 @@
+<template name="boxcms__partLooper">
+
+	{{#with currentPart }}
+
+		<div
+			class="container
+				{{#if this.width }} width-{{this.width}}{{/if}}
+				"
+			>
+			
+			<input type="hidden" value="{{ id }}" />
+
+			<p>Template: <strong>{{ templateName }}</strong>, type: <em>{{ type }}</em></p>
+
+			<button class="delete-part">Delete this part.</button>
+			<button class="move-part" data-move-where="down">Move this part up.</button>
+			<button class="move-part" data-move-where="up">Move this part down.</button>
+	
+			{{#each fields }}
+
+				<p>
+
+					<label for="{{ ../id }}-{{this.name}}">{{ this.name }}:</label> 
+					{{#if ifValueEquals this.type "text" }}
+						<input id="{{ ../../id }}-{{this.name}}" data-parent-id="{{ ../../id }}" class="boxcms-save-on-blur" type="text" value="{{ getFieldValue ../../this }}" />
+					{{/if}}
+					{{#if ifValueEquals this.type "select" }}
+
+						<select id="{{ ../../id }}-{{this.name}}" data-parent-id="{{ ../../id }}" class="boxcms-save-on-select">
+
+							{{#each selectableData }}
+
+								<option 
+									value="{{ name }}" 
+									{{#if ifSelectValueEquals ../../../id ../this.name this.name }} selected="selected"{{/if}}
+									>
+									{{ name }}
+								</option>
+
+							{{/each}}
+
+						</select>
+
+						{{ setActiveSelectValue ../../id ../../this ../name }}
+
+					{{/if}}
+				</p>
+
+			{{/each}}
+
+			{{#each fieldsTypeSpecific }}
+
+				{{#if fieldsTypeSpecific__hasFieldsBool ../this }}
+
+					<p><strong>Fields specific to type: {{ this.name }}</strong></p>
+
+					{{#each fieldsTypeSpecific__getFields ../../this }}
+
+						<p>
+
+							<label for="{{ ../../../id }}-{{this.name}}">{{ this.name }}:</label> 
+							{{#if ifValueEquals this.type "text" }}
+								<input id="{{ ../../../../id }}-{{this.name}}" data-parent-id="{{ ../../../../id }}" class="boxcms-save-on-blur" type="text" value="{{ getFieldValue ../../../../this }}" />
+							{{/if}}
+							{{#if ifValueEquals this.type "select" }}
+
+								<select id="{{ ../../../../id }}-{{this.name}}" data-parent-id="{{ ../../../../id }}" class="boxcms-save-on-select">
+
+									{{#each selectableData }}
+
+										<option 
+											value="{{ name }}" 
+											{{#if ifSelectValueEquals ../../../../../id ../this.name this.name }} selected="selected"{{/if}}
+											>
+											{{ name }}
+										</option>
+
+									{{/each}}
+
+								</select>
+
+								{{ setActiveSelectValue ../../../../id ../../../../this ../../../name }}
+
+							{{/if}}
+						</p>
+
+					{{/each}}
+
+				{{/if}}
+
+			{{/each}}
+
+			{{#if arrayParts }}
+
+				<p>
+					<strong>Parts of this type:</strong>
+				</p>
+
+				<ul>
+
+				{{#eachWithParent arrayParts }}
+
+					<li>
+						<em>
+							{{ name }}:
+							<ul>
+								{{#each actualArrayPartsInArray }}
+
+									<li>
+										{{ templateName }}<br />
+										<button data-parent-id="{{ ../../id }}" class="add-part">Add <strong>{{ templateName }}</strong> to <strong>{{ ../../id }}</strong></button>
+									</li>
+
+								{{/each}}
+							</ul>
+						</em>
+					</li>
+
+					{{!#each actualArrayPartsInArray }}
+
+						<h3>All <em>{{ this.name }}</em>'s:</h3>
+
+						{{#each actualArrayParts ../this }}
+
+							{{{ recurse }}}
+
+						{{/each}}
+
+					{{!/each}}
+
+
+				{{/eachWithParent}}
+
+				</ul>
+
+				{{/if}}
+
+		</div>
+	
+	{{/with}}
+
+</template>
