@@ -10,7 +10,7 @@
 			
 			<input type="hidden" value="{{ id }}" />
 
-			<p>Template: <strong>{{ templateName }}</strong>, type: <em>{{ type }}</em></p>
+			<p>Template: <strong>{{ nestableName }}</strong>, type: <em>{{ type }}</em></p>
 
 			<button class="delete-part">Delete this part.</button>
 			<button class="move-part" data-move-where="down">Move this part up.</button>
@@ -90,7 +90,7 @@
 
 			{{/each}}
 
-			{{#if arrayParts }}
+			{{#if nestables }}
 
 				<p>
 					<strong>Parts of this type:</strong>
@@ -98,17 +98,17 @@
 
 				<ul>
 
-				{{#each arrayParts }}
+				{{#each nestables }}
 
 					<li>
 						<em>
 							{{ name }}:
 							<ul>
-								{{#each actualArrayPartsInArray }}
+								{{#each actualNestablesInArray }}
 
 									<li>
-										{{ templateName }}<br />
-										<button data-parent-id="{{ ../../id }}" class="add-part">Add <strong>{{ templateName }}</strong> to <strong>{{ ../../id }}</strong></button>
+										{{ nestableName }}<br />
+										<button data-parent-id="{{ ../../id }}" class="add-part">Add <strong>{{ nestableName }}</strong> to <strong>{{ ../../id }}</strong></button>
 									</li>
 
 								{{/each}}
@@ -116,11 +116,11 @@
 						</em>
 					</li>
 
-					{{!#each actualArrayPartsInArray }}
+					{{!#each actualNestablesInArray }}
 
 						<h3>All <em>{{ this.name }}</em>'s:</h3>
 
-						{{#each actualArrayParts ../this }}
+						{{#each actualNestables ../this }}
 
 							{{{ recurse }}}
 
