@@ -1,0 +1,97 @@
+@import "compass";
+
+.matroyshka__nestable__container {
+
+	border: 2px solid #fff;
+	padding: 1em 1em 0;
+	margin: 0 0 1em;
+	width: 100%;
+	position: relative;
+	background: rgba(255,255,255,0.5);
+
+	@include border-radius(0.3em);
+	// @include box-shadow(0 3px 0 #aaa, 0 7px 15px rgba(black, 0.2));
+
+	h2 {
+		font-size: 1.3em;
+		text-align: center;
+		font-weight: 500;
+		padding-top: 0.3em;
+	}
+
+}
+
+.matroyshka__nestable__container__add-part-container {
+	display: none;
+}
+
+.matroyshka__nestable__container__add-part-container__inner {
+	position: fixed;
+	top: 20%;
+	left: 10%;
+	background: #FFF;
+	width: 80%;
+	z-index: 200;
+	padding: 1em;
+	text-align: center;
+
+	@include border-radius(0.3em);
+	@include box-shadow(0 2px 0 #222, 0 7px 15px rgba(black, 0.5));
+	
+	& .matroyshka__nestable__container__button {
+		margin: 0.2em;
+	}
+
+}
+.matroyshka__nestable__container__add-part-container__extra-fader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(black, 0.2);
+	z-index: 100;
+}
+
+.matroyshka__nestable__container__button {
+	border: none;
+	font-size: 0.8em;
+	padding: 0.7em 0.8em 0.7em 0.6em;
+	cursor: pointer;
+	font-family: inherit;
+	background: #80DA9D;
+	outline: none;
+	color: #333;
+
+	@include border-radius(0.3em);
+
+	&:hover {
+		color: #000;
+	}
+
+	&--absolute {
+		position: absolute;
+		height: 1.9em;
+		width: 1.9em;
+		padding: 0;
+		text-align: center;
+		
+		@include border-radius(2em);
+
+		&.delete-part {
+			background: #D55;
+			right: -0.5em;
+			top: -0.5em;
+		}
+
+		&.move-part {
+			top: -0.5em;
+			&.move-part-up {
+				right: 3.8em;
+			}
+			&.move-part-down {
+				right: 1.6em;
+			}
+		}
+	}
+}

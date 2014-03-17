@@ -1,0 +1,39 @@
+@import "compass";
+
+$form-margin: 0 0 1em;
+
+label {
+	padding: 0 0 0.1em 0.5em;
+	display: inline-block;
+}
+
+input {
+	font-family: inherit;
+	font-size: 0.8em;
+}
+
+select,
+button,
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+	margin: $form-margin;
+}
+
+input[type="text"],
+input[type="password"] {
+
+	width: 100%;
+	padding: 0.4em 0.6em;
+	margin: $form-margin;
+	border: 1px solid #eee;
+	outline: none;
+	color: #555;
+	
+	@include border-radius(0.3em);
+
+	&:focus {
+		color: #000;
+		border-color: #888;
+	}
+}
