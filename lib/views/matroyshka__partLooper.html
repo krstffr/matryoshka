@@ -28,11 +28,13 @@
 
 						<select id="{{ ../../id }}-{{this.name}}" data-parent-id="{{ ../../id }}" class="matroyshka-save-on-select">
 
+							<option value="not-selected">-</option>
+
 							{{#each selectableData }}
 
 								<option 
 									value="{{ name }}" 
-									{{#if ifSelectValueEquals ../../../id ../this.name this.name }} selected="selected"{{/if}}
+									{{#if ifSelectValueEquals ../../../id ../this.name name }} selected="selected"{{/if}}
 									>
 									{{ name }}
 								</option>
@@ -66,11 +68,13 @@
 
 								<select id="{{ ../../../../id }}-{{this.name}}" data-parent-id="{{ ../../../../id }}" class="matroyshka-save-on-select">
 
+									<option value="not-selected">-</option>
+
 									{{#each selectableData }}
 
 										<option 
 											value="{{ name }}" 
-											{{#if ifSelectValueEquals ../../../../../id ../this.name this.name }} selected="selected"{{/if}}
+											{{#if ifSelectValueEquals ../../../../../id ../this.name name }} selected="selected"{{/if}}
 											>
 											{{ name }}
 										</option>
