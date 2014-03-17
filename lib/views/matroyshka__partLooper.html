@@ -1,6 +1,6 @@
 <template name="matroyshka__partLooper">
 
-	{{#with currentPart }}
+	{{#with matroyshkaCurrentNestablePart }}
 
 		<div
 			class="container
@@ -8,7 +8,7 @@
 				"
 			>
 			
-			<input type="hidden" value="{{ id }}" />
+			<input type="hidden" value="{{ matroyshkaId }}" />
 
 			<p>Template: <strong>{{ nestableName }}</strong>, type: <em>{{ type }}</em></p>
 
@@ -20,13 +20,13 @@
 
 				<p>
 
-					<label for="{{ ../id }}-{{this.name}}">{{ this.name }}:</label> 
+					<label for="{{ ../matroyshkaId }}-{{this.name}}">{{ this.name }}:</label> 
 					{{#if ifValueEquals this.type "text" }}
-						<input id="{{ ../../id }}-{{this.name}}" data-parent-id="{{ ../../id }}" class="matroyshka-save-on-blur" type="text" value="{{ getFieldValue ../../this }}" />
+						<input id="{{ ../../matroyshkaId }}-{{this.name}}" data-parent-id="{{ ../../matroyshkaId }}" class="matroyshka-save-on-blur" type="text" value="{{ getFieldValue ../../this }}" />
 					{{/if}}
 					{{#if ifValueEquals this.type "select" }}
 
-						<select id="{{ ../../id }}-{{this.name}}" data-parent-id="{{ ../../id }}" class="matroyshka-save-on-select">
+						<select id="{{ ../../matroyshkaId }}-{{this.name}}" data-parent-id="{{ ../../matroyshkaId }}" class="matroyshka-save-on-select">
 
 							<option value="not-selected">-</option>
 
@@ -34,7 +34,7 @@
 
 								<option 
 									value="{{ name }}" 
-									{{#if ifSelectValueEquals ../../../id ../this.name name }} selected="selected"{{/if}}
+									{{#if ifSelectValueEquals ../../../matroyshkaId ../this.name name }} selected="selected"{{/if}}
 									>
 									{{ name }}
 								</option>
@@ -43,7 +43,7 @@
 
 						</select>
 
-						{{ setActiveSelectValue ../../id ../../this ../name }}
+						{{ setActiveSelectValue ../../matroyshkaId ../../this ../name }}
 
 					{{/if}}
 				</p>
@@ -60,13 +60,13 @@
 
 						<p>
 
-							<label for="{{ ../../../id }}-{{this.name}}">{{ this.name }}:</label> 
+							<label for="{{ ../../../matroyshkaId }}-{{this.name}}">{{ this.name }}:</label> 
 							{{#if ifValueEquals this.type "text" }}
-								<input id="{{ ../../../../id }}-{{this.name}}" data-parent-id="{{ ../../../../id }}" class="matroyshka-save-on-blur" type="text" value="{{ getFieldValue ../../../../this }}" />
+								<input id="{{ ../../../../matroyshkaId }}-{{this.name}}" data-parent-id="{{ ../../../../matroyshkaId }}" class="matroyshka-save-on-blur" type="text" value="{{ getFieldValue ../../../../this }}" />
 							{{/if}}
 							{{#if ifValueEquals this.type "select" }}
 
-								<select id="{{ ../../../../id }}-{{this.name}}" data-parent-id="{{ ../../../../id }}" class="matroyshka-save-on-select">
+								<select id="{{ ../../../../matroyshkaId }}-{{this.name}}" data-parent-id="{{ ../../../../matroyshkaId }}" class="matroyshka-save-on-select">
 
 									<option value="not-selected">-</option>
 
@@ -74,7 +74,7 @@
 
 										<option 
 											value="{{ name }}" 
-											{{#if ifSelectValueEquals ../../../../../id ../this.name name }} selected="selected"{{/if}}
+											{{#if ifSelectValueEquals ../../../../../matroyshkaId ../this.name name }} selected="selected"{{/if}}
 											>
 											{{ name }}
 										</option>
@@ -83,7 +83,7 @@
 
 								</select>
 
-								{{ setActiveSelectValue ../../../../id ../../../../this ../../../name }}
+								{{ setActiveSelectValue ../../../../matroyshkaId ../../../../this ../../../name }}
 
 							{{/if}}
 						</p>
@@ -112,7 +112,7 @@
 
 									<li>
 										{{ nestableName }}<br />
-										<button data-parent-id="{{ ../../id }}" class="add-part">Add <strong>{{ nestableName }}</strong> to <strong>{{ ../../id }}</strong></button>
+										<button data-parent-id="{{ ../../matroyshkaId }}" class="add-part">Add <strong>{{ nestableName }}</strong> to <strong>{{ ../../matroyshkaId }}</strong></button>
 									</li>
 
 								{{/each}}

@@ -9,6 +9,10 @@ Package.on_use(function (api) {
 	api.use('handlebars', 'client');
 	api.use('jquery', 'client');
 
+	api.add_files('lib/collections/matroyshka__nestables.js', ['server', 'client']);
+
+	api.add_files('lib/matroyshka__methods.js', 'server');
+
 	api.add_files('lib/css/matroyshka__tempStyles.css', 'client');
 
 	api.add_files('lib/views/matroyshka__rootContainer.html', 'client');
@@ -22,9 +26,15 @@ Package.on_use(function (api) {
 	api.add_files('lib/matroyshka__matroyshkaHandler.js', 'client');
 
 	if (typeof api.export !== 'undefined') {
+		
 		api.use('iron-router', 'client');
 
-		api.export('Matroyshka', ['client']);
+		// The main object.
+		api.export('Matroyshka', 'client');
+
+		// The Collection where we store stuff.
+		api.export('MatroyshkaNestables', ['client', 'server']);
+
 	}
 
 });
