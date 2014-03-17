@@ -1,10 +1,10 @@
 {
-  "name": "Boxcms",
+  "name": "Matroyshka",
   "description": "A tiny cms for handling recursive js objects or something.",
-  "homepage": "https://github.com/krstffr/boxcms",
+  "homepage": "https://github.com/krstffr/matroyshka",
   "author": "Kristoffer Klintberg <krstffr@gmail.com>",
   "version": "0.1",
-  "git": "https://github.com/krstffr/boxcms.git",
+  "git": "https://github.com/krstffr/matroyshka.git",
   "packages": {
     "iron-router": {}
   }

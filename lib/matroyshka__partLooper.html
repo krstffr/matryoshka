@@ -1,4 +1,4 @@
-<template name="boxcms__partLooper">
+<template name="matroyshka__partLooper">
 
 	{{#with currentPart }}
 
@@ -22,11 +22,11 @@
 
 					<label for="{{ ../id }}-{{this.name}}">{{ this.name }}:</label> 
 					{{#if ifValueEquals this.type "text" }}
-						<input id="{{ ../../id }}-{{this.name}}" data-parent-id="{{ ../../id }}" class="boxcms-save-on-blur" type="text" value="{{ getFieldValue ../../this }}" />
+						<input id="{{ ../../id }}-{{this.name}}" data-parent-id="{{ ../../id }}" class="matroyshka-save-on-blur" type="text" value="{{ getFieldValue ../../this }}" />
 					{{/if}}
 					{{#if ifValueEquals this.type "select" }}
 
-						<select id="{{ ../../id }}-{{this.name}}" data-parent-id="{{ ../../id }}" class="boxcms-save-on-select">
+						<select id="{{ ../../id }}-{{this.name}}" data-parent-id="{{ ../../id }}" class="matroyshka-save-on-select">
 
 							{{#each selectableData }}
 
@@ -60,11 +60,11 @@
 
 							<label for="{{ ../../../id }}-{{this.name}}">{{ this.name }}:</label> 
 							{{#if ifValueEquals this.type "text" }}
-								<input id="{{ ../../../../id }}-{{this.name}}" data-parent-id="{{ ../../../../id }}" class="boxcms-save-on-blur" type="text" value="{{ getFieldValue ../../../../this }}" />
+								<input id="{{ ../../../../id }}-{{this.name}}" data-parent-id="{{ ../../../../id }}" class="matroyshka-save-on-blur" type="text" value="{{ getFieldValue ../../../../this }}" />
 							{{/if}}
 							{{#if ifValueEquals this.type "select" }}
 
-								<select id="{{ ../../../../id }}-{{this.name}}" data-parent-id="{{ ../../../../id }}" class="boxcms-save-on-select">
+								<select id="{{ ../../../../id }}-{{this.name}}" data-parent-id="{{ ../../../../id }}" class="matroyshka-save-on-select">
 
 									{{#each selectableData }}
 

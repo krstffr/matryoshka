@@ -1,10 +1,16 @@
-<template name="boxcms__rootContainer">
+<template name="matroyshka__rootContainer">
 
+	{{#each nestableCreatable }}
+
+		<button class="matroyska-new">Create new {{ this }}</button>
+
+	{{/each }}
+	
 	<button class="create-new-page">Create new page</button>
 	<button class="create-new-grid-part">Create new grid part</button>
 	<button class="update-templates">Update template</button>
 	<button class="add-temp-item">Add Temp item</button>
 
-	{{> boxcms__partLooper }}
+	{{> matroyshka__partLooper }}
 
 </template>

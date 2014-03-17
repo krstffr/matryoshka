@@ -9,22 +9,22 @@ Package.on_use(function (api) {
 	api.use('handlebars', 'client');
 	api.use('jquery', 'client');
 
-	api.add_files('lib/boxcms__tempStyles.css', 'client');
+	api.add_files('lib/matroyshka__tempStyles.css', 'client');
 
-	api.add_files('lib/boxcms__rootContainer.html', 'client');
-	api.add_files('lib/boxcms__rootContainer.js', 'client');
+	api.add_files('lib/matroyshka__rootContainer.html', 'client');
+	api.add_files('lib/matroyshka__rootContainer.js', 'client');
 
-	api.add_files('lib/boxcms__partLooper.html', 'client');
-	api.add_files('lib/boxcms__partLooper.js', 'client');
+	api.add_files('lib/matroyshka__partLooper.html', 'client');
+	api.add_files('lib/matroyshka__partLooper.js', 'client');
 
-	api.add_files('lib/boxcms__globalHelpers.js', 'client');
-	api.add_files('lib/boxcms__router.js', 'client');
-	api.add_files('lib/boxcms__boxcmsHandler.js', 'client');
+	api.add_files('lib/matroyshka__globalHelpers.js', 'client');
+	api.add_files('lib/matroyshka__router.js', 'client');
+	api.add_files('lib/matroyshka__matroyshkaHandler.js', 'client');
 
 	if (typeof api.export !== 'undefined') {
 		api.use('iron-router', 'client');
 
-		api.export('Boxcms', ['client']);
+		api.export('Matroyshka', ['client']);
 	}
 
 });

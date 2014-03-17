@@ -16,12 +16,12 @@ $ mrt add matroyshka
 // Do this on the client. For example on startup.
 Meteor.startup(function () {
 
-    // Add the nestable type parts to the Boxcms object
-    Boxcms.nestables.page = [];
-    Boxcms.nestables.pagePart = [];
+    // Add the nestable type parts to the Matroyshka object
+    Matroyshka.nestables.page = [];
+    Matroyshka.nestables.pagePart = [];
 
     // Add some actual parts to the types of parts
-    Boxcms.nestables.page.push({
+    Matroyshka.nestables.page.push({
     	// Give the part a name
     	nestableName: 'normalPage',
     	// The type should be the same as the type
@@ -63,7 +63,7 @@ Meteor.startup(function () {
         nestables: [{ name: 'pagePart' }]
     });
 
-    Boxcms.nestables.pagePart.push({
+    Matroyshka.nestables.pagePart.push({
     	nestableName: 'pagePart1maybeAReview',
     	type: 'pagePart',
     	fields: [
@@ -99,7 +99,7 @@ Meteor.startup(function () {
         nestables: [{ name: 'pagePart' }]
     });
 
-    // And now if you go to localhost:3000/boxcms you will have an editable page where you can add pages with page parts.
+    // And now if you go to localhost:3000/Matroyshka you will have an editable page where you can add pages with page parts.
 
 });
 
