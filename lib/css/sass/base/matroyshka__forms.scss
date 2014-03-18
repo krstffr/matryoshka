@@ -7,7 +7,8 @@ label {
 	display: inline-block;
 }
 
-input {
+input,
+textarea {
 	font-family: inherit;
 	font-size: 0.8em;
 }
@@ -16,12 +17,14 @@ select,
 button,
 input[type="text"],
 input[type="password"],
-input[type="submit"] {
+input[type="submit"],
+textarea {
 	margin: $form-margin;
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+textarea {
 
 	width: 100%;
 	padding: 0.4em 0.6em;
@@ -35,4 +38,8 @@ input[type="password"] {
 		color: #000;
 		border-color: #888;
 	}
+}
+
+textarea {
+	height: 6em;
 }
