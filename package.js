@@ -13,10 +13,15 @@ Package.on_use(function (api) {
 
 	api.add_files('lib/matroyshka__methods.js', 'server');
 
-	api.add_files('lib/css/matroyshka__tempStyles.css', 'client');
+	api.add_files('lib/css/stylesheets/matroyshka__main.css', 'client');
+
+	api.add_files('lib/views/matroyshka__nestablePartButtons.html', 'client');
 
 	api.add_files('lib/views/matroyshka__rootContainer.html', 'client');
 	api.add_files('lib/views/matroyshka__rootContainer.js', 'client');
+
+	api.add_files('lib/views/matroyshka__mainMenu.html', 'client');
+	api.add_files('lib/views/matroyshka__mainMenu.js', 'client');
 
 	api.add_files('lib/views/matroyshka__partLooper.html', 'client');
 	api.add_files('lib/views/matroyshka__partLooper.js', 'client');
@@ -27,7 +32,7 @@ Package.on_use(function (api) {
 
 	if (typeof api.export !== 'undefined') {
 		
-		api.use('iron-router', 'client');
+		api.use(['font-awesome', 'iron-router'], 'client');
 
 		// The main object.
 		api.export('Matroyshka', 'client');

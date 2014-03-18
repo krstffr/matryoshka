@@ -3,8 +3,8 @@
 .matroyshka__nestable__container {
 
 	border: 2px solid #fff;
-	padding: 1em 1em 0;
-	margin: 0 0 1em;
+	padding: 1em 1em;
+	margin: 0.5em 0;
 	width: 100%;
 	position: relative;
 	background: rgba(255,255,255,0.5);
@@ -33,6 +33,10 @@
 	
 	& .matroyshka__nestable__container__button {
 		margin: 0.2em;
+	}
+
+	&__part {
+		margin-bottom: 1em;
 	}
 
 }

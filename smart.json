@@ -6,6 +6,7 @@
   "version": "0.1",
   "git": "https://github.com/krstffr/matroyshka.git",
   "packages": {
-    "iron-router": {}
+    "iron-router": {},
+    "font-awesome": {}
   }
 }

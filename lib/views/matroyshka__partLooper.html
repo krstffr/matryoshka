@@ -3,10 +3,6 @@
 	{{#with matroyshkaCurrentNestablePart }}
 
 		<div class="matroyshka__nestable__container">
-			
-			<input type="hidden" value="{{ matroyshkaId }}" />
-
-			<!-- <p>Template: <strong>{{ nestableName }}</strong>, type: <em>{{ type }}</em></p> -->
 
 			<h2>{{ nestableNameReadable }}</h2>
 
@@ -27,6 +23,9 @@
 					<label for="{{ ../matroyshkaId }}-{{this.name}}">{{ this.name }}:</label> 
 					{{#if ifValueEquals this.type "text" }}
 						<input id="{{ ../../matroyshkaId }}-{{this.name}}" data-parent-id="{{ ../../matroyshkaId }}" class="matroyshka-save-on-blur" type="text" value="{{ getFieldValue ../../this }}" />
+					{{/if}}
+					{{#if ifValueEquals this.type "locked" }}
+						<strong>{{ getFieldValue ../../this }}</strong>
 					{{/if}}
 					{{#if ifValueEquals this.type "select" }}
 
@@ -68,6 +67,7 @@
 							{{#if ifValueEquals this.type "text" }}
 								<input id="{{ ../../../../matroyshkaId }}-{{this.name}}" data-parent-id="{{ ../../../../matroyshkaId }}" class="matroyshka-save-on-blur" type="text" value="{{ getFieldValue ../../../../this }}" />
 							{{/if}}
+
 							{{#if ifValueEquals this.type "select" }}
 
 								<select id="{{ ../../../../matroyshkaId }}-{{this.name}}" data-parent-id="{{ ../../../../matroyshkaId }}" class="matroyshka-save-on-select">
@@ -87,7 +87,7 @@
 
 								</select>
 
-								{{ setActiveSelectValue ../../../../matroyshkaId ../../../../this ../../../name }}
+								{{ setActiveSelectValue ../../../../matroyshkaId ../../../../this this.name }}
 
 							{{/if}}
 						</p>
@@ -112,19 +112,41 @@
 
 						{{#each nestables }}
 
-							<h2>Add {{ name }}</h2>
+							<div class="matroyshka__nestable__container__add-part-container__inner__part">
+
+								<h2>Add new {{ name }}</h2>
 
 								{{#each actualNestablesInArray }}
 
 										<button 
 											data-parent-id="{{ ../../matroyshkaId }}" 
 											class="matroyshka__nestable__container__button add-part">
-											<!--Add <strong>-->
-											<i class="fa fa-plus"></i> {{ nestableNameReadable }}
-											<!--</strong> to <strong>{{ ../../matroyshkaId }}</strong>-->
+											<i class="fa fa-file-o"></i> {{ nestableNameReadable }}
 										</button>
 
 								{{/each}}
+
+							</div>
+
+							<div class="matroyshka__nestable__container__add-part-container__inner__part">
+
+								<h2>Add predefined {{ name }}</h2>
+
+								{{#each actualNestablesInArray }}
+
+									{{#each savedNestableParts }}
+
+										<button 
+											data-parent-id="{{ ../../../matroyshkaId }}" 
+											class="matroyshka__nestable__container__button add-predefined-part">
+											<i class="fa fa-chain"></i> {{ matroyshkaName }}
+										</button>
+
+									{{/each}}
+
+								{{/each}}
+
+							</div>
 
 						{{/each}}
 
