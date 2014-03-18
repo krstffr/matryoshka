@@ -27,7 +27,10 @@ h1 {
 }
 
 h2 {
-	font-size: 1.6em;
+	font-size: 1.3em;
+	text-align: center;
+	font-weight: 500;
+	padding-top: 0.3em;
 }
 
 h3 {
@@ -40,4 +43,35 @@ em {
 
 strong {
 	font-weight: bold;
+}
+
+ul {
+	margin: 0 0 0.5em;
+}
+
+li {
+	margin: 0 0 0.2em;
+}
+
+// Classes to be inherited by other files
+
+%matroyshkaFixedBottomMenu {
+	position: fixed;
+	bottom: 1.2em;
+	left: 1em;
+	z-index: 200;
+}
+
+%matroyshkaFixedBottomMenuBtns {
+	background: white;
+	border: none;
+	outline: none;
+	font-size: 1.5em;
+	padding: 0.3em 0.45em;
+	text-align: center;
+	cursor: pointer;
+	margin: 0;
+	border: 1px solid #ccc;
+	
+	@include border-radius(0.2em);
 }
