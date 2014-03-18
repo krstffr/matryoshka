@@ -1,0 +1,27 @@
+<template name="matroyshka__mainMenu">
+
+	<button class="matroyshka__mainMenu__button-show-menu">
+		Show menu
+	</button>
+
+	<div class="matroyshka__mainMenu__menu-container">
+
+		{{#each nestableCreatable }}
+
+			<h3>{{ name }}</h3>
+
+			{{#each menuItems }}
+				
+				<a href="/matroyshka/edit/{{ _id }}">
+					{{ menuKey ../this }}
+				</a>
+
+			{{/each }}
+
+			<button class="matroyska-nestable-new">Create new {{ this.name }}</button>
+
+		{{/each }}
+
+	</div>
+
+</template>

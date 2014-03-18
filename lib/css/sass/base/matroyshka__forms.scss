@@ -1,6 +1,6 @@
 @import "compass";
 
-$form-margin: 0 0 1em;
+$form-margin: 0 0 0.5em;
 
 label {
 	padding: 0 0 0.1em 0.5em;
@@ -25,7 +25,6 @@ input[type="password"] {
 
 	width: 100%;
 	padding: 0.4em 0.6em;
-	margin: $form-margin;
 	border: 1px solid #eee;
 	outline: none;
 	color: #555;

@@ -2,19 +2,23 @@
 
 	{{#with matroyshkaCurrentNestablePart }}
 
-		<div
-			class="container
-				{{#if this.width }} width-{{this.width}}{{/if}}
-				"
-			>
+		<div class="matroyshka__nestable__container">
 			
 			<input type="hidden" value="{{ matroyshkaId }}" />
 
-			<p>Template: <strong>{{ nestableName }}</strong>, type: <em>{{ type }}</em></p>
+			<!-- <p>Template: <strong>{{ nestableName }}</strong>, type: <em>{{ type }}</em></p> -->
 
-			<button class="delete-part">Delete this part.</button>
-			<button class="move-part" data-move-where="down">Move this part up.</button>
-			<button class="move-part" data-move-where="up">Move this part down.</button>
+			<h2>{{ nestableNameReadable }}</h2>
+
+			<button class="matroyshka__nestable__container__button matroyshka__nestable__container__button--absolute delete-part">
+				<i class="fa fa-times"></i>
+			</button>
+			<button class="matroyshka__nestable__container__button matroyshka__nestable__container__button--absolute move-part move-part-up" data-move-where="down">
+				<i class="fa fa-arrow-up"></i>
+			</button>
+			<button class="matroyshka__nestable__container__button matroyshka__nestable__container__button--absolute move-part move-part-down" data-move-where="up">
+				<i class="fa fa-arrow-down"></i>
+			</button>
 	
 			{{#each fields }}
 
@@ -54,7 +58,7 @@
 
 				{{#if fieldsTypeSpecific__hasFieldsBool ../this }}
 
-					<p><strong>Fields specific to type: {{ this.name }}</strong></p>
+					<!-- <p><strong>Fields specific to type: {{ this.name }}</strong></p> -->
 
 					{{#each fieldsTypeSpecific__getFields ../../this }}
 
@@ -96,33 +100,45 @@
 
 			{{#if nestables }}
 
-				<p>
-					<strong>Parts of this type:</strong>
-				</p>
+				<button class="matroyshka__nestable__container__button show-part-list"><i class="fa fa-plus"></i> Add parts to {{ type }}</button>
 
-				<ul>
+				<!-- <p>
+					<strong>Add parts to {{ type }}:</strong>
+				</p> -->
+
+				<div class="matroyshka__nestable__container__add-part-container">
+
+					<div class="matroyshka__nestable__container__add-part-container__inner">
+
+						{{#each nestables }}
+
+							<h2>Add {{ name }}</h2>
+
+								{{#each actualNestablesInArray }}
+
+										<button 
+											data-parent-id="{{ ../../matroyshkaId }}" 
+											class="matroyshka__nestable__container__button add-part">
+											<!--Add <strong>-->
+											<i class="fa fa-plus"></i> {{ nestableNameReadable }}
+											<!--</strong> to <strong>{{ ../../matroyshkaId }}</strong>-->
+										</button>
+
+								{{/each}}
+
+						{{/each}}
+
+					</div>
+
+					<div class="matroyshka__nestable__container__add-part-container__extra-fader"></div>
+
+				</div>
 
 				{{#each nestables }}
 
-					<li>
-						<em>
-							{{ name }}:
-							<ul>
-								{{#each actualNestablesInArray }}
-
-									<li>
-										{{ nestableName }}<br />
-										<button data-parent-id="{{ ../../matroyshkaId }}" class="add-part">Add <strong>{{ nestableName }}</strong> to <strong>{{ ../../matroyshkaId }}</strong></button>
-									</li>
-
-								{{/each}}
-							</ul>
-						</em>
-					</li>
-
 					{{!#each actualNestablesInArray }}
 
-						<h3>All <em>{{ this.name }}</em>'s:</h3>
+						<!-- <h3>All <em>{{ this.name }}</em>'s:</h3> -->
 
 						{{#each actualNestables ../this }}
 
@@ -135,9 +151,7 @@
 
 				{{/each}}
 
-				</ul>
-
-				{{/if}}
+			{{/if}}
 
 		</div>
 	

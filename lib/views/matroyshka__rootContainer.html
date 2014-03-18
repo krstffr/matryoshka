@@ -1,24 +1,14 @@
 <template name="matroyshka__rootContainer">
 
-	{{#each nestableCreatable }}
-
-		<button class="matroyska-nestable-new">Create new {{ this }}</button>
-
-	{{/each }}
-	
-	<button class="update-templates">Update template</button>
-	<button class="add-temp-item">Add Temp item</button>
-
 	{{> matroyshka__partLooper }}
+
+	{{> matroyshka__mainMenu }}
 
 	{{#if partIsVisible }}
 
 		{{#with matroyshkaCurrentNestablePart }}
 
-			<button class="matroyska-nestable-save">Save {{ type }}</button>
-			<button class="matroyska-nestable-delete">Delete {{ type }}</button>
-			<button class="matroyska-nestable-go-live">Go live with {{ type }}</button>
-			<button class="matroyska-nestable-duplicate">Duplicate {{ type }}</button>
+			{{> matroyshka__nestablePartButtons }}
 
 		{{/with }}
 
