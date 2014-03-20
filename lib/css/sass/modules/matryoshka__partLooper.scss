@@ -1,17 +1,51 @@
 @import "compass";
+@import "../base/matryoshka__vars";
 
 .matryoshka__nestable__container {
 
-	border: 2px solid #fff;
-	padding: 1em 1em;
 	margin: 0.5em 0;
 	width: 100%;
 	position: relative;
-	background: rgba(255,255,255,0.5);
+	background: #fafafa;
+	text-align: left;
+	color: #888;
 
-	@include border-radius(0.3em);
-	// @include box-shadow(0 3px 0 #aaa, 0 7px 15px rgba(black, 0.2));
+	// @include border-radius(0.3em);
+	@include box-shadow(0 0 1px rgba(black,0.5), 0 5px 10px rgba(black,0.1));
+	@include clearfix;
 
+	&--hover {
+		// @include box-shadow(0 0 1px rgba(black,0.8), 0 5px 10px rgba(black,0.4));
+		color: #111;
+	}
+
+}
+
+.matryoshka__nestable__container__col {
+
+	$border-color: #ccc;
+
+	float: left;
+	padding: 1.6em 1em;
+
+	&--left {
+		width: 25%;
+		position: relative;
+		padding-top: 2.6em;
+		padding-bottom: 0;
+	}
+	&--right {
+		width: 75%;
+		border-left: 1px solid $border-color;
+		background: #fff;
+	}
+	&--parts {
+		padding: 1em;
+		width: 100%;
+		border-top: 1px solid $border-color;
+		background: #f2f2f2;
+		text-align: center;
+	}
 }
 
 .matryoshka__nestable__container__add-part-container {
@@ -56,10 +90,11 @@
 	padding: 0.7em 0.8em 0.7em 0.6em;
 	cursor: pointer;
 	font-family: inherit;
-	background: #80DA9D;
+	background: $color-green;
 	outline: none;
 	color: #333;
 
+	@include box-shadow(0 2px 0 darken($color-green, 30%));
 	@include border-radius(0.3em);
 
 	&:hover {
@@ -76,18 +111,19 @@
 		@include border-radius(2em);
 
 		&.delete-part {
-			background: #D55;
-			right: -0.5em;
-			top: -0.5em;
+			background: $color-red;
+			left: 1.3em;
+			top: 1.3em;
+			@include box-shadow(0 2px 0 darken($color-red, 30%));
 		}
 
 		&.move-part {
-			top: -0.5em;
+			top: 1.3em;
 			&.move-part-up {
-				right: 3.8em;
+				left: 3.4em;
 			}
 			&.move-part-down {
-				right: 1.6em;
+				left: 5.6em;
 			}
 		}
 	}
