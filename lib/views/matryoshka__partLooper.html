@@ -1,0 +1,197 @@
+<template name="matryoshka__partLooper">
+
+	{{#with matryoshkaCurrentNestablePart }}
+
+		<div class="matryoshka__nestable__container">
+
+			<h2>{{ nestableNameReadable }}</h2>
+
+			<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute delete-part">
+				<i class="fa fa-times"></i>
+			</button>
+			<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute move-part move-part-up" data-move-where="down">
+				<i class="fa fa-arrow-up"></i>
+			</button>
+			<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute move-part move-part-down" data-move-where="up">
+				<i class="fa fa-arrow-down"></i>
+			</button>
+	
+			{{#each fields }}
+
+				<p>
+
+					<label for="{{ ../matryoshkaId }}-{{this.name}}">{{ this.name }}:</label> 
+					{{#if ifValueEquals this.type "text" }}
+						<input id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ getFieldValue ../../this }}" />
+					{{/if}}
+					{{#if ifValueEquals this.type "linkedNestable" }}
+						<strong><a href="/matryoshka/edit/{{ getFieldValue ../../this }}">{{ getLinkedNestableName ../../this }}</a></strong>
+					{{/if}}
+					{{#if ifValueEquals this.type "locked" }}
+						<strong>{{ getFieldValue ../../this }}</strong>
+					{{/if}}
+					{{#if ifValueEquals this.type "textarea" }}
+						<textarea id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur">{{ getFieldValue ../../this }}</textarea>
+					{{/if}}
+
+					{{#if ifValueEquals this.type "select" }}
+
+						<select id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-select">
+
+							<option value="not-selected">-</option>
+
+							{{#each selectableData }}
+
+								<option 
+									value="{{ name }}" 
+									{{#if ifSelectValueEquals ../../../matryoshkaId ../this.name name }} selected="selected"{{/if}}
+									>
+									{{ name }}
+								</option>
+
+							{{/each}}
+
+						</select>
+
+						{{ setActiveSelectValue ../../matryoshkaId ../../this ../name }}
+
+					{{/if}}
+				</p>
+
+			{{/each}}
+
+			{{#each fieldsTypeSpecific }}
+
+				{{#if fieldsTypeSpecific__hasFieldsBool ../this }}
+
+					<!-- <p><strong>Fields specific to type: {{ this.name }}</strong></p> -->
+
+					{{#each fieldsTypeSpecific__getFields ../../this }}
+
+						<p>
+
+							<label for="{{ ../../../matryoshkaId }}-{{this.name}}">{{ this.name }}:</label> 
+							{{#if ifValueEquals this.type "text" }}
+								<input id="{{ ../../../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ getFieldValue ../../../../this }}" />
+							{{/if}}
+							{{#if ifValueEquals this.type "locked" }}
+								<strong>{{ getFieldValue ../../../../this }}</strong>
+							{{/if}}
+							{{#if ifValueEquals this.type "linkedNestable" }}
+								<strong><a href="/matryoshka/edit/{{ getFieldValue ../../../../this }}">{{ getLinkedNestableName ../../../../this }}</a></strong>
+							{{/if}}
+							{{#if ifValueEquals this.type "textarea" }}
+								<textarea id="{{ ../../../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../../../matryoshkaId }}" class="matryoshka-save-on-blur">{{ getFieldValue ../../../../this }}</textarea>
+							{{/if}}
+							{{#if ifValueEquals this.type "select" }}
+
+								<select id="{{ ../../../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../../../matryoshkaId }}" class="matryoshka-save-on-select">
+
+									<option value="not-selected">-</option>
+
+									{{#each selectableData }}
+
+										<option 
+											value="{{ name }}" 
+											{{#if ifSelectValueEquals ../../../../../matryoshkaId ../this.name name }} selected="selected"{{/if}}
+											>
+											{{ name }}
+										</option>
+
+									{{/each}}
+
+								</select>
+
+								{{ setActiveSelectValue ../../../../matryoshkaId ../../../../this this.name }}
+
+							{{/if}}
+						</p>
+
+					{{/each}}
+
+				{{/if}}
+
+			{{/each}}
+
+			{{#if nestables }}
+
+				<button class="matryoshka__nestable__container__button show-part-list"><i class="fa fa-plus"></i> Add parts to {{ type }}</button>
+
+				<!-- <p>
+					<strong>Add parts to {{ type }}:</strong>
+				</p> -->
+
+				<div class="matryoshka__nestable__container__add-part-container">
+
+					<div class="matryoshka__nestable__container__add-part-container__inner">
+
+						{{#each nestables }}
+
+							<div class="matryoshka__nestable__container__add-part-container__inner__part">
+
+								<h2>Add new {{ name }}</h2>
+
+								{{#each actualNestablesInArray }}
+
+										<button 
+											data-parent-id="{{ ../../matryoshkaId }}" 
+											class="matryoshka__nestable__container__button add-part">
+											<i class="fa fa-file-o"></i> {{ nestableNameReadable }}
+										</button>
+
+								{{/each}}
+
+							</div>
+
+							<div class="matryoshka__nestable__container__add-part-container__inner__part">
+
+								<h2>Add predefined {{ name }}</h2>
+
+								{{#each actualNestablesInArray }}
+
+									{{#each savedNestableParts }}
+
+										<button 
+											data-parent-id="{{ ../../../matryoshkaId }}" 
+											class="matryoshka__nestable__container__button add-predefined-part">
+											<i class="fa fa-chain"></i> {{ matryoshkaName }}
+										</button>
+
+									{{/each}}
+
+								{{/each}}
+
+							</div>
+
+						{{/each}}
+
+					</div>
+
+					<div class="matryoshka__nestable__container__add-part-container__extra-fader"></div>
+
+				</div>
+
+				{{#each nestables }}
+
+					{{!#each actualNestablesInArray }}
+
+						<!-- <h3>All <em>{{ this.name }}</em>'s:</h3> -->
+
+						{{#each actualNestables ../this }}
+
+							{{{ recurse }}}
+
+						{{/each}}
+
+					{{!/each}}
+
+
+				{{/each}}
+
+			{{/if}}
+
+		</div>
+	
+	{{/with}}
+
+</template>

@@ -2,12 +2,12 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "Matroyshka": {
+      "Matryoshka": {
         "path": "."
       }
     },
     "packages": {
-      "Matroyshka": {
+      "Matryoshka": {
         "path": "."
       },
       "iron-router": {

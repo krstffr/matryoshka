@@ -1,6 +1,6 @@
 @import "compass";
 
-.matroyshka__nestable__container {
+.matryoshka__nestable__container {
 
 	border: 2px solid #fff;
 	padding: 1em 1em;
@@ -14,11 +14,11 @@
 
 }
 
-.matroyshka__nestable__container__add-part-container {
+.matryoshka__nestable__container__add-part-container {
 	display: none;
 }
 
-.matroyshka__nestable__container__add-part-container__inner {
+.matryoshka__nestable__container__add-part-container__inner {
 	position: fixed;
 	top: 20%;
 	left: 10%;
@@ -31,7 +31,7 @@
 	@include border-radius(0.3em);
 	@include box-shadow(0 2px 0 #222, 0 7px 15px rgba(black, 0.5));
 	
-	& .matroyshka__nestable__container__button {
+	& .matryoshka__nestable__container__button {
 		margin: 0.2em;
 	}
 
@@ -40,7 +40,7 @@
 	}
 
 }
-.matroyshka__nestable__container__add-part-container__extra-fader {
+.matryoshka__nestable__container__add-part-container__extra-fader {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -50,7 +50,7 @@
 	z-index: 100;
 }
 
-.matroyshka__nestable__container__button {
+.matryoshka__nestable__container__button {
 	border: none;
 	font-size: 0.8em;
 	padding: 0.7em 0.8em 0.7em 0.6em;

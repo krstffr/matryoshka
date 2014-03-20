@@ -6,7 +6,7 @@ Meteor pacakge for nesting stuff inside other stuff, for example russian dolls i
 **Installation**
 
 ```
-$ mrt add matroyshka
+$ mrt add matryoshka
 ```
 
 **Usage**
@@ -16,15 +16,15 @@ $ mrt add matroyshka
 // Do this on the client. For example on startup.
 Meteor.startup(function () {
     
-    // Add the nestable type parts to the Matroyshka object
-    Matroyshka.nestables.page = [];
-    Matroyshka.nestables.pagePart = [];
+    // Add the nestable type parts to the Matryoshka object
+    Matryoshka.nestables.page = [];
+    Matryoshka.nestables.pagePart = [];
 
     // Here you decide which parts should be creatable on their own
-    Matroyshka.nestablesCreatable = ['page', 'pagePart'];
+    Matryoshka.nestablesCreatable = ['page', 'pagePart'];
 
     // Add some actual parts to the types of parts
-    Matroyshka.nestables.page.push({
+    Matryoshka.nestables.page.push({
         // Give the part a name
         nestableName: 'normalPage',
         // The type should be the same as the type
@@ -66,7 +66,7 @@ Meteor.startup(function () {
         nestables: [{ name: 'pagePart' }]
     });
 
-    Matroyshka.nestables.pagePart.push({
+    Matryoshka.nestables.pagePart.push({
         nestableName: 'pagePart1maybeAReview',
         type: 'pagePart',
         fields: [

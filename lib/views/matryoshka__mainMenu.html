@@ -1,0 +1,63 @@
+<template name="matryoshka__mainMenu">
+
+	<div class="matryoshka__mainMenu__visible-btn-row">
+
+		<button class="matryoshka__mainMenu__visible-btn-row__button matryoshka__mainMenu__button-show-menu">
+			<i class="fa fa-bars"></i>
+		</button>
+		<button class="matryoshka__mainMenu__visible-btn-row__button matryoshka__mainMenu__button-home">
+			<i class="fa fa-home"></i>
+		</button>
+
+	</div>
+
+	<div class="matryoshka__mainMenu__menu-container">
+
+		{{#each nestableCreatable }}
+
+			<div class="matryoshka__mainMenu__menu-container__col">
+
+				<h3>{{ name }}</h3>
+
+				<ul>
+
+					{{#each menuItems }}
+
+						<li>
+							<a href="/matryoshka/edit/{{ _id }}">
+								{{ menuKey ../this }}
+							</a>
+						</li>
+
+					{{/each }}
+
+				</ul>
+
+				<!-- <button class="matroyska-nestable-new">Create new {{ this.name }}</button> -->
+				<button class="matryoshka__nestable__container__button matroyska-nestable-new-show-list">Create new {{ this.name }}</button>
+
+				<div class="matryoshka__nestable__container__add-part-container">
+
+					<div class="matryoshka__nestable__container__add-part-container__inner">
+
+						<h2>Create new {{ name }}</h2>
+
+						{{#each nestables }}
+
+							<button data-nestable-part-index="{{ nestablePartIndex }}" class="matryoshka__nestable__container__button matroyska-nestable-new">Create new {{ nestableNameReadable }}</button>
+
+						{{/each}}
+
+					</div>
+
+					<div class="matryoshka__nestable__container__add-part-container__extra-fader"></div>
+
+				</div>
+
+			</div>
+
+		{{/each }}
+
+	</div>
+
+</template>

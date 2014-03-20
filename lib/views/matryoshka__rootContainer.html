@@ -1,0 +1,17 @@
+<template name="matryoshka__rootContainer">
+
+	{{> matryoshka__partLooper }}
+
+	{{> matryoshka__mainMenu }}
+
+	{{#if partIsVisible }}
+
+		{{#with matryoshkaCurrentNestablePart }}
+
+			{{> matryoshka__nestablePartButtons }}
+
+		{{/with }}
+
+	{{/if}}
+
+</template>

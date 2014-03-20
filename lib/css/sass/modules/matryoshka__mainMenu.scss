@@ -1,0 +1,31 @@
+@import "../base/matryoshka__vars";
+
+.matryoshka__mainMenu__visible-btn-row {
+	@extend %matryoshkaFixedBottomMenu ;
+}
+
+.matryoshka__mainMenu__visible-btn-row__button {
+	@extend %matryoshkaFixedBottomMenuBtns;
+}
+
+.matryoshka__mainMenu__menu-container {
+	display: none;
+
+	position: fixed;
+	left: 0.5em;
+	bottom: 0.6em;
+	padding: 1.5em 1.5em 4.5em;
+	background: #FFF;
+	z-index: 100;
+
+	@include border-radius(0.4em);
+
+	&--visible {
+		display: block;
+	}
+}
+
+.matryoshka__mainMenu__menu-container__col {
+	float: left;
+	margin: 0 1.5em 0 0;
+}
