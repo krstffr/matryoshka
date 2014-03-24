@@ -6,7 +6,7 @@
 
 			<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--left">
 
-				<h2>{{ nestableNameReadable }}</h2>
+				<h3>{{ nestableNameReadable }}</h3>
 
 				<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute delete-part">
 					<i class="fa fa-times"></i>
@@ -20,7 +20,7 @@
 
 			</div>
 
-			<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--right">
+			<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--right matryoshka__nestable__container__col--{{ this.matryoshkaId }}">
 		
 				{{#each fields }}
 
@@ -78,10 +78,10 @@
 
 								<label for="{{ ../../../matryoshkaId }}-{{this.name}}">{{ this.name }}:</label> 
 								{{#if ifValueEquals this.type "text" }}
-									<input id="{{ ../../../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ getFieldValue ../../../../this }}" />
+									<input id="{{ ../../../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ getFieldValuegetFieldValue ../../../../this }}" />
 								{{/if}}
 								{{#if ifValueEquals this.type "locked" }}
-									<strong>{{ getFieldValue ../../../../this }}</strong>
+									<strong>{{ getFieldValuegetFieldValue ../../../../this }}</strong>
 								{{/if}}
 								{{#if ifValueEquals this.type "linkedNestable" }}
 									<strong><a href="/matryoshka/edit/{{ getFieldValue ../../../../this }}">{{ getLinkedNestableName ../../../../this }}</a></strong>
