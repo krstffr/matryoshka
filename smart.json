@@ -6,7 +6,10 @@
   "version": "0.1",
   "git": "https://github.com/krstffr/matryoshka.git",
   "packages": {
-    "iron-router": {},
+    "iron-router": {
+      "git": "https://github.com/EventedMind/iron-router.git",
+      "branch": "blaze-integration"
+    },
     "font-awesome": {}
   }
 }
