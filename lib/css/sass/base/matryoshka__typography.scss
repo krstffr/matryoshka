@@ -1,57 +1,59 @@
 @import "compass";
 @import "matryoshka__vars";
 
-body {
+.matryoshka__body {
+	
    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
    font-weight: 300;
    font-size: 17px;
    line-height: 1.4em;
    padding: 1em;
    background: rgba($color-green, 0.3);
-}
 
-p {
-	padding: 0 0 0.5em;
-}
-
-a {
-	color: #888;
-
-	&:hover {
-		color: #000;
+	p {
+		padding: 0 0 0.5em;
 	}
-}
 
-h1, h2, h3 {
-	padding-bottom: 0.6em;
-	font-weight: 500;
-}
+	a {
+		color: #888;
 
-h1 {
-	font-size: 1.9em;
-}
+		&:hover {
+			color: #000;
+		}
+	}
 
-h2 {
-	font-size: 1.3em;
-	padding-top: 0.3em;
-}
+	h1, h2, h3 {
+		padding-bottom: 0.6em;
+		font-weight: 500;
+	}
 
-h3 {
-	font-size: 1.15em;
-}
+	h1 {
+		font-size: 1.9em;
+	}
 
-em {
-	font-style: italic;
-}
+	h2 {
+		font-size: 1.3em;
+		padding-top: 0.3em;
+	}
 
-strong {
-	font-weight: bold;
-}
+	h3 {
+		font-size: 1.15em;
+	}
 
-ul {
-	margin: 0 0 0.5em;
-}
+	em {
+		font-style: italic;
+	}
 
-li {
-	margin: 0 0 0.2em;
+	strong {
+		font-weight: bold;
+	}
+
+	ul {
+		margin: 0 0 0.5em;
+	}
+
+	li {
+		margin: 0 0 0.2em;
+	}
+
 }

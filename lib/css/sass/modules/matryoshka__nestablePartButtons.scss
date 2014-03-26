@@ -1,11 +1,15 @@
 @import "../base/matryoshka__vars";
 
-.matryoshka__nestablePartButtons {
-	@extend %matryoshkaFixedBottomMenu ;
-	left: auto;
-	right: 1em;
-}
+.matryoshka__body {
 
-.matryoshka__nestablePartButtons__button {
-	@extend %matryoshkaFixedBottomMenuBtns;
+	.matryoshka__nestablePartButtons {
+		@extend %matryoshkaFixedBottomMenu ;
+		left: auto;
+		right: 1em;
+	}
+
+	.matryoshka__nestablePartButtons__button {
+		@extend %matryoshkaFixedBottomMenuBtns;
+	}
+
 }

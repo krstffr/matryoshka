@@ -1,45 +1,61 @@
 @import "compass";
+@import "../base/matryoshka__vars";
 
 $form-margin: 0 0 0.5em;
 
-label {
-	padding: 0 0 0.1em 0.5em;
-	display: inline-block;
-}
+.matryoshka__body {
 
-input,
-textarea {
-	font-family: inherit;
-	font-size: 0.8em;
-}
-
-select,
-button,
-input[type="text"],
-input[type="password"],
-input[type="submit"],
-textarea {
-	margin: $form-margin;
-}
-
-input[type="text"],
-input[type="password"],
-textarea {
-
-	width: 100%;
-	padding: 0.4em 0.6em;
-	border: 1px solid #eee;
-	outline: none;
-	color: #555;
-	
-	@include border-radius(0.3em);
-
-	&:focus {
-		color: #000;
-		border-color: #888;
+	label {
+		padding: 0 0 0.1em 0.5em;
+		display: block;
 	}
-}
 
-textarea {
-	height: 6em;
+	input,
+	textarea {
+		font-family: inherit;
+		font-size: 0.8em;
+	}
+
+	select,
+	button,
+	input[type="text"],
+	input[type="password"],
+	input[type="submit"],
+	textarea {
+		margin: $form-margin;
+	}
+
+	input[type="text"],
+	input[type="password"],
+	textarea {
+
+		width: 80%;
+		padding: 0.4em 0.6em;
+		border: 1px solid #eee;
+		outline: none;
+		color: #555;
+		
+		@include border-radius(0.3em);
+
+		&:focus {
+			color: #000;
+			border-color: #888;
+		}
+
+	}
+
+	textarea {
+		height: 6em;
+	}
+
+	.matryoshka__form__image-preview {
+		max-width: 19%;
+		max-height: 200px;
+		float: right;
+	}
+
+	.matryoshka__form__clearfix {
+		@extend .matryoshka__clearfix;
+	}
+
 }

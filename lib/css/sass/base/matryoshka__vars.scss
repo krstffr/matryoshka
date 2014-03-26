@@ -3,13 +3,17 @@
 $color-green: #80DA9D;
 $color-red: #D55;
 
-/* apply a natural box layout model to all elements */
-*, *:before, *:after {
-	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-}
+.matryoshka__body {
 
-.matryoshka__clearfix {
-	clear: both;
+	/* apply a natural box layout model to all elements */
+	*, *:before, *:after {
+		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	}
+
+	.matryoshka__clearfix {
+		clear: both;
+	}
+
 }
 
 // Classes to be inherited by other files

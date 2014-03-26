@@ -1,129 +1,133 @@
 @import "compass";
 @import "../base/matryoshka__vars";
 
-.matryoshka__nestable__container {
+.matryoshka__body {
 
-	margin: 0.5em 0;
-	width: 100%;
-	position: relative;
-	background: #fafafa;
-	text-align: left;
-	color: #222;
+	.matryoshka__nestable__container {
 
-	// @include border-radius(0.3em);
-	@include box-shadow(0 1px 3px rgba(black, 0.2), 0 5px 10px rgba(black,0.1));
-	@include clearfix;
-
-	& .matryoshka__nestable__container {
-		font-size: 0.95em;
-	}
-
-}
-
-.matryoshka__nestable__container__col {
-
-	$border-color: #ccc;
-
-	float: left;
-	padding: 0.9em 0.8em 0.8em;
-
-	&--left {
+		margin: 0.5em 0;
 		width: 100%;
 		position: relative;
-		padding-bottom: 0;
+		background: #fafafa;
+		text-align: left;
+		color: #222;
+
+		// @include border-radius(0.3em);
+		@include box-shadow(0 1px 3px rgba(black, 0.2), 0 5px 10px rgba(black,0.1));
+		@include clearfix;
+
+		& .matryoshka__nestable__container {
+			font-size: 0.95em;
+		}
+
 	}
-	&--right {
-		width: 100%;
-		border-top: 1px solid $border-color;
-		background: #fff;
+
+	.matryoshka__nestable__container__col {
+
+		$border-color: #ccc;
+
+		float: left;
+		padding: 0.9em 0.8em 0.8em;
+
+		&--left {
+			width: 100%;
+			position: relative;
+			padding-bottom: 0;
+		}
+		&--right {
+			width: 100%;
+			border-top: 1px solid $border-color;
+			background: #fff;
+		}
+		&--parts {
+			padding: 0.5em 0.6em 0.2em;
+			width: 100%;
+			background: #f2f2f2;
+			text-align: center;
+			border: 2px dashed #D3D3D3;
+			border-top-style: solid;
+		}
 	}
-	&--parts {
-		padding: 0.5em 0.6em 0.2em;
-		width: 100%;
-		background: #f2f2f2;
+
+	.matryoshka__nestable__container__add-part-container {
+		display: none;
+	}
+
+	.matryoshka__nestable__container__add-part-container__inner {
+		position: fixed;
+		top: 20%;
+		left: 10%;
+		background: #FFF;
+		width: 80%;
+		z-index: 200;
+		padding: 1em;
 		text-align: center;
-		border: 2px dashed #D3D3D3;
-		border-top-style: solid;
-	}
-}
 
-.matryoshka__nestable__container__add-part-container {
-	display: none;
-}
-
-.matryoshka__nestable__container__add-part-container__inner {
-	position: fixed;
-	top: 20%;
-	left: 10%;
-	background: #FFF;
-	width: 80%;
-	z-index: 200;
-	padding: 1em;
-	text-align: center;
-
-	@include border-radius(0.3em);
-	@include box-shadow(0 2px 0 #222, 0 7px 15px rgba(black, 0.5));
-	
-	& .matryoshka__nestable__container__button {
-		margin: 0.2em;
-	}
-
-	&__part {
-		margin-bottom: 1em;
-	}
-
-}
-.matryoshka__nestable__container__add-part-container__extra-fader {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	background: rgba(black, 0.2);
-	z-index: 100;
-}
-
-.matryoshka__nestable__container__button {
-	border: none;
-	font-size: 0.7em;
-	padding: 0.7em 0.8em 0.7em 0.6em;
-	cursor: pointer;
-	font-family: inherit;
-	background: $color-green;
-	outline: none;
-	color: #333;
-
-	@include box-shadow(0 2px 0 darken($color-green, 30%));
-	@include border-radius(0.3em);
-
-	&:hover {
-		color: #000;
-	}
-
-	&--absolute {
-		position: absolute;
-		height: 1.9em;
-		width: 1.9em;
-		padding: 0;
-		text-align: center;
+		@include border-radius(0.3em);
+		@include box-shadow(0 2px 0 #222, 0 7px 15px rgba(black, 0.5));
 		
-		@include border-radius(2em);
-
-		&.delete-part {
-			background: $color-red;
-			right: 1.3em;
-			top: 1.2em;
-			@include box-shadow(0 2px 0 darken($color-red, 30%));
+		& .matryoshka__nestable__container__button {
+			margin: 0.2em;
 		}
 
-		&.move-part {
-			top: 1.2em;
-			&.move-part-up {
-				right: 5.6em;
+		&__part {
+			margin-bottom: 1em;
+		}
+
+	}
+	.matryoshka__nestable__container__add-part-container__extra-fader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: rgba(black, 0.2);
+		z-index: 100;
+	}
+
+	.matryoshka__nestable__container__button {
+		border: none;
+		font-size: 0.7em;
+		padding: 0.7em 0.8em 0.7em 0.6em;
+		cursor: pointer;
+		font-family: inherit;
+		background: $color-green;
+		outline: none;
+		color: #333;
+
+		@include box-shadow(0 2px 0 darken($color-green, 30%));
+		@include border-radius(0.3em);
+
+		&:hover {
+			color: #000;
+		}
+
+		&--absolute {
+			position: absolute;
+			height: 1.9em;
+			width: 1.9em;
+			padding: 0;
+			text-align: center;
+			
+			@include border-radius(2em);
+
+			&.delete-part {
+				background: $color-red;
+				right: 1.3em;
+				top: 1.2em;
+				@include box-shadow(0 2px 0 darken($color-red, 30%));
 			}
-			&.move-part-down {
-				right: 3.4em;
+
+			&.move-part {
+				top: 1.2em;
+				&.move-part-up {
+					right: 5.6em;
+				}
+				&.move-part-down {
+					right: 3.4em;
+				}
 			}
 		}
 	}
+
 }
