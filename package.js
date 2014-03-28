@@ -1,5 +1,5 @@
 Package.describe({
-  "summary": "A tiny cms for handling recursive js objects or something."
+  "summary": "A GUI for nesting and linking objects inside other objects."
 });
 
 Package.on_use(function (api) {
