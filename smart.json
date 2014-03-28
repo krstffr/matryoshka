@@ -1,9 +1,9 @@
 {
   "name": "Matryoshka",
-  "description": "A tiny cms for handling recursive js objects or something.",
+  "description": "A GUI for nesting and linking objects inside other objects.",
   "homepage": "https://github.com/krstffr/matryoshka",
   "author": "Kristoffer Klintberg <krstffr@gmail.com>",
-  "version": "0.1",
+  "version": "0.5",
   "git": "https://github.com/krstffr/matryoshka.git",
   "packages": {
     "iron-router": {},
