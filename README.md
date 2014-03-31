@@ -29,6 +29,10 @@ Let's say you want to create nestable russian dolls. Below is how you'd do that.
 
 // Do this on the client. For example on startup.
 Meteor.startup(function () {
+
+    // This is the current way of doing extremely insecure loginRequirement
+    // Be warned: this really won't secure your app, especially not on the server/methods
+    Matryoshka.requireLogin(true);
     
     // This will create a nestable type called "nestableDoll" which is createable from the GUI
     Matryoshka.nestables.addType({ name: 'nestableDoll', createable: true });
