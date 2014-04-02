@@ -36,5 +36,6 @@ $color-red: #D55;
 	margin: 0;
 	border: 1px solid #ccc;
 	
+	@include box-shadow( none );
 	@include border-radius(0.2em);
 }
