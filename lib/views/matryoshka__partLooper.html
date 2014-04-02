@@ -22,48 +22,7 @@
 	
 			{{#each fields }}
 
-				<label for="{{ ../matryoshkaId }}-{{this.name}}">{{ this.name }}:</label> 
-				{{#if ifValueEquals this.type "text" }}
-					<input id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ getFieldValue ../..}}" />
-				{{/if}}
-				{{#if ifValueEquals this.type "linkedNestable" }}
-					<strong><a href="/matryoshka/edit/{{ getFieldValue ../..}}">{{ getLinkedNestableName ../..}}</a></strong>
-				{{/if}}
-				{{#if ifValueEquals this.type "locked" }}
-					<strong>{{ getFieldValue ../..}}</strong>
-				{{/if}}
-				{{#if ifValueEquals this.type "textarea" }}
-					<textarea id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur">{{ getFieldValue ../..}}</textarea>
-				{{/if}}
-
-				{{#if ifValueEquals this.type "select" }}
-
-					<select id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-select">
-
-						<option value="not-selected">-</option>
-
-						{{#each selectableData }}
-
-							<option 
-								value="{{ name }}" 
-								selected="{{ ifSelectValueEquals ../../../matryoshkaId ../name name }}"
-								>
-								{{ name }}
-							</option>
-
-						{{/each}}
-
-					</select>
-
-					{{ setActiveSelectValue ../../matryoshkaId ../.. name }}
-
-				{{/if}}
-
-				{{#if this.imagePreview }}
-					<img class="matryoshka__form__image-preview" src="{{ getFieldValue ../.. }}" alt="Linked image preview" />
-				{{/if}}
-
-				<div class="matryoshka__form__clearfix"></div>
+				{{> matryoshka__fields}}
 
 			{{/each}}
 
@@ -73,41 +32,7 @@
 
 					{{#each fieldsTypeSpecific__getFields ../.. }}
 
-						<label for="{{ ../../../matryoshkaId }}-{{this.name}}">{{ this.name }}:</label> 
-						{{#if ifValueEquals this.type "text" }}
-							<input id="{{ ../../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ getFieldValue ../../.. }}" />
-						{{/if}}
-						{{#if ifValueEquals this.type "locked" }}
-							<strong>{{ getFieldValue ../../.. }}</strong>
-						{{/if}}
-						{{#if ifValueEquals this.type "linkedNestable" }}
-							<strong><a href="/matryoshka/edit/{{ getFieldValue ../../.. }}">{{ getLinkedNestableName ../../.. }}</a></strong>
-						{{/if}}
-						{{#if ifValueEquals this.type "textarea" }}
-							<textarea id="{{ ../../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../../matryoshkaId }}" class="matryoshka-save-on-blur">{{ getFieldValue ../../.. }}</textarea>
-						{{/if}}
-						{{#if ifValueEquals this.type "select" }}
-
-							<select id="{{ ../../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../../matryoshkaId }}" class="matryoshka-save-on-select">
-
-								<option value="not-selected">-</option>
-
-								{{#each selectableData }}
-
-									<option 
-										value="{{ name }}" 
-										selected="{{ ifSelectValueEquals ../../../../matryoshkaId ../name name }}"
-										>
-										{{ name }}
-									</option>
-
-								{{/each}}
-
-							</select>
-
-							{{ setActiveSelectValue ../../../matryoshkaId ../../.. this.name }}
-
-						{{/if}}
+						{{> matryoshka__fields}}
 
 					{{/each}}
 
