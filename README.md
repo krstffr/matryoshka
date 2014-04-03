@@ -33,10 +33,10 @@ Meteor.startup(function () {
     // This is the current way of doing extremely insecure loginRequirement
     // Be warned: this really won't secure your app, especially not on the server/methods
     Matryoshka.requireLogin(true);
-    
+
     // This will create a nestable type called "nestableDoll" which is createable from the GUI
     Matryoshka.nestables.addType({ name: 'nestableDoll', createable: true });
-    
+
     // This will create an actual doll object
     Matryoshka.nestables.add({
         // Give the part a name
@@ -58,7 +58,7 @@ Meteor.startup(function () {
         // Here we define what nestable types should be nestabled inside this nestable
         nestables: [{ name: 'nestableDoll' }]
     });
-    
+
     // Now if you go to route /matryoshka in your app you'll be able to create dolls which are nestable
 
 });
@@ -71,6 +71,11 @@ There are lot's of more options as well. Keep reading!
 
 ```javascript
 
+// This will show a preview button for nestables with previewable: true
+// You will need to handle the logic for the route, which will be handled like this in this case:
+// /matryoshkaPreview/mongoId
+Matryoshka.previewRoute.set('/matryoshkaPreview/');
+
 // This will create another doll object with some more advanced options
 Matryoshka.nestables.add({
     nestableName: 'siberianDoll',
@@ -80,6 +85,8 @@ Matryoshka.nestables.add({
     nestableCreateable: false,
     // You can define you own key/values which will be stored inside the nestable
     homeLocation: 'Siberia!',
+    // This nestable will be previewable
+    previewable: true,
     fields: [
         { name: 'dollName', type: 'text' },
         { name: 'dollSize', type: 'select', selectableData: [
@@ -127,7 +134,7 @@ Matryoshka.nestables.add({
             // In this case, if you set dollSize to "Super small" you'll also get these options
             "Super small": [
                 // So if the user sets dollSize to "Super small" he/she will be able to specify how tiny the doll
-                // is in this text field. You can use all kinds of fields (like the more advanced ones defined above) 
+                // is in this text field. You can use all kinds of fields (like the more advanced ones defined above)
                 // here. You can also add fields which are specific to these fields. For example, you could add
                 // a specific field for howTinyIsIt: "Microscopic", which the user could only access if he/she
                 // first set dollSize to "Super small" and then inserted "Microscopic" to the howTinyIsIt text field

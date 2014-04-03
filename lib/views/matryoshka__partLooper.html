@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--right matryoshka__nestable__container__col--{{ this.matryoshkaId }}">
-	
+
 			{{#each fields }}
 
 				{{> matryoshka__fields}}
@@ -45,7 +45,7 @@
 			{{#if nestables }}
 
 				<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--parts">
-					
+
 					<div class="matryoshka__nestable__container__add-part-container">
 
 						<div class="matryoshka__nestable__container__add-part-container__inner">
@@ -58,8 +58,8 @@
 
 									{{#each actualNestablesInArray }}
 
-											<button 
-												data-parent-id="{{ ../../matryoshkaId }}" 
+											<button
+												data-parent-id="{{ ../../matryoshkaId }}"
 												class="matryoshka__nestable__container__button add-part">
 												<i class="fa fa-file-o"></i> {{ nestableNameReadable }}
 											</button>
@@ -76,8 +76,8 @@
 
 										{{#each savedNestableParts }}
 
-											<button 
-												data-parent-id="{{ ../../../matryoshkaId }}" 
+											<button
+												data-parent-id="{{ ../../../matryoshkaId }}"
 												class="matryoshka__nestable__container__button add-predefined-part">
 												<i class="fa fa-chain"></i> {{ matryoshkaName }}
 											</button>

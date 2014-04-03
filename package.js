@@ -15,7 +15,13 @@ Package.on_use(function (api) {
 
 	api.add_files('lib/css/stylesheets/matryoshka__main.css', 'client');
 
+    api.add_files('lib/views/matryoshka__UImenuButtons.js', 'client');
+
+    api.add_files('lib/views/matryoshka__fixedButton.html', 'client');
+    api.add_files('lib/views/matryoshka__fixedButton.js', 'client');
+
 	api.add_files('lib/views/matryoshka__nestablePartButtons.html', 'client');
+    api.add_files('lib/views/matryoshka__nestablePartButtons.js', 'client');
 
 	api.add_files('lib/views/matryoshka__rootContainer.html', 'client');
 	api.add_files('lib/views/matryoshka__rootContainer.js', 'client');
@@ -34,7 +40,7 @@ Package.on_use(function (api) {
 	api.add_files('lib/matryoshka__matryoshkaHandler.js', 'client');
 
 	if (typeof api.export !== 'undefined') {
-		
+
 		api.use(['font-awesome', 'iron-router'], 'client');
 
 		// The main object.
