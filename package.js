@@ -39,15 +39,17 @@ Package.on_use(function (api) {
 	api.add_files('lib/views/matryoshka__fields.js', 'client');
 
 	api.add_files('lib/matryoshka__globalHelpers.js', 'client');
-	api.add_files('lib/matryoshka__router.js', 'client');
-	api.add_files('lib/matryoshka__matryoshkaHandler.js', 'client');
+
+    api.add_files('lib/matryoshka__router.js', 'client');
+
+	api.add_files('lib/matryoshka__matryoshkaHandler.js', ['client', 'server']);
 
 	if (typeof api.export !== 'undefined') {
 
 		api.use(['font-awesome', 'iron-router'], 'client');
 
 		// The main object.
-		api.export('Matryoshka', 'client');
+		api.export('Matryoshka', ['server', 'client']);
 
 		// The Collection where we store stuff.
 		api.export('MatryoshkaNestables', ['client', 'server']);
