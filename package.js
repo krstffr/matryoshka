@@ -17,6 +17,9 @@ Package.on_use(function (api) {
 
     api.add_files('lib/views/matryoshka__UImenuButtons.js', 'client');
 
+    api.add_files('lib/views/matryoshka__login.html', 'client');
+    api.add_files('lib/views/matryoshka__login.js', 'client');
+
     api.add_files('lib/views/matryoshka__fixedButton.html', 'client');
     api.add_files('lib/views/matryoshka__fixedButton.js', 'client');
 
