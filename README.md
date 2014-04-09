@@ -160,3 +160,7 @@ So this is a really silly example. But you could use it as a CMS for actual sub 
 ### The output of all this
 
 You'll have to create a app/whatever which then uses the data you create and store. That's up to you. In the future I might add an example as to how you might accomplish this. Cause with this package you only create and admin data, most of the time you'll probably want to actually output this data somewhere.
+
+### The super insecure login requirement
+
+Setting `Matryoshka.requireLogin(true);` will require you to login when using Matryoshka. (This also requires the accounts-base and accounts-password packages.) This is currently super insecure, and currently all methods can be called by all clients no matter if user is logged in or not. (This will be fixed soon!) Also, user creation is up to you to validate and secure, there are no rules set in Matryoshka for these things.
