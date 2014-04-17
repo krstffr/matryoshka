@@ -21,6 +21,7 @@
 		z-index: 100;
 
 		@include border-radius(0.4em);
+		@include box-shadow(0 1px 3px rgba(black, 0.2), 0 5px 10px rgba(black,0.1));
 
 		&--visible {
 			display: block;
@@ -30,6 +31,11 @@
 	.matryoshka__mainMenu__menu-container__col {
 		float: left;
 		margin: 0 1.5em 0 0;
+
+		&__ul {
+			max-height: 500px;
+			overflow: auto;
+		}
 	}
 
 }

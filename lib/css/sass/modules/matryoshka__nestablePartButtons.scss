@@ -10,6 +10,16 @@
 
 	.matryoshka__nestablePartButtons__button {
 		@extend %matryoshkaFixedBottomMenuBtns;
+
+		&:hover {
+			color: #666;
+		}
+		&:active {
+			color: #333;
+			background: #eee;
+
+			@include transform( translateY( 1px ) );
+		}
 	}
 
 }
