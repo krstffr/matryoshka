@@ -34,6 +34,9 @@
 			position: relative;
 			padding-bottom: 0;
 		}
+		&--left h3 {
+			float: left;
+		}
 		&--right {
 			width: 100%;
 			border-top: 1px solid $border-color;
@@ -47,6 +50,52 @@
 			border: 2px dashed #D3D3D3;
 			border-top-style: solid;
 		}
+
+		// This class is for currently focused elements.
+		&--focus {
+
+			$widthAndHeight: 95%;
+			$remaingMargin: (100% - $widthAndHeight) / 2;
+
+			position: fixed;
+			z-index: 80;
+			width: $widthAndHeight !important;
+			height: $widthAndHeight !important;
+			margin: $remaingMargin;
+			top: 0;
+			left: 0;
+			overflow: auto;
+
+			@include box-shadow( 0 0 200px rgba(black, 0.4), 0 5px 25px rgba(black, 0.8) );
+
+			& > .matryoshka__nestable__container__col--right {
+				margin-top: 2.8em;
+			}
+
+			& > .matryoshka__nestable__container__col--left {
+				position: fixed;
+				width: $widthAndHeight;
+				background: #fff;
+				z-index: 90;
+				background: #fafafa;
+				border-bottom: 1px solid $border-color;
+			}
+
+			// This is for hiding all other buttons except for the focus-button
+			// which unfocuses the currently focused el. That button is the way
+			// out of the focus.
+			& > .matryoshka__nestable__container__col--left .matryoshka__nestable__container__button {
+
+				display: none;
+
+				&.focus-on-part {
+					display: block;
+				}
+
+			}
+
+		}
+
 	}
 
 	.matryoshka__nestable__container__add-part-container {
@@ -85,6 +134,11 @@
 		z-index: 100;
 	}
 
+	.matryoshka__nestableSubPartButtons {
+		float: right;
+		margin-top: -0.3em;
+	}
+
 	.matryoshka__nestable__container__button {
 		border: none;
 		font-size: 0.7em;
@@ -103,33 +157,19 @@
 		}
 
 		&--absolute {
-			position: absolute;
+
 			height: 1.9em;
 			width: 1.9em;
 			padding: 0;
 			text-align: center;
-			top: 1.2em;
 
 			@include border-radius(2em);
 
 			&.delete-part {
 				background: $color-red;
-				right: 1.3em;
 				@include box-shadow(0 2px 0 darken($color-red, 30%));
 			}
 
-			&.move-part {
-				&.move-part-up {
-					right: 5.6em;
-				}
-				&.move-part-down {
-					right: 3.4em;
-				}
-			}
-
-			&.duplicate-part {
-				right: 7.8em;
-			}
 		}
 	}
 
