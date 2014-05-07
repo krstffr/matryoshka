@@ -2,20 +2,24 @@
 
 	<div class="matryoshka__nestableSubPartButtons">
 
-		<button data-parent-id="{{ ../matryoshkaId }}" class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute focus-on-part">
+		<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute hide-part">
 			<i class="fa fa-eye"></i>
+		</button>
+
+		<button data-parent-id="{{ ../matryoshkaId }}" class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute focus-on-part">
+			<i class="fa fa-search"></i>
 		</button>
 
 		<button data-parent-id="{{ ../../../matryoshkaId }}" class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute duplicate-part">
 			<i class="fa fa-copy"></i>
 		</button>
 
-		<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute move-part move-part-down" data-move-where="up">
-			<i class="fa fa-arrow-down"></i>
-		</button>
-
 		<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute move-part move-part-up" data-move-where="down">
 			<i class="fa fa-arrow-up"></i>
+		</button>
+
+		<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute move-part move-part-down" data-move-where="up">
+			<i class="fa fa-arrow-down"></i>
 		</button>
 
 		<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute delete-part">

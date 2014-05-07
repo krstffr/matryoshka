@@ -12,6 +12,21 @@
 		text-align: left;
 		color: #222;
 
+		// This is used for hiding stuff.
+		&--hidden {
+
+			opacity: 0.5;
+			cursor: pointer;
+
+			.matryoshka__nestable__container__col {
+				&--right,
+				&--parts {
+					max-height: 35px;
+					overflow: hidden;
+				}
+			}
+		}
+
 		// @include border-radius(0.3em);
 		@include box-shadow(0 1px 3px rgba(black, 0.2), 0 5px 10px rgba(black,0.1));
 		@include clearfix;
