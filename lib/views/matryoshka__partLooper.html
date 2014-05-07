@@ -88,13 +88,9 @@
 
 					</div>
 
-					{{#each nestables }}
+					{{#each nestedNestables }}
 
-						{{#each actualNestables .. }}
-
-							{{> recurse dataToRecurse }}
-
-						{{/each}}
+						{{> recurse this }}
 
 					{{/each}}
 
