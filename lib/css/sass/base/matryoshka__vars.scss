@@ -1,6 +1,7 @@
 @import "compass";
 
 $color-green: #80DA9D;
+$color-green-light: #d9f3e1;
 $color-red: #D55;
 
 .matryoshka__body {
@@ -35,7 +36,7 @@ $color-red: #D55;
 	cursor: pointer;
 	margin: 0;
 	border: 1px solid #ccc;
-	
+
 	@include box-shadow( none );
 	@include border-radius(0.2em);
 }

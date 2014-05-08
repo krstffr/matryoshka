@@ -8,7 +8,6 @@
 		margin: 0.5em 0;
 		width: 100%;
 		position: relative;
-		background: #fafafa;
 		text-align: left;
 		color: #222;
 
@@ -47,6 +46,7 @@
 			position: relative;
 			padding-bottom: 0;
 			overflow: hidden;
+			background: #fafafa;
 		}
 		&--left h3 {
 			float: left;
@@ -57,32 +57,44 @@
 			background: #fff;
 		}
 		&--parts {
+
 			padding: 0.5em 0.6em 0.2em;
 			width: 100%;
 			background: #E9E9E9;
 			text-align: center;
 			border: 1px dashed #B1B1B1;
+
+			& .matryoshka__nestable__container__col--parts {
+				background: rgba(black, 0.015);
+			}
+
 		}
 
 		// This class is for currently focused elements.
 		&--focus {
 
-			$widthAndHeight: 99%;
+			$widthAndHeight: 95%;
 			$remaingMargin: (100% - $widthAndHeight) / 2;
 
 			position: fixed;
 			z-index: 80;
 			width: $widthAndHeight !important;
-			height: $widthAndHeight !important;
+			height: ($widthAndHeight - ($remaingMargin*3)) !important;
 			margin: $remaingMargin;
 			top: 0;
 			left: 0;
 			overflow: auto;
+			background: #fafafa;
+			border-bottom: 2px solid #B1B1B1;
 
-			@include box-shadow( 0 0 200px rgba(black, 0.4), 0 5px 25px rgba(black, 0.8) );
+			@include box-shadow( 0 0 300px 300px $color-green-light );
 
 			textarea {
 				height: 12em;
+			}
+
+			& > .matryoshka__nestable__container__col--parts {
+				background: #E9E9E9;
 			}
 
 			& > .matryoshka__nestable__container__col--right {
