@@ -12,6 +12,8 @@
 		text-align: left;
 		color: #222;
 
+		@include clearfix;
+
 		// This is used for hiding stuff.
 		&--hidden {
 
@@ -26,10 +28,6 @@
 				}
 			}
 		}
-
-		// @include border-radius(0.3em);
-		@include box-shadow(0 1px 3px rgba(black, 0.2), 0 5px 10px rgba(black,0.1));
-		@include clearfix;
 
 		& .matryoshka__nestable__container {
 			font-size: 0.95em;
@@ -48,6 +46,7 @@
 			width: 100%;
 			position: relative;
 			padding-bottom: 0;
+			overflow: hidden;
 		}
 		&--left h3 {
 			float: left;
@@ -60,10 +59,9 @@
 		&--parts {
 			padding: 0.5em 0.6em 0.2em;
 			width: 100%;
-			background: #f2f2f2;
+			background: #E9E9E9;
 			text-align: center;
-			border: 2px dashed #D3D3D3;
-			border-top-style: solid;
+			border: 1px dashed #B1B1B1;
 		}
 
 		// This class is for currently focused elements.
@@ -82,6 +80,10 @@
 			overflow: auto;
 
 			@include box-shadow( 0 0 200px rgba(black, 0.4), 0 5px 25px rgba(black, 0.8) );
+
+			textarea {
+				height: 12em;
+			}
 
 			& > .matryoshka__nestable__container__col--right {
 				margin-top: 2.8em;
@@ -109,6 +111,10 @@
 
 			}
 
+			& > .matryoshka__nestable__container__col--left .matryoshka__nestableSubPartButtons {
+				display: block;
+			}
+
 		}
 
 	}
@@ -128,7 +134,7 @@
 		text-align: center;
 
 		@include border-radius(0.3em);
-		@include box-shadow(0 2px 0 #222, 0 7px 15px rgba(black, 0.5));
+		@include box-shadow(0 7px 15px rgba(black, 0.5));
 
 		& .matryoshka__nestable__container__button {
 			margin: 0.2em;
@@ -152,23 +158,39 @@
 	.matryoshka__nestableSubPartButtons {
 		float: right;
 		margin-top: -0.3em;
+		display: none;
+		&--hidden {
+			display: block;
+		}
+	}
+
+	.matryoshka__nestable__container__col--left:hover .matryoshka__nestableSubPartButtons {
+		display: block;
+		&--hidden {
+			display: none;
+		}
 	}
 
 	.matryoshka__nestable__container__button {
+
 		border: none;
 		font-size: 0.7em;
-		padding: 0.7em 0.8em 0.7em 0.6em;
+		padding: 0.8em 2em 0.8em 1.5em;
 		cursor: pointer;
 		font-family: inherit;
 		background: $color-green;
 		outline: none;
 		color: #333;
 
-		@include box-shadow(0 2px 0 darken($color-green, 30%));
-		@include border-radius(0.3em);
+		@include border-radius(0.4em);
 
 		&:hover {
 			color: #000;
+		}
+
+		&--transparent {
+			background: none;
+			opacity: 0.4;
 		}
 
 		&--absolute {
@@ -177,12 +199,10 @@
 			width: 1.9em;
 			padding: 0;
 			text-align: center;
-
-			@include border-radius(2em);
+			font-size: 0.85em;
 
 			&.delete-part {
 				background: $color-red;
-				@include box-shadow(0 2px 0 darken($color-red, 30%));
 			}
 
 		}

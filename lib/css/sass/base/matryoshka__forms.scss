@@ -1,19 +1,21 @@
 @import "compass";
 @import "../base/matryoshka__vars";
 
-$form-margin: 0 0 0.5em;
+$form-margin: 0 0 0.8em;
 
 .matryoshka__body {
 
 	label {
 		padding: 0 0 0.1em 0.5em;
 		display: block;
+		color: #777;
+		font-size: 0.9em;
 	}
 
 	input,
 	textarea {
 		font-family: inherit;
-		font-size: 0.8em;
+		font-size: 0.9em;
 	}
 
 	select,
@@ -31,15 +33,13 @@ $form-margin: 0 0 0.5em;
 
 		width: 80%;
 		padding: 0.4em 0.6em;
-		border: 1px solid #eee;
+		border: 1px solid #ddd;
 		outline: none;
-		color: #555;
-		
+
 		@include border-radius(0.3em);
 
 		&:focus {
-			color: #000;
-			border-color: #888;
+			border-color: #555;
 		}
 
 	}
@@ -48,12 +48,29 @@ $form-margin: 0 0 0.5em;
 		height: 6em;
 	}
 
+	select {
+
+		width: 80%;
+		height: 2em;
+		border: 1px solid #ddd;
+		background-color: #F8F8F8;
+		font-size: 0.9em;
+
+		@include box-sizing( border-box );
+	}
+
 	.matryoshka__form__image-preview {
-		max-width: 19%;
+		width: 19%;
 		max-height: 200px;
 		float: right;
 		background: #F9F9F9;
 		border: 1px solid #DDD;
+		outline: none;
+	}
+
+	button,
+	input[type="submit"] {
+		@include box-shadow( none );
 	}
 
 	.matryoshka__form__clearfix {
