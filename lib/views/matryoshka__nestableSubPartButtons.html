@@ -2,6 +2,14 @@
 
 	<div class="matryoshka__nestableSubPartButtons">
 
+		{{#if nestableCreateable }}
+
+			<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute create-new-nestable">
+				<i class="fa fa-share"></i>
+			</button>
+
+		{{/if }}
+
 		<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute hide-part">
 			<i class="fa fa-eye-slash"></i>
 		</button>
