@@ -90,7 +90,10 @@ Matryoshka.nestables.add({
     fields: [
         { name: 'dollName', type: 'text' },
         { name: 'dollSize', type: 'select', selectableData: [
-                { name: 'Large' }, { name: 'Medium' }, { name: 'Small' }, { name: 'Super small' }
+                { name: 'Large' },
+                { name: 'Medium' },
+                { name: 'Small', extraDesc: 'Something describing this more, but will not be saved' },
+                { name: 'Super small' }
             ]
         },
         // You can ouput stuff you've defined yourself as a non-editable field using the "locked" type
@@ -108,6 +111,16 @@ Matryoshka.nestables.add({
                 collectionName: 'SiberianVillages',
                 // The villageName key will be used for the value for the <option> elements
                 collectionField: 'villageName',
+                // If you want an additional field which describes the field above
+                // then use the optional collectionFieldDescription-field.
+                // This will output the field before the value of the collectionField-field
+                // in the select option, like this:
+                // <option>Siberia: Volgostograd</option>
+                // If you don't use it the option will look like this:
+                // <option>Volgostograd</option>
+                // The stored value of the selected option will always only be
+                // the value of the collectionField though!
+                collectionFieldDescription: 'villageState',
                 // Here you can define a selector for the query which will populate the <select> element. Just use
                 // { } if you want all documents
                 collectionSelector: { villageState: 'Siberia', population: { $gt: 5000 } }
