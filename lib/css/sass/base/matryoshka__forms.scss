@@ -55,6 +55,8 @@ $form-margin: 0 0 0.8em;
 		border: 1px solid #ddd;
 		background-color: #F8F8F8;
 		font-size: 0.9em;
+		// Mainly for Firefox?
+		padding: 0.2em;
 
 		@include box-sizing( border-box );
 	}

@@ -1,0 +1,64 @@
+@import "../base/matryoshka__vars";
+
+.matryoshka__body {
+
+  &.matryoshka__body--filter-is-active {
+
+    .matryoshka__nestable__container select {
+      background-color: #ddd;
+    }
+
+    .matryoshka__nestable__container input[type="text"] {
+      opacity: 0.3;
+    }
+
+  }
+
+  .matryoshka__mainMenu__button-filter {
+    &--active,
+    &--active:hover {
+      color: $color-green;
+    }
+  }
+
+  .matryoshka__filter {
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    width: 100%;
+    font-size: 1em;
+    padding: 1.3em 1em 4.7em;
+
+    @include background( rgba(white, 0.8) );
+
+    input {
+      font-size: 1.5em;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      color: $color-green;
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    &__close-button {
+      position: absolute;
+      top: 2.1em;
+      right: 1.8em;
+      cursor: pointer;
+      background: $color-red;
+      color: #000;
+      &:hover {
+        color: #fff;
+      }
+    }
+
+  }
+
+}

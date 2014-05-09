@@ -29,6 +29,9 @@ Package.on_use(function (api) {
   api.add_files('lib/views/matryoshka__nestableSubPartButtons.html', 'client');
   api.add_files('lib/views/matryoshka__nestableSubPartButtons.js', 'client');
 
+  api.add_files('lib/views/matryoshka__filter.html', 'client');
+  api.add_files('lib/views/matryoshka__filter.js', 'client');
+
   api.add_files('lib/views/matryoshka__rootContainer.html', 'client');
   api.add_files('lib/views/matryoshka__rootContainer.js', 'client');
 
