@@ -5,10 +5,11 @@
   &.matryoshka__body--filter-is-active {
 
     .matryoshka__nestable__container select {
-      background-color: #ddd;
+      background-color: $color-green;
     }
 
-    .matryoshka__nestable__container input[type="text"] {
+    .matryoshka__nestable__container input[type="text"],
+    .matryoshka__nestable__container textarea {
       opacity: 0.3;
     }
 
@@ -31,8 +32,8 @@
     width: 100%;
     font-size: 1em;
     padding: 1.3em 1em 4.7em;
-
-    @include background( rgba(white, 0.8) );
+    border-top: 2px solid $color-green;
+    background: #fff;
 
     input {
       font-size: 1.5em;
@@ -40,7 +41,9 @@
       width: 100%;
       text-align: center;
       font-weight: bold;
-      color: $color-green;
+      background: $color-green;
+      color: #fff;
+      border-color: #000;
     }
 
     &--hidden {
@@ -52,9 +55,10 @@
       top: 2.1em;
       right: 1.8em;
       cursor: pointer;
-      background: $color-red;
-      color: #000;
+      color: $color-red;
+      background: #fff;
       &:hover {
+        background: $color-red;
         color: #fff;
       }
     }
