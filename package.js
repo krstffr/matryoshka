@@ -11,6 +11,8 @@ Package.on_use(function (api) {
 
   api.add_files('lib/collections/matryoshka__nestables.js', ['server', 'client']);
 
+  api.add_files('lib/img/matryoshka-logo.png', 'client');
+
   api.add_files('lib/matryoshka__methods.js', 'server');
 
   api.add_files('lib/matryoshka__globalHelpers.js', 'client');
@@ -18,6 +20,8 @@ Package.on_use(function (api) {
   api.add_files('lib/css/stylesheets/matryoshka__main.css', 'client');
 
   api.add_files('lib/views/matryoshka__UImenuButtons.js', 'client');
+
+  api.add_files('lib/views/matryoshka__firstPageTemplate.html', 'client');
 
   api.add_files('lib/views/matryoshka__login.html', 'client');
   api.add_files('lib/views/matryoshka__login.js', 'client');

@@ -15,7 +15,9 @@
 	}
 
 	a {
-		color: #888;
+		color: inherit;
+    text-decoration: underline;
+    border: none;
 
 		&:hover {
 			color: #000;

@@ -12,10 +12,16 @@ $form-margin: 0 0 0.8em;
 		font-size: 0.9em;
 	}
 
-	input,
-	textarea {
+	input[type="text"],
+	input[type="password"],
+	textarea,
+	select {
+		width: 100%;
 		font-family: inherit;
 		font-size: 0.9em;
+
+		@include border-radius( $border-radius-def );
+
 	}
 
 	select,
@@ -31,12 +37,9 @@ $form-margin: 0 0 0.8em;
 	input[type="password"],
 	textarea {
 
-		width: 80%;
 		padding: 0.4em 0.6em;
 		border: 1px solid #ddd;
 		outline: none;
-
-		@include border-radius(0.3em);
 
 		&:focus {
 			border-color: #555;
@@ -50,7 +53,6 @@ $form-margin: 0 0 0.8em;
 
 	select {
 
-		width: 80%;
 		height: 2em;
 		border: 1px solid #ddd;
 		background-color: #F8F8F8;
@@ -68,6 +70,13 @@ $form-margin: 0 0 0.8em;
 		background: #F9F9F9;
 		border: 1px solid #DDD;
 		outline: none;
+
+		& + input[type="text"],
+		& + input[type="password"],
+		& + textarea,
+		& + select {
+			width: 80%;
+		}
 	}
 
 	button,

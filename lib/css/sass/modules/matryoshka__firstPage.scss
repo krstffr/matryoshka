@@ -1,0 +1,54 @@
+@import "../base/matryoshka__vars";
+
+.matryoshka__body {
+
+  .matryoshka__firstPage {
+
+    &__text-content {
+
+      padding: 3.5em 5.5em 1em 5em;
+
+      h2 {
+        font-size: 1.5em;
+        padding-bottom: 0.4em;
+      }
+
+      h3 {
+        padding-top: 1em;
+        font-weight: normal;
+      }
+
+    }
+
+    &__logo-container {
+      background: #8CC29C;
+      padding: 2em 0;
+      margin: -1em;
+      border-bottom: 4px solid #FFF;
+    }
+
+    &__logo {
+
+      $logo-size-ratio: 1.302;
+      $logo-size-display-ratio: 0.6;
+
+      $logo-width-orig: 500px;
+      $logo-width: $logo-width-orig * $logo-size-display-ratio;
+      $logo-height: $logo-width * $logo-size-ratio;
+
+      width: $logo-width;
+      // margin-left: -($logo-width/2);
+      height: $logo-height;
+      // margin-top: -($logo-height/2);
+
+      display: block;
+      margin: 0 auto;
+
+      // top: 40%;
+      // left: 50%;
+
+    }
+
+  }
+
+}

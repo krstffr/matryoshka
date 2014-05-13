@@ -1,19 +1,15 @@
 <template name="matryoshka__rootContainer">
 
-	{{> matryoshka__partLooper }}
+	{{#if currentUser }}
 
-	{{> matryoshka__mainMenu }}
+		{{> matryoshka__mainMenu }}
 
-	{{> matryoshka__filter }}
+		{{> matryoshka__filter }}
 
-	{{#if partIsVisible }}
-
-		{{#with matryoshkaCurrentNestablePart }}
-
-			{{> matryoshka__nestablePartButtons }}
-
-		{{/with }}
+		{{> matryoshka__nestablePartButtons }}
 
 	{{/if}}
+
+	{{> yield }}
 
 </template>

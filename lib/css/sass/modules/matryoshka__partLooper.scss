@@ -12,6 +12,7 @@
 		color: #222;
 
 		@include clearfix;
+		@include border-radius( $border-radius-def );
 
 		// This is used for hiding stuff.
 		&--hidden {
