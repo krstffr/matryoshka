@@ -1,0 +1,20 @@
+@import "../base/matryoshka__vars";
+
+.matryoshka__body {
+
+  .matryoshka__message {
+
+    padding: .4em .7em .5em;
+    background: #eee;
+    font-weight: bold;
+
+    @include border-radius( $border-radius-def );
+
+    &--error {
+      background: adjust-lightness($color-red, 30);
+      color: $color-red;
+    }
+
+  }
+
+}
