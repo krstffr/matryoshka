@@ -6,10 +6,7 @@ $form-margin: 0 0 0.8em;
 .matryoshka__body {
 
 	label {
-		padding: 0 0 0.1em 0.5em;
-		display: block;
-		color: #777;
-		font-size: 0.9em;
+
 	}
 
 	input[type="text"],
@@ -76,6 +73,21 @@ $form-margin: 0 0 0.8em;
 		& + textarea,
 		& + select {
 			width: 80%;
+		}
+	}
+
+	.matryoshka__form__label {
+
+		padding: 0 0 0.5em 0.5em;
+		display: block;
+		color: #777;
+		font-size: 0.9em;
+		line-height: 1.3em;
+
+		&__description {
+			display: block;
+			color: #000;
+			font-weight: normal;
 		}
 	}
 

@@ -1,6 +1,15 @@
 <template name="matryoshka__fields">
 
-	<label for="{{ ../../matryoshkaId }}-{{this.name}}">{{ this.name }}:</label>
+	<label class="matryoshka__form__label" for="{{ ../../matryoshkaId }}-{{name}}">
+		{{ name }}
+		{{#if description }}
+
+			<span class="matryoshka__form__label__description">
+				{{ description }}
+			</span>
+
+		{{/if}}
+	</label>
 
 	{{#if this.imagePreview }}
 		<img class="matryoshka__form__image-preview" src="{{ getFieldValue ../.. }}" alt="Linked image preview" />
