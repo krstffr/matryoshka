@@ -201,11 +201,11 @@ This is how you'd do that:
 		nestableNameReadable: 'A blog post',
 		type: 'someTypeDefinedByTheUser',
 		fields: [
-			{ name: 'headline', type: 'text' },
-			{ name: 'slug', type: 'locked', description: 'The slug is automatically generated from the headline.',
+			{ name: 'headline', type: 'text' },
+			{ name: 'slug', type: 'locked', description: 'The slug is automatically generated from the headline.',
 				beforeAction: { fn: 'prepareUrl', vars: ['headline'] } },
-			{ name: 'postImage', type: 'text', imagePreview: true },
-			{ name: 'fullText', type: 'textarea' }
+			{ name: 'postImage', type: 'text', imagePreview: true },
+			{ name: 'fullText', type: 'textarea' }
 		]
 	});
 
