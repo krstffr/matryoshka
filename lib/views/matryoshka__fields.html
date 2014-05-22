@@ -18,12 +18,15 @@
 	{{#if ifValueEquals this.type "text" }}
 		<input id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ getFieldValue ../..}}" />
 	{{/if}}
+
 	{{#if ifValueEquals this.type "linkedNestable" }}
 		<strong><a href="/matryoshka/edit/{{ getFieldValue ../..}}">{{ getLinkedNestableName ../..}}</a></strong>
 	{{/if}}
+
 	{{#if ifValueEquals this.type "locked" }}
-		<strong>{{ getFieldValue ../..}}</strong>
+		<input type="text" value="{{ getFieldValue ../..}}" disabled="disabled" />
 	{{/if}}
+
 	{{#if ifValueEquals this.type "textarea" }}
 		<textarea id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur">{{ getFieldValue ../..}}</textarea>
 	{{/if}}

@@ -181,3 +181,33 @@ Setting `Matryoshka.requireLogin(true);` will require you to login when using Ma
 ### The UI
 
 **The UI will need an explanation, let's write it!**
+
+### The beforeAction on the locked field type
+
+Sometimes you may want to use one field to generate another field. Maybe you've got a blog post field and you want to automatically generate a url slug from this headline.
+This is how you'd do that:
+1. Set the field 'type' for the slug to 'locked'
+2. Set a 'beforeAction' object for the slug which contains two fields: 'fn' and 'vars'
+3. The 'fn' field should be the name of the function you want to call to create the slug
+4. The 'vars' field should contain an array which will be passed to the function ( using .apply(vars) )
+5. The 'vars' array field will reference other fields in your nestable. So if you set vars: ['headline'] then the headline which has been set by the user will be passed to the function, not the string 'headline'
+6. To sum up: this would be a working example (if the function 'prepareUrl' is defined globally by the user):
+```javascript
+
+  Matryoshka.nestables.addType({ name: 'blogPost', createable: true });
+
+	Matryoshka.nestables.add({
+		nestableName: 'blogPost',
+		nestableNameReadable: 'A blog post',
+		type: 'someTypeDefinedByTheUser',
+		fields: [
+			{ name: 'headline', type: 'text' },
+			{ name: 'slug', type: 'locked', description: 'The slug is automatically generated from the headline.',
+				beforeAction: { fn: 'prepareUrl', vars: ['headline'] } },
+			{ name: 'postImage', type: 'text', imagePreview: true },
+			{ name: 'fullText', type: 'textarea' }
+		]
+	});
+
+```
+Oh, this could probably be improved quite a bit. It's actually quite limited right now.
