@@ -194,20 +194,18 @@ This is how you'd do that:
 6. To sum up: this would be a working example (if the function 'prepareUrl' is defined globally by the user):
 ```javascript
 
-  Matryoshka.nestables.addType({ name: 'blogPost', createable: true });
-
-	Matryoshka.nestables.add({
-		nestableName: 'blogPost',
-		nestableNameReadable: 'A blog post',
-		type: 'someTypeDefinedByTheUser',
-		fields: [
-			{ name: 'headline', type: 'text' },
-			{ name: 'slug', type: 'locked', description: 'The slug is automatically generated from the headline.',
-				beforeAction: { fn: 'prepareUrl', vars: ['headline'] } },
-			{ name: 'postImage', type: 'text', imagePreview: true },
-			{ name: 'fullText', type: 'textarea' }
-		]
-	});
+Matryoshka.nestables.add({
+	nestableName: 'blogPost',
+	nestableNameReadable: 'A blog post',
+	type: 'someTypeDefinedByTheUser',
+	fields: [
+		{ name: 'headline', type: 'text' },
+		{ name: 'slug', type: 'locked', description: 'The slug is automatically generated from the headline.',
+			beforeAction: { fn: 'prepareUrl', vars: ['headline'] } },
+		{ name: 'postImage', type: 'text', imagePreview: true },
+		{ name: 'fullText', type: 'textarea' }
+	]
+});
 
 ```
 Oh, this could probably be improved quite a bit. It's actually quite limited right now.
