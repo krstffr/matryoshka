@@ -1,41 +1,57 @@
 <template name="matryoshka__login">
 
-    <div class="matryoshka__nestable__container matryoshka__nestable__container--login">
+	<div class="matryoshka__nestable__container matryoshka__nestable__container--login">
 
-        <div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--left">
+		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--left">
 
-            <h3>Matryoshka login</h3>
+			<h3>Matryoshka | Login or create a user</h3>
 
-        </div>
+		</div>
 
-        <div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--right">
+		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--right">
 
-            <form>
+			<form>
 
-                <label for="username">Username</label>
-                <input type="text" id="username" value="" />
+				{{#if currentUser }}
 
-                <label for="password">Password</label>
-                <input type="password" id="password" value="" />
+					<div class="matryoshka__message matryoshka__message--success">
 
-                <div class="matryoshka__clearfix"></div>
+						<p>
+							Logged in as <strong>{{ currentUser.username }}</strong>
+						</p>
 
-                <button class="matryoshka__nestable__container__button matryoshka__button--login">Login!</button>
-                <button class="matryoshka__nestable__container__button matryoshka__button--create-user">Create user.</button>
+						<button class="matryoshka__nestable__container__button matryoshka__button--logout">Log out.</button>
 
-                <!-- This should probably be turned into a module. -->
-                {{#with loginErrors}}
+					</div>
 
-                  <div class="matryoshka__message matryoshka__message--error">
-                    {{ this }}
-                  </div>
+				{{/if}}
 
-                {{/with}}
+				<div class="clearfix"></div>
 
-            </form>
+				<label for="username">Username</label>
+				<input type="text" id="username" value="" />
 
-        </div>
+				<label for="password">Password</label>
+				<input type="password" id="password" value="" />
 
-    </div>
+				<div class="matryoshka__clearfix"></div>
+
+				<button class="matryoshka__nestable__container__button matryoshka__button--login">Login!</button>
+				<button class="matryoshka__nestable__container__button matryoshka__button--create-user">Create user.</button>
+
+				<!-- This should probably be turned into a module. -->
+				{{#with loginErrors}}
+
+					<div class="matryoshka__message matryoshka__message--error">
+						<p>{{ this }}</p>
+					</div>
+
+				{{/with}}
+
+			</form>
+
+		</div>
+
+	</div>
 
 </template>

@@ -4,15 +4,24 @@
 
   .matryoshka__message {
 
-    padding: .4em .7em .5em;
+    padding: .5em .8em .1em;
     background: #eee;
     font-weight: bold;
+    margin-bottom: 0.8em;
 
     @include border-radius( $border-radius-def );
 
     &--error {
       background: adjust-lightness($color-red, 30);
       color: $color-red;
+    }
+
+    &--success {
+      background: $color-green-light;
+    }
+
+    button {
+      margin-bottom: 1.1em;
     }
 
   }

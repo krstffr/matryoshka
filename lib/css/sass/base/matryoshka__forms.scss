@@ -1,7 +1,7 @@
 @import "compass";
 @import "../base/matryoshka__vars";
 
-$form-margin: 0 0 0.8em;
+$form-margin: 0 0 1em;
 
 .matryoshka__body {
 
@@ -67,6 +67,7 @@ $form-margin: 0 0 0.8em;
 		background: #F9F9F9;
 		border: 1px solid #DDD;
 		outline: none;
+		margin-bottom: 0.7em;
 
 		& + input[type="text"],
 		& + input[type="password"],

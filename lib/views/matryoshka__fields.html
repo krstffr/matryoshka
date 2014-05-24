@@ -20,7 +20,7 @@
 	{{/if}}
 
 	{{#if ifValueEquals this.type "linkedNestable" }}
-		<strong><a href="/matryoshka/edit/{{ getFieldValue ../..}}">{{ getLinkedNestableName ../..}}</a></strong>
+		<p><strong><a href="/matryoshka/edit/{{ getFieldValue ../..}}">{{ getLinkedNestableName ../..}}</a></strong></p>
 	{{/if}}
 
 	{{#if ifValueEquals this.type "locked" }}
