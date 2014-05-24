@@ -50,6 +50,9 @@ Package.on_use(function (api) {
   api.add_files('lib/views/matryoshka__fields.html', 'client');
   api.add_files('lib/views/matryoshka__fields.js', 'client');
 
+  api.add_files('lib/views/matryoshka__addPartOverlay.html', 'client');
+  api.add_files('lib/views/matryoshka__addPartOverlay.js', 'client');
+
   api.add_files('lib/matryoshka__router.js', 'client');
 
   api.add_files('lib/matryoshka__matryoshkaHandler.js', ['client', 'server']);

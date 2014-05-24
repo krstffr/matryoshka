@@ -1,0 +1,53 @@
+<template name="matryoshka__addPartOverlay">
+
+	<div class="matryoshka__nestable__container__add-part-container matryoshka__nestable__container__add-part-container--general">
+
+		<div class="matryoshka__nestable__container__add-part-container__inner">
+
+			{{#each nestableTypes }}
+
+				<div class="matryoshka__nestable__container__add-part-container__inner__part">
+
+					<h2>Add new {{ name }}</h2>
+
+					{{#each nestables }}
+
+						<button
+						data-parent-id="{{ matryoshkaId }}"
+						class="matryoshka__nestable__container__button add-part">
+							<i class="fa fa-file-o"></i> {{ nestableNameReadable }}
+						</button>
+
+					{{/each}}
+
+				</div>
+
+				<div class="matryoshka__nestable__container__add-part-container__inner__part">
+
+					<h2>Add predefined {{ name }}</h2>
+
+					{{#each nestables }}
+
+						{{#each savedNestableParts }}
+
+							<button
+							data-parent-id="{{ matryoshkaId }}"
+							class="matryoshka__nestable__container__button add-predefined-part">
+								<i class="fa fa-chain"></i> {{ matryoshkaName }}
+							</button>
+
+						{{/each}}
+
+					{{/each}}
+
+				</div>
+
+			{{/each}}
+
+		</div>
+
+		<div class="matryoshka__nestable__container__add-part-container__extra-fader"></div>
+
+	</div>
+
+</template>
