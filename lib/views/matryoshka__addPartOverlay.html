@@ -12,9 +12,7 @@
 
 					{{#each nestables }}
 
-						<button
-						data-parent-id="{{ matryoshkaId }}"
-						class="matryoshka__nestable__container__button add-part">
+						<button class="matryoshka__nestable__container__button add-part">
 							<i class="fa fa-file-o"></i> {{ nestableNameReadable }}
 						</button>
 
@@ -30,9 +28,7 @@
 
 						{{#each savedNestableParts }}
 
-							<button
-							data-parent-id="{{ matryoshkaId }}"
-							class="matryoshka__nestable__container__button add-predefined-part">
+							<button class="matryoshka__nestable__container__button add-predefined-part">
 								<i class="fa fa-chain"></i> {{ matryoshkaName }}
 							</button>
 
