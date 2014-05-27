@@ -79,16 +79,41 @@ $form-margin: 0 0 1em;
 
 	.matryoshka__form__label {
 
-		padding: 0 0 0.5em 0.5em;
+		padding: 0 .5em .5em;
 		display: block;
 		color: #777;
 		font-size: 0.9em;
 		line-height: 1.3em;
+		cursor: pointer;
 
 		&__description {
-			display: block;
-			color: #000;
+			display: none;
+			color: #222;
 			font-weight: normal;
+			background: $color-green-light;
+			padding: 0.3em 0.6em 0.4em;
+			margin-top: 0.3em;
+
+			@include border-radius( $border-radius-def );
+		}
+
+		&__description-toggle {
+			margin-left: .5em;
+			display: none;
+			color: $color-green;
+		}
+
+		&:hover {
+			color: #333;
+			.matryoshka__form__label__description-toggle {
+				display: inline;
+			}
+		}
+
+		&:active {
+			.matryoshka__form__label__description {
+				display: block;
+			}
 		}
 	}
 
