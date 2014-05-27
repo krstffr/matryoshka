@@ -31,9 +31,9 @@
     text-align: center;
     width: 100%;
     font-size: 1em;
-    padding: 1.3em 1em 4.7em;
-    border-top: 2px solid $color-green;
-    background: #fff;
+    padding: 1.15em 1em 1.2em 15em;
+    // border-top: 2px solid $color-green;
+    // background: #fff;
 
     input {
       font-size: 1.5em;
@@ -52,11 +52,12 @@
 
     &__close-button {
       position: absolute;
-      top: 2.1em;
-      right: 1.8em;
+      top: 2.05em;
+      right: 1.85em;
       cursor: pointer;
       color: $color-red;
       background: #fff;
+      font-size: 0.8em;
       &:hover {
         background: $color-red;
         color: #fff;

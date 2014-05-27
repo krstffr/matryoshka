@@ -6,6 +6,7 @@
 		@extend %matryoshkaFixedBottomMenu ;
 		left: auto;
 		right: 1em;
+		z-index: 50;
 	}
 
 	.matryoshka__nestablePartButtons__button {

@@ -16,12 +16,12 @@
 		position: fixed;
 		left: 0.5em;
 		bottom: 0.6em;
-		padding: 1.5em 1.5em 4.5em;
+		padding: 1.5em 1.5em 4em;
 		background: #FFF;
 		z-index: 100;
 
 		@include border-radius(0.4em);
-		@include box-shadow(0 1px 3px rgba(black, 0.2), 0 5px 10px rgba(black,0.1));
+		@include box-shadow(0 1px 4px rgba(black, 0.3), 0 5px 10px rgba(black,0.2));
 
 		&--visible {
 			display: block;
@@ -29,12 +29,44 @@
 	}
 
 	.matryoshka__mainMenu__menu-container__col {
+
 		float: left;
 		margin: 0 1.5em 0 0;
 
 		&__ul {
-			max-height: 500px;
+
+			max-height: 400px;
+			max-width: 300px;
 			overflow: auto;
+			border: 1px solid #DDD;
+			margin: 0 0 1em;
+			border-left: none;
+			border-right: none;
+			background: #FAFAFA;
+
+			li {
+
+				padding: 0;
+
+				a {
+
+					padding: .3em .5em .4em;
+					display: block;
+					line-height: 1.3em;
+					text-decoration: none;
+
+					&:hover {
+						background: #e9e9e9;
+					}
+
+					&.matryoshka__mainMenu__menu-container__col__link--active {
+						background: #ddd;
+					}
+
+				}
+
+			}
+
 		}
 	}
 
