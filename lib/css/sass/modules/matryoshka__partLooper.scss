@@ -83,7 +83,7 @@
 			$remaingMargin: (100% - $widthAndHeight) / 2;
 
 			position: fixed;
-			z-index: 80;
+			z-index: 10;
 			width: $widthAndHeight !important;
 			height: ($widthAndHeight - ($remaingMargin*3)) !important;
 			margin: $remaingMargin;
