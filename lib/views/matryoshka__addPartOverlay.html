@@ -8,12 +8,14 @@
 
 				<div class="matryoshka__nestable__container__add-part-container__inner__part">
 
-					<h2>Add new {{ name }}</h2>
+					<h2>
+						Add a new <strong>{{ name }}</strong>
+					</h2>
 
 					{{#each nestables }}
 
 						<button class="matryoshka__nestable__container__button add-part">
-							<i class="fa fa-file-o"></i> {{ nestableNameReadable }}
+							<i class="fa fa-file-o"></i> Add: <strong>{{ nestableNameReadable }}</strong>
 						</button>
 
 					{{/each}}
@@ -22,14 +24,16 @@
 
 				<div class="matryoshka__nestable__container__add-part-container__inner__part">
 
-					<h2>Add predefined {{ name }}</h2>
+					<h2>
+						Add a predefined <strong>{{ name }}</strong>
+					</h2>
 
 					{{#each nestables }}
 
 						{{#each savedNestableParts }}
 
 							<button class="matryoshka__nestable__container__button add-predefined-part">
-								<i class="fa fa-chain"></i> {{ matryoshkaName }}
+								<i class="fa fa-chain"></i> Add: <strong>{{ matryoshkaName }}</strong>
 							</button>
 
 						{{/each}}

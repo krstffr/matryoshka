@@ -33,17 +33,21 @@
 				</ul>
 
 				<!-- <button class="matroyska-nestable-new">Create new {{ this.name }}</button> -->
-				<button class="matryoshka__nestable__container__button matroyska-nestable-new-show-list">Create new {{ this.name }}</button>
+				<button class="matryoshka__nestable__container__button matroyska-nestable-new-show-list">
+					Create new: <strong>{{ this.name }}</strong>
+				</button>
 
 				<div class="matryoshka__nestable__container__add-part-container">
 
 					<div class="matryoshka__nestable__container__add-part-container__inner">
 
-						<h2>Create new {{ name }}</h2>
+						<h2>Create new: <strong>{{ name }}</strong></h2>
 
 						{{#each nestables }}
 
-							<button data-nestable-part-index="{{ nestablePartIndex }}" class="matryoshka__nestable__container__button matroyska-nestable-new">Create new {{ nestableNameReadable }}</button>
+							<button data-nestable-part-index="{{ nestablePartIndex }}" class="matryoshka__nestable__container__button matroyska-nestable-new">
+								New: <strong>{{ nestableNameReadable }}</strong>
+							</button>
 
 						{{/each}}
 
