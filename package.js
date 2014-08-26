@@ -5,9 +5,7 @@ Package.describe({
 Package.on_use(function (api) {
 
   api.use('underscore', ['client', 'server']);
-  api.use('templating', 'client');
-  api.use('handlebars', 'client');
-  api.use('jquery', 'client');
+  api.use(['templating', 'handlebars', 'jquery', 'font-awesome'], 'client');
 
   api.add_files('lib/collections/matryoshka__nestables.js', ['server', 'client']);
 
