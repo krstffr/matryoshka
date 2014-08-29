@@ -3,24 +3,43 @@
 .matryoshka__body {
 
 	.matryoshka__nestablePartButtons {
+
 		@extend %matryoshkaFixedBottomMenu ;
 		left: auto;
 		right: 1em;
 		z-index: 50;
-	}
 
-	.matryoshka__nestablePartButtons__button {
-		@extend %matryoshkaFixedBottomMenuBtns;
+		&__button {
 
-		&:hover {
-			color: #666;
+			@extend %matryoshkaFixedBottomMenuBtns;
+
+			position: relative;
+
+			&:hover {
+				color: #666;
+			}
+
+			&:active {
+				color: #333;
+				background: #eee;
+
+				@include transform( translateY( 1px ) );
+			}
+
+			&__description {
+				display: block;
+				font-size: 0.3em;
+				text-transform: uppercase;
+				// margin: 0.7em 0 0;
+				// color: $color-green;
+				position: absolute;
+				top: 6.9em;
+				left: 0;
+				width: 100%;
+			}
+
 		}
-		&:active {
-			color: #333;
-			background: #eee;
 
-			@include transform( translateY( 1px ) );
-		}
 	}
 
 }

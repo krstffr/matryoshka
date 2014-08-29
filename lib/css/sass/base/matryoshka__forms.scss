@@ -120,6 +120,7 @@ $form-margin: 0 0 1em;
 	button,
 	input[type="submit"] {
 		@include box-shadow( none );
+		border: none;
 	}
 
 	.matryoshka__form__clearfix {

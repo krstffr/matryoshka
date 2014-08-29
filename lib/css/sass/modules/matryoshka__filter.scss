@@ -31,9 +31,7 @@
     text-align: center;
     width: 100%;
     font-size: 1em;
-    padding: 1.15em 1em 1.2em 15em;
-    // border-top: 2px solid $color-green;
-    // background: #fff;
+    padding: 1.15em 1em 5.3em;
 
     input {
       font-size: 1.5em;
@@ -58,6 +56,8 @@
       color: $color-red;
       background: #fff;
       font-size: 0.8em;
+      padding: 0.9em 1em 0.8em;
+      @include border-radius( 3px );
       &:hover {
         background: $color-red;
         color: #fff;
