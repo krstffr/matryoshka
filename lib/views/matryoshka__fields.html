@@ -16,23 +16,23 @@
 	</label>
 
 	{{#if this.imagePreview }}
-		<img class="matryoshka__form__image-preview" src="{{ getFieldValue ../.. }}" alt="Linked image preview" />
+		<img class="matryoshka__form__image-preview" src="{{ matryoshka__getFieldValue ../.. }}" alt="Linked image preview" />
 	{{/if}}
 
 	{{#if ifValueEquals this.type "text" }}
-		<input id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ getFieldValue ../..}}" />
+		<input id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ matryoshka__getFieldValue ../..}}" />
 	{{/if}}
 
 	{{#if ifValueEquals this.type "linkedNestable" }}
-		<p><strong><a href="/matryoshka/edit/{{ getFieldValue ../..}}">{{ getLinkedNestableName ../..}}</a></strong></p>
+		<p><strong><a href="/matryoshka/edit/{{ matryoshka__getFieldValue ../..}}">{{ getLinkedNestableName ../..}}</a></strong></p>
 	{{/if}}
 
 	{{#if ifValueEquals this.type "locked" }}
-		<input type="text" value="{{ getFieldValue ../..}}" disabled="disabled" />
+		<input type="text" value="{{ matryoshka__getFieldValue ../..}}" disabled="disabled" />
 	{{/if}}
 
 	{{#if ifValueEquals this.type "textarea" }}
-		<textarea id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur">{{ getFieldValue ../..}}</textarea>
+		<textarea id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur">{{ matryoshka__getFieldValue ../..}}</textarea>
 	{{/if}}
 
 	{{#if ifValueEquals this.type "select" }}
@@ -56,6 +56,12 @@
 		</select>
 
 		{{ setActiveSelectValue ../../matryoshkaId ../.. name }}
+
+	{{/if}}
+
+	{{#if typeIsUserDefined }}
+
+		{{> getUserDefinedTypeField }}
 
 	{{/if}}
 

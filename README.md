@@ -178,6 +178,35 @@ You'll have to create a app/whatever which then uses the data you create and sto
 
 Setting `Matryoshka.requireLogin(true);` will require you to login when using Matryoshka. (This also requires the accounts-base and accounts-password packages.) This is currently super insecure, and currently all methods can be called by all clients no matter if user is logged in or not. (This will be fixed soon!) Also, user creation is up to you to validate and secure, there are no rules set in Matryoshka for these things.
 
+### Defining your own input types
+
+So maybe you want something fancier than a textarea or select input. Something like support for [Pen](https://github.com/krstffr/matryoshka-pen), which is Medium-like editing? Or something entirely else? 
+
+Then just create a new package which adds your own field type like this:
+
+```javascript
+
+Matryoshka.userDefinedFields.add({
+    // This is what the user will set the field type to instead of
+    // text/textarea/select etc.
+    name: 'theNameOfYourField',
+    // This is the name of the template which should be displayed
+    // with your own input field.
+    templateFileName: 'matryoshka__customField__pen',
+    // This is optional.
+    // You can define a method which will run before the actual save
+    // of the document happens when the user saves the document.
+    saveMethod: function () {
+        // Do something to the Session.get('matryoshkaCurrentNestable')
+        // and then return it
+        return Session.get('matryoshkaCurrentNestable');
+    }
+});
+
+```
+
+Look in the [Pen](https://github.com/krstffr/matryoshka-pen) package for more detailed info.
+
 ### The UI
 
 **The UI will need an explanation, let's write it!**
