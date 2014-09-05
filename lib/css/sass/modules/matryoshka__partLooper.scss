@@ -206,9 +206,11 @@
 		color: #333;
 
 		@include border-radius(0.4em);
+		@include background( linear-gradient(to bottom, $color-green 0%, $color-green-dark 100%) );
 
 		&:hover {
 			color: #000;
+			background: $color-green;
 		}
 
 		&--transparent {
