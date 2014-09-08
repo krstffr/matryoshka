@@ -3,10 +3,6 @@
   "description": "A GUI for nesting and linking objects inside other objects.",
   "homepage": "https://github.com/krstffr/matryoshka",
   "author": "Kristoffer Klintberg <krstffr@gmail.com>",
-  "version": "0.6.15",
-  "git": "https://github.com/krstffr/matryoshka.git",
-  "packages": {
-    "iron-router": {},
-    "font-awesome": {}
-  }
+  "version": "1.0.1",
+  "git": "https://github.com/krstffr/matryoshka.git"
 }

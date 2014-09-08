@@ -2,10 +2,19 @@ Package.describe({
   "summary": "A GUI for nesting and linking objects inside other objects."
 });
 
-Package.on_use(function (api) {
+Package.onUse(function (api) {
 
+  // Server/Client stuff
   api.use('underscore', ['client', 'server']);
-  api.use(['templating', 'handlebars', 'jquery', 'font-awesome'], 'client');
+
+  // Client stuff
+  api.use([
+    'templating',
+    'handlebars',
+    'jquery',
+    'iron:router',
+    'pfafman:font-awesome-4'
+    ], 'client');
 
   api.add_files('lib/collections/matryoshka__nestables.js', ['server', 'client']);
 
@@ -55,16 +64,10 @@ Package.on_use(function (api) {
 
   api.add_files('lib/matryoshka__matryoshkaHandler.js', ['client', 'server']);
 
-  if (typeof api.export !== 'undefined') {
+  // The main object.
+  api.export('Matryoshka', ['server', 'client']);
 
-    api.use(['font-awesome', 'iron-router'], 'client');
-
-    // The main object.
-    api.export('Matryoshka', ['server', 'client']);
-
-    // The Collection where we store stuff.
-    api.export('MatryoshkaNestables', ['client', 'server']);
-
-  }
+  // The Collection where we store stuff.
+  api.export('MatryoshkaNestables', ['client', 'server']);
 
 });
