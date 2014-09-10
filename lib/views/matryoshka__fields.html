@@ -44,8 +44,8 @@
 			{{#each selectableData }}
 
 				<option
+					{{ selectValueIsSelected .. ../.. }}
 					value="{{ name }}"
-					selected="{{ ifSelectValueEquals ../../../matryoshkaId ../name name }}"
 					data-collection-id="{{ _id }}"
 					>
 					{{{ extraDesc }}}{{ name }}
@@ -54,8 +54,6 @@
 			{{/each}}
 
 		</select>
-
-		{{ setActiveSelectValue ../../matryoshkaId ../.. name }}
 
 	{{/if}}
 
