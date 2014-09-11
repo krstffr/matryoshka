@@ -89,6 +89,8 @@ Matryoshka.nestables.add({
     previewable: true,
     // The nested nestables of this nestable will be hidden intially. To save UI space.
     hideChildren: true,
+    // ALSO: This nestable will be hidden as well whenever it is added to a containing nestable.
+    hideByDefault: true,
     fields: [
         { name: 'dollName', type: 'text' },
         { name: 'dollSize', type: 'select', selectableData: [
