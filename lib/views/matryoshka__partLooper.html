@@ -20,15 +20,7 @@
 
 			{{#each fieldsTypeSpecific }}
 
-				{{#if fieldsTypeSpecific__hasFieldsBool .. }}
-
-					{{#each fieldsTypeSpecific__getFields ../.. }}
-
-						{{> matryoshka__fields}}
-
-					{{/each}}
-
-				{{/if}}
+				{{> matryoshka__fields}}
 
 			{{/each}}
 
