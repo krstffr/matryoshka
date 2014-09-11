@@ -20,7 +20,7 @@
 	{{/if}}
 
 	{{#if ifValueEquals this.type "text" }}
-		<input id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur" type="text" value="{{ matryoshka__getFieldValue ../..}}" />
+		<input id="{{ ../../matryoshkaId }}-{{this.name}}" class="matryoshka-save-on-blur" type="text" value="{{ matryoshka__getFieldValue ../..}}" />
 	{{/if}}
 
 	{{#if ifValueEquals this.type "linkedNestable" }}
@@ -32,12 +32,12 @@
 	{{/if}}
 
 	{{#if ifValueEquals this.type "textarea" }}
-		<textarea id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-blur">{{ matryoshka__getFieldValue ../..}}</textarea>
+		<textarea id="{{ ../../matryoshkaId }}-{{this.name}}" class="matryoshka-save-on-blur">{{ matryoshka__getFieldValue ../..}}</textarea>
 	{{/if}}
 
 	{{#if ifValueEquals this.type "select" }}
 
-		<select id="{{ ../../matryoshkaId }}-{{this.name}}" data-parent-id="{{ ../../matryoshkaId }}" class="matryoshka-save-on-select">
+		<select id="{{ ../../matryoshkaId }}-{{this.name}}" class="matryoshka-save-on-select">
 
 			<option value="not-selected">-</option>
 

@@ -1,6 +1,6 @@
 <template name="matryoshka__nestableSubPartButtons">
 
-	<div class="matryoshka__nestableSubPartButtons" data-parent-id="{{ ../../../matryoshkaId }}" data-current-id="{{ ../matryoshkaId }}">
+	<div class="matryoshka__nestableSubPartButtons">
 
 		{{#if nestableCreateable }}
 
@@ -10,11 +10,11 @@
 
 		{{/if }}
 
-		<button data-parent-id="{{ ../matryoshkaId }}" class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute focus-on-part">
+		<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute focus-on-part">
 			<i class="fa fa-arrows"></i>
 		</button>
 
-		<button data-parent-id="{{ ../../../matryoshkaId }}" class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute duplicate-part">
+		<button class="matryoshka__nestable__container__button matryoshka__nestable__container__button--absolute duplicate-part">
 			<i class="fa fa-copy"></i>
 		</button>
 
