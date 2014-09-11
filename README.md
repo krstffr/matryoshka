@@ -87,6 +87,8 @@ Matryoshka.nestables.add({
     homeLocation: 'Siberia!',
     // This nestable will be previewable
     previewable: true,
+    // The nested nestables of this nestable will be hidden intially. To save UI space.
+    hideChildren: true,
     fields: [
         { name: 'dollName', type: 'text' },
         { name: 'dollSize', type: 'select', selectableData: [
