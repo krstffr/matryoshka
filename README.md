@@ -198,10 +198,9 @@ Matryoshka.userDefinedFields.add({
     // This is optional.
     // You can define a method which will run before the actual save
     // of the document happens when the user saves the document.
-    saveMethod: function () {
-        // Do something to the Session.get('matryoshkaCurrentNestable')
-        // and then return it
-        return Session.get('matryoshkaCurrentNestable');
+    saveMethod: function ( doc ) {
+        // Modify the doc however you'd like and then return it
+        return doc;
     }
 });
 
