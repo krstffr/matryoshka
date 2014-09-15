@@ -12,7 +12,7 @@
 						Add a new <strong>{{ name }}</strong>
 					</h2>
 
-					{{#each nestables }}
+					{{#each filteredNestables nestables }}
 
 						<button class="matryoshka__nestable__container__button add-part">
 							<i class="fa fa-file-o"></i> Add: <strong>{{ nestableNameReadable }}</strong>
