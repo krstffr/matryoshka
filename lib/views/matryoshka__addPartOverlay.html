@@ -28,15 +28,11 @@
 						Add a predefined <strong>{{ name }}</strong>
 					</h2>
 
-					{{#each nestables }}
+					{{#each savedNestableParts nestables }}
 
-						{{#each savedNestableParts }}
-
-							<button class="matryoshka__nestable__container__button add-predefined-part">
-								<i class="fa fa-chain"></i> Add: <strong>{{ matryoshkaName }}</strong>
-							</button>
-
-						{{/each}}
+						<button class="matryoshka__nestable__container__button add-predefined-part">
+							<i class="fa fa-chain"></i> Add: <strong>{{ matryoshkaName }}</strong>
+						</button>
 
 					{{/each}}
 
