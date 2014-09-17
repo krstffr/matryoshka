@@ -197,6 +197,11 @@ Matryoshka.userDefinedFields.add({
     // This is the name of the template which should be displayed
     // with your own input field.
     templateFileName: 'matryoshka__customField__pen',
+    // The initMethod is run when the user goes to a nestable page.
+    // So be careful with what you put here, side effecs etc.
+    initMethod: function () {
+        Session.setDefault('some-value-which-is-needed', true );
+    },
     // This is optional.
     // You can define a method which will run before the actual save
     // of the document happens when the user saves the document.
