@@ -219,7 +219,31 @@ Look in the [Pen](https://github.com/krstffr/matryoshka-pen) package for more de
 
 **The UI will need an explanation, let's write it!**
 
+### The onAfterAction
+
+So, maybe you want to transform the value of your input somehow after the user has provided it? (After blur() that is.) Just add a onAfterAction method to the field you want to transform like this:
+
+```javascript
+
+fields: [
+  {
+    name: 'stringWithoutDashedInsteadOfSpaces',
+    type: 'text',
+    onAfterAction: function ( value ) {
+      return value.replace(/ |\./g, '-');
+    }
+  }
+]
+
+```
+
+In this case, the string 'Hej det här är svenska!' will turn into 'Hej-det-här-är-svenska!'.
+
+Good for preparing URL's etc!
+
 ### The beforeAction on the locked field type
+
+**This might get deleted!!**
 
 Sometimes you may want to use one field to generate another field. Maybe you've got a blog post field and you want to automatically generate a url slug from this headline.
 This is how you'd do that:
@@ -245,4 +269,8 @@ Matryoshka.nestables.add({
 });
 
 ```
+
 Oh, this could probably be improved quite a bit. It's actually quite limited right now.
+
+**This might get deleted!!**
+
