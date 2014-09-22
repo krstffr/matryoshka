@@ -1,5 +1,7 @@
 <template name="matryoshka__login">
 
+	{{> matryoshka__messages }}
+
 	<div class="matryoshka__nestable__container matryoshka__nestable__container--login">
 
 		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--left">
@@ -38,15 +40,6 @@
 
 				<button class="matryoshka__nestable__container__button matryoshka__button--login">Login!</button>
 				<button class="matryoshka__nestable__container__button matryoshka__button--create-user">Create user.</button>
-
-				<!-- This should probably be turned into a module. -->
-				{{#with loginErrors}}
-
-					<div class="matryoshka__message matryoshka__message--error">
-						<p>{{ this }}</p>
-					</div>
-
-				{{/with}}
 
 			</form>
 
