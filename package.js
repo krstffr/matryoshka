@@ -18,8 +18,8 @@ Package.onUse(function (api) {
     'templating',
     'handlebars',
     'jquery',
-    'iron:router',
-    'pfafman:font-awesome-4'
+    'iron:router@0.9.3',
+    'pfafman:font-awesome-4@4.2.0'
     ], 'client');
 
   api.add_files('lib/collections/matryoshka__nestables.js', ['server', 'client']);
