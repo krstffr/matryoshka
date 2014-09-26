@@ -1,12 +1,13 @@
 Package.describe({
   summary: "A GUI for nesting and linking objects inside other objects.",
   name: "krstffr:matryoshka",
-  version: "1.0.1",
+  version: "1.0.2",
   git: "https://github.com/krstffr/matryoshka.git"
 });
 
 Package.onUse(function (api) {
 
+  // Set versions from.
   api.versionsFrom("METEOR@0.9.0");
 
   // Server/Client stuff
