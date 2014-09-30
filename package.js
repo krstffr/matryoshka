@@ -1,7 +1,7 @@
 Package.describe({
   summary: "A GUI for nesting and linking objects inside other objects.",
   name: "krstffr:matryoshka",
-  version: "1.0.2",
+  version: "1.0.3",
   git: "https://github.com/krstffr/matryoshka.git"
 });
 
