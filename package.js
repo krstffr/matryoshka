@@ -18,7 +18,8 @@ Package.onUse(function (api) {
     'templating',
     'handlebars',
     'jquery',
-    'iron:router@0.9.3',
+    'krstffr:msgs@0.0.2',
+    'iron:router@0.9.0',
     'pfafman:font-awesome-4@4.2.0'
     ], 'client');
 
@@ -65,9 +66,6 @@ Package.onUse(function (api) {
 
   api.add_files('lib/views/matryoshka__addPartOverlay.html', 'client');
   api.add_files('lib/views/matryoshka__addPartOverlay.js', 'client');
-
-  api.add_files('lib/views/matryoshka__messages.html', 'client');
-  api.add_files('lib/views/matryoshka__messages.js', 'client');
 
   api.add_files('lib/matryoshka__router.js', 'client');
 
