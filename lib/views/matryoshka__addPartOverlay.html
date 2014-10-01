@@ -4,41 +4,67 @@
 
 		<div class="matryoshka__nestable__container__add-part-container__inner">
 
-			{{#each nestableTypes }}
+			{{#if ifValueEquals action "updatePart" }}
 
-				<div class="matryoshka__nestable__container__add-part-container__inner__part">
+				{{#each nestableTypes }}
 
-					<h2>
-						Add a new <strong>{{ name }}</strong>
-					</h2>
+					<div class="matryoshka__nestable__container__add-part-container__inner__part">
 
-					{{#each filteredNestables nestables }}
+						<h2>
+							Update predefined <strong>{{ name }}</strong>
+						</h2>
 
-						<button class="matryoshka__nestable__container__button add-part">
-							<i class="fa fa-file-o"></i> Add: <strong>{{ nestableNameReadable }}</strong>
-						</button>
+						{{#each savedNestableParts nestables }}
 
-					{{/each}}
+							<button class="matryoshka__nestable__container__button update-predefined-part">
+								<i class="fa fa-chain"></i> Change to: <strong>{{ matryoshkaName }}</strong>
+							</button>
 
-				</div>
+						{{/each}}
 
-				<div class="matryoshka__nestable__container__add-part-container__inner__part">
+					</div>
 
-					<h2>
-						Add a predefined <strong>{{ name }}</strong>
-					</h2>
+				{{/each }}
 
-					{{#each savedNestableParts nestables }}
+			{{ else }}
 
-						<button class="matryoshka__nestable__container__button add-predefined-part">
-							<i class="fa fa-chain"></i> Add: <strong>{{ matryoshkaName }}</strong>
-						</button>
+				{{#each nestableTypes }}
 
-					{{/each}}
+					<div class="matryoshka__nestable__container__add-part-container__inner__part">
 
-				</div>
+						<h2>
+							Add a new <strong>{{ name }}</strong>
+						</h2>
 
-			{{/each}}
+						{{#each filteredNestables nestables }}
+
+							<button class="matryoshka__nestable__container__button add-part">
+								<i class="fa fa-file-o"></i> Add: <strong>{{ nestableNameReadable }}</strong>
+							</button>
+
+						{{/each}}
+
+					</div>
+
+					<div class="matryoshka__nestable__container__add-part-container__inner__part">
+
+						<h2>
+							Add a predefined <strong>{{ name }}</strong>
+						</h2>
+
+						{{#each savedNestableParts nestables }}
+
+							<button class="matryoshka__nestable__container__button add-predefined-part">
+								<i class="fa fa-chain"></i> Add: <strong>{{ matryoshkaName }}</strong>
+							</button>
+
+						{{/each}}
+
+					</div>
+
+				{{/each}}
+
+			{{/if}}
 
 		</div>
 

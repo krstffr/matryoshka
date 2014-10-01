@@ -24,7 +24,13 @@
 	{{/if}}
 
 	{{#if ifValueEquals this.type "linkedNestable" }}
-		<p><strong><a href="/matryoshka/edit/{{ matryoshka__getFieldValue ../..}}">{{ getLinkedNestableName ../..}}</a></strong></p>
+		<input type="text" value="{{ getLinkedNestableName ../..}}" disabled="disabled" />
+		<button class="matryoshka__nestable__container__button go-to-linked-nestable-link">
+			Go to linked nestable
+		</button>
+		<button class="matryoshka__nestable__container__button change-linked-nestable">
+			Change linked nestable
+		</button>
 	{{/if}}
 
 	{{#if ifValueEquals this.type "locked" }}
