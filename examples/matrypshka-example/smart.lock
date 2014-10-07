@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "krstffr:matryoshka": {
+        "path": "../.."
+      }
+    },
+    "packages": {
+      "krstffr:matryoshka": {
+        "path": "../.."
+      }
+    }
+  }
+}

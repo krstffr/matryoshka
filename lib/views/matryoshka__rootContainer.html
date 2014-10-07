@@ -1,8 +1,8 @@
 <template name="matryoshka__rootContainer">
 
-	{{> msgs }}
+	{{> msgs category='matryoshka' }}
 
-	{{#if currentUser }}
+	{{#if userIsPermitted }}
 
 		{{> matryoshka__mainMenu }}
 

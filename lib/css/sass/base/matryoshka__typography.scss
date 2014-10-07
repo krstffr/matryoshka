@@ -13,7 +13,8 @@
   margin: 0;
 
 	p {
-		padding: 0 0 0.5em;
+		margin: 0;
+		padding: 0 0 1em;
 	}
 
 	a {
@@ -32,7 +33,7 @@
 		border: none;
 		font-family: inherit;
     line-height: 1.2em;
-    padding: 0;
+    padding: 0 0 0.6em;
     margin: 0;
 	}
 
@@ -68,6 +69,15 @@
 	li {
 		padding: 0 0 0.2em;
     margin: 0;
+	}
+
+	pre {
+		font-size: 0.8em;
+		background: #eee;
+		border: 1px solid #ddd;
+		padding: 0.65em 0.8em 0.7em;
+		margin: 0 0 1em;
+		@include border-radius( 3px );
 	}
 
 }
