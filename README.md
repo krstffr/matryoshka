@@ -221,7 +221,7 @@ Look in the [Pen](https://github.com/krstffr/matryoshka-pen) package for more de
 
 ### The onAfterAction
 
-So, maybe you want to transform the value of your input somehow after the user has provided it? (After blur() that is.) Just add a onAfterAction method to the field you want to transform like this:
+So, maybe you want to transform the value of your input somehow after the user has provided it? Just add a onAfterAction method to the field you want to transform like below. (Optional: You also get the current context passed with the currently set values as the second argument to the callback.)
 
 ```javascript
 
@@ -229,9 +229,16 @@ fields: [
   {
     name: 'stringWithoutDashedInsteadOfSpaces',
     type: 'text',
-    onAfterAction: function ( value ) {
+    onAfterAction: function ( value, context ) {
+      // Also adds the "someOtherValue" value (defined below!) to the end of the string
+      value = value + context.someOtherValue;
+      // Replaces all spaces with dashes.
       return value.replace(/ |\./g, '-');
     }
+  },
+  {
+    name: 'someOtherValue',
+    type: 'text',
   }
 ]
 
