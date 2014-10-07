@@ -10,6 +10,7 @@ $form-margin: 0 0 1em;
 	}
 
 	input[type="text"],
+	input[type="date"],
 	input[type="password"],
 	textarea,
 	select {
@@ -30,6 +31,7 @@ $form-margin: 0 0 1em;
 	select,
 	button,
 	input[type="text"],
+	input[type="date"],
 	input[type="password"],
 	input[type="submit"],
 	textarea {
@@ -37,6 +39,7 @@ $form-margin: 0 0 1em;
 	}
 
 	input[type="text"],
+	input[type="date"],
 	input[type="password"],
 	textarea {
 
@@ -76,6 +79,7 @@ $form-margin: 0 0 1em;
 		margin-bottom: 0.7em;
 
 		& + input[type="text"],
+		& + input[type="date"],
 		& + input[type="password"],
 		& + textarea,
 		& + select {

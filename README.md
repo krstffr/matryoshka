@@ -100,6 +100,9 @@ Matryoshka.nestables.add({
                 { name: 'Super small' }
             ]
         },
+        // You can use the 'date' type for a input[type="date"]
+        // (where the browser supports it of course!)
+        { name: 'birthDate', type: 'date' },
         // You can ouput stuff you've defined yourself as a non-editable field using the "locked" type
         // In this case it will output "Siberia!" cause that's what we defined above
         { name: 'homeLocation', type: 'locked' },

@@ -22,7 +22,11 @@
 	{{#if ifValueEquals this.type "text" }}
 		<input id="{{ ../../matryoshkaId }}-{{this.name}}" class="matryoshka-save-on-blur" type="text" value="{{ matryoshka__getFieldValue ../..}}" />
 	{{/if}}
-
+	
+	{{#if ifValueEquals this.type "date" }}
+		<input id="{{ ../../matryoshkaId }}-{{this.name}}" class="matryoshka-save-on-blur" type="date" value="{{ matryoshka__getFieldValue ../..}}" />
+	{{/if}}
+	
 	{{#if ifValueEquals this.type "linkedNestable" }}
 		<input type="text" value="{{ getLinkedNestableName ../..}}" disabled="disabled" />
 		<button class="matryoshka__nestable__container__button go-to-linked-nestable-link">
