@@ -18,7 +18,7 @@ Package.onUse(function (api) {
     'templating',
     'handlebars',
     'jquery',
-    'krstffr:msgs@0.0.2',
+    'krstffr:msgs@0.0.3',
     'iron:router@0.9.0',
     'pfafman:font-awesome-4@4.2.0'
     ], 'client');

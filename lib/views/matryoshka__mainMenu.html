@@ -12,54 +12,86 @@
 
 	<div class="matryoshka__mainMenu__menu-container">
 
-		{{#each nestableCreatable }}
+		{{#if nestableCreatable }}
 
-			<div class="matryoshka__mainMenu__menu-container__col">
+			{{#each nestableCreatable }}
 
-				<h3>{{ name }}</h3>
+				<div class="matryoshka__mainMenu__menu-container__col">
 
-				<ul class="matryoshka__mainMenu__menu-container__col__ul">
+					<h3>{{ name }}</h3>
 
-					{{#each menuItems }}
+					<ul class="matryoshka__mainMenu__menu-container__col__ul">
 
-						<li>
-							<a href="/matryoshka/edit/{{ _id }}" class="{{ activeMenuLink }}">
-								{{ menuKey .. }}
-							</a>
-						</li>
+						{{#each menuItems }}
 
-					{{/each }}
+							<li>
+								<a href="/matryoshka/edit/{{ _id }}" class="{{ activeMenuLink }}">
+									{{ menuKey .. }}
+								</a>
+							</li>
 
-				</ul>
+						{{/each }}
 
-				<!-- <button class="matroyska-nestable-new">Create new {{ this.name }}</button> -->
-				<button class="matryoshka__nestable__container__button matroyska-nestable-new-show-list">
-					Create new: <strong>{{ this.name }}</strong>
-				</button>
+					</ul>
 
-				<div class="matryoshka__nestable__container__add-part-container">
+					<!-- <button class="matroyska-nestable-new">Create new {{ this.name }}</button> -->
+					<button class="matryoshka__nestable__container__button matroyska-nestable-new-show-list">
+						Create new: <strong>{{ this.name }}</strong>
+					</button>
 
-					<div class="matryoshka__nestable__container__add-part-container__inner">
+					<div class="matryoshka__nestable__container__add-part-container">
 
-						<h2>Create new: <strong>{{ name }}</strong></h2>
+						<div class="matryoshka__nestable__container__add-part-container__inner">
 
-						{{#each nestables }}
+							<h2>Create new: <strong>{{ name }}</strong></h2>
 
-							<button class="matryoshka__nestable__container__button matroyska-nestable-new">
-								New: <strong>{{ nestableNameReadable }}</strong>
-							</button>
+							{{#each nestables }}
 
-						{{/each}}
+								<button class="matryoshka__nestable__container__button matroyska-nestable-new">
+									New: <strong>{{ nestableNameReadable }}</strong>
+								</button>
+
+							{{/each}}
+
+						</div>
+
+						<div class="matryoshka__nestable__container__add-part-container__extra-fader"></div>
 
 					</div>
 
-					<div class="matryoshka__nestable__container__add-part-container__extra-fader"></div>
-
 				</div>
+
+			{{/each }}
+
+		{{else}}
+
+			<div class="matryoshka__mainMenu__menu-container__col">
+
+				<h3>You have not added any creatable nestables yet.</h3>
+
+				<p>
+					But don't worry, you can easily add a nestable type using:
+				</p>
+
+				<pre>Matryoshka.nestables.addType({
+  name: 'page',
+  createable: true
+});</pre>
+
+				<p>
+					And then add a nestable to the type using:
+				</p>
+
+				<pre>Matryoshka.nestables.add({
+  nestableName: 'oneCoolNestable',
+  nestableNameReadable: 'One cool nestable!',
+  type: 'page',
+  fields: []
+});</pre>
 
 			</div>
 
-		{{/each }}
+		{{/if}}
 
 	</div>
 
