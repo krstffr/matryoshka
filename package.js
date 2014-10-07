@@ -81,10 +81,10 @@ Package.onUse(function (api) {
 
 Package.on_test(function (api) {
   api.use('krstffr:matryoshka');
+  api.use('krstffr:msgs');
   api.use(['underscore', 'accounts-base'], ['client', 'server']);
   api.use('tinytest');
   api.use('test-helpers');
   api.add_files('lib/matryoshka__matryoshkaHandler.js', ['client', 'server']);
-  api.add_files('tests/matryoshkaHandler-client-tests.js', 'client');
-  api.add_files('tests/matryoshkaHandler-server-tests.js', 'server');
+  api.add_files('tests/matryoshkaHandler-tests.js', ['client', 'server']);
 });
