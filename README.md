@@ -71,11 +71,6 @@ There are lot's of more options as well. Keep reading!
 
 ```javascript
 
-// This will show a preview button for nestables with previewable: true
-// You will need to handle the logic for the route, which will be handled like this in this case:
-// /matryoshkaPreview/mongoId
-Matryoshka.previewRoute.set('/matryoshkaPreview/');
-
 // This will create another doll object with some more advanced options
 Matryoshka.nestables.add({
     nestableName: 'siberianDoll',
@@ -85,8 +80,10 @@ Matryoshka.nestables.add({
     nestableCreateable: false,
     // You can define you own key/values which will be stored inside the nestable
     homeLocation: 'Siberia!',
-    // This nestable will be previewable
-    previewable: true,
+    // This nestable will be previewable @ "/somePreviewRoute/nestable_id"
+    // You yourself has to provide the logic for actually previewing the nestable at that route.
+    // If you set a previewRoute then a Preview button will be displayed from the edit page.
+    previewRoute: '/somePreviewRoute/',
     // The nested nestables of this nestable will be hidden intially. To save UI space.
     hideChildren: true,
     // ALSO: This nestable will be hidden as well whenever it is added to a containing nestable.
