@@ -1,0 +1,11 @@
+@import "../base/matryoshka__vars";
+
+.matryoshka__body {
+
+  overflow: visible;
+  
+  &--overflow-hidden {
+    overflow: hidden;
+  }
+
+}
