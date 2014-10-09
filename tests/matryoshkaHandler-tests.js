@@ -35,27 +35,11 @@ if (Meteor.isClient) {
 		test.equal( Matryoshka.nestablePartModifiers.getCurrentIndexOfNestablePart(nestables, 'cde'), 2 );
 	});
 
-
-	Tinytest.add('Matryoshka Client - loginRequired should be settable', function (test) {
-		test.equal( Matryoshka.loginRequired, undefined );
-		Matryoshka.requireLogin( true );
-		test.equal( Matryoshka.loginRequired, true);
-		Matryoshka.requireLogin( false );
-		test.equal( Matryoshka.loginRequired, false);
-	});
-
 	Tinytest.add('Matryoshka Client - nestablePart.generateId() should generate unique ids', function (test) {
 		test.notEqual( Matryoshka.nestablePart.generateId(), Matryoshka.nestablePart.generateId() );
 		test.notEqual( Matryoshka.nestablePart.generateId(), Matryoshka.nestablePart.generateId() );
 		test.notEqual( Matryoshka.nestablePart.generateId(), Matryoshka.nestablePart.generateId() );
 		test.notEqual( Matryoshka.nestablePart.generateId(), Matryoshka.nestablePart.generateId() );
-	});
-
-	Tinytest.add('Matryoshka Client - userIsPermitted() should be return correct', function (test) {
-		Matryoshka.requireLogin( true );
-		test.equal( Matryoshka.userIsPermitted(), false);
-		Matryoshka.requireLogin( false );
-		test.equal( Matryoshka.userIsPermitted(), true);
 	});
 
 	Tinytest.add('Matryoshka Client - should be able to add non creatable nestable types', function (test) {
@@ -224,9 +208,89 @@ if (Meteor.isClient) {
 		test.equal( currentNestable.nestedNestables[0].someValueToLaterUpdate, newValue );
 	});
 
+	Tinytest.add('Matryoshka Client Users - users.loginRequired should be settable', function (test) {
+		test.equal( Matryoshka.users.loginRequired, undefined );
+		Matryoshka.users.requireLogin( true );
+		test.equal( Matryoshka.users.loginRequired, true);
+		Matryoshka.users.requireLogin( false );
+		test.equal( Matryoshka.users.loginRequired, false);
+	});
+
+	Tinytest.add('Matryoshka Client Users - users.allowAllUsers (bool) should be setable from users.loginRequired', function (test) {
+		Matryoshka.users.requireLogin( true, false );
+		test.equal( Matryoshka.users.allowAllUsers, true );
+		Matryoshka.users.requireLogin( true, true );
+		test.equal( Matryoshka.users.allowAllUsers, false );
+		Matryoshka.users.requireLogin( false );
+		test.equal( Matryoshka.users.allowAllUsers, true );
+	});
+
+	Tinytest.add('Matryoshka Client Users - users.userIsPermitted() should be return correct', function (test) {
+
+		// Let's mock the userId and user
+		Meteor.userId = function () {
+			return true;
+		};
+		Meteor.user = function () {
+			return {
+				matryoshkaLevel: 'unauth'
+			};
+		};
+
+		Matryoshka.users.requireLogin( true );
+		test.equal( Matryoshka.users.userIsPermitted(), false);
+		Matryoshka.users.requireLogin( false );
+		test.equal( Matryoshka.users.userIsPermitted(), true);
+		Matryoshka.users.requireLogin( true, false );
+		test.equal( Matryoshka.users.userIsPermitted(), false);
+
+		// Now let's pretend we're logged in and authorized
+		Meteor.user = function () {
+			return {
+				matryoshkaLevel: 'admin'
+			};
+		};
+
+		test.equal( Matryoshka.users.userIsPermitted(), true);
+
+	});
+
+	Tinytest.addAsync('Matryoshka Client Users - users.createUser', function (test, next) {
+		test.throws(function () {
+			Matryoshka.users.createUser('string');
+		});
+		Matryoshka.users.createUser({ username: 'test-user', password: 'test-password' });
+		// Give the test some time to pass
+		Meteor.setTimeout(function () {
+			console.log( Meteor.users.find().count() );
+			Meteor.subscribe('matryoshkaUsers', {
+				onReady: function () {
+					console.log( Meteor.users.find().count() );
+					next();
+				}
+			});
+		}, 250);
+	});
+
+	Tinytest.addAsync('Matryoshka Client Users - matryoshkaAdditionalUserFields subscription', function (test, next) {
+		Meteor.subscribe('matryoshkaAdditionalUserFields', {
+			onReady: function () {
+				next();
+			}
+		});
+	});
+
+	Tinytest.addAsync('Matryoshka Client Users - matryoshkaUsers subscription', function (test, next) {
+		Meteor.subscribe('matryoshkaUsers', {
+			onReady: function () {
+				next();
+			}
+		});
+	});
+
 	Tinytest.add('Matryoshka Client DOMhelpers - focus on part and reset it', function (test) {
 		
-		test.equal(Session.get('matryoshka__focused-nestable'), undefined );
+		test.equal( Session.get('matryoshka__focused-nestable'), undefined || false );
 		
 		test.throws(function () {
 			Matryoshka.DOMhelpers.focus.focusOnPagePart();
@@ -268,7 +332,7 @@ if (Meteor.isServer) {
 
 	Meteor.methods({
 		'matryoshkaTests/cleanUpDB': function () {
-			if (MatryoshkaNestables.remove({}))
+			if (typeof MatryoshkaNestables.remove({}) === 'number' && typeof Meteor.users.remove({}) === 'number')
 				return true;
 		}
 	});

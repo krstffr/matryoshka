@@ -7,4 +7,5 @@ meteor-platform
 krstffr:matryoshka
 accounts-base
 accounts-password
+iron:router
 

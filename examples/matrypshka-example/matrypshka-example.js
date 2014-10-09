@@ -1,4 +1,13 @@
-Matryoshka.requireLogin( true );
+Router.map(function () {
+
+	this.route('home', {
+		path: '/',
+		template: 'homeTemplate'
+	});
+
+});
+
+Matryoshka.users.requireLogin( true, true );
 
 if (Meteor.isClient) {
 

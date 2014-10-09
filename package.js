@@ -23,7 +23,7 @@ Package.onUse(function (api) {
     'pfafman:font-awesome-4@4.2.0'
     ], 'client');
 
-  api.add_files('lib/collections/matryoshka__nestables.js', ['server', 'client']);
+  api.add_files('lib/collections/matryoshka__publications.js', ['server', 'client']);
 
   api.add_files('lib/img/matryoshka-logo.png', 'client');
 
@@ -32,8 +32,6 @@ Package.onUse(function (api) {
   api.add_files('lib/matryoshka__globalHelpers.js', 'client');
 
   api.add_files('lib/css/stylesheets/matryoshka__main.css', 'client');
-
-  api.add_files('lib/views/matryoshka__UImenuButtons.js', 'client');
 
   api.add_files('lib/views/matryoshka__firstPageTemplate.html', 'client');
 
@@ -60,6 +58,9 @@ Package.onUse(function (api) {
 
   api.add_files('lib/views/matryoshka__partLooper.html', 'client');
   api.add_files('lib/views/matryoshka__partLooper.js', 'client');
+
+  api.add_files('lib/views/matryoshka__users.html', 'client');
+  api.add_files('lib/views/matryoshka__users.js', 'client');
 
   api.add_files('lib/views/matryoshka__fields.html', 'client');
   api.add_files('lib/views/matryoshka__fields.js', 'client');

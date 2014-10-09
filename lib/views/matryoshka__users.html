@@ -1,0 +1,33 @@
+<template name="matryoshka__users">
+
+	<div class="matryoshka__nestable__container">
+
+		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--left">
+
+			<h3>Users</h3>
+
+		</div>
+
+		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--right matryoshka__nestable__container__col--{{ this.matryoshkaId }}">
+
+			<h2>Authorized users</h2>
+			
+			{{#each authorizedUsers }}
+
+				<p>Username: <strong>{{ username }}</strong></p>
+
+			{{/each}}
+
+			<h2>Non authorized users</h2>
+
+			{{#each nonAuthorizedUsers }}
+
+				<p>Username: <strong>{{ username }}</strong></p>
+			
+			{{/each}}
+
+		</div>
+
+	</div>
+
+</template>
