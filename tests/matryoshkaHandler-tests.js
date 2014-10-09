@@ -224,7 +224,22 @@ if (Meteor.isClient) {
 		test.equal( currentNestable.nestedNestables[0].someValueToLaterUpdate, newValue );
 	});
 
-	Tinytest.addAsync('Matryoshka Client - remove a saved document from the server', function (test, next) {
+	Tinytest.add('Matryoshka Client DOMhelpers - focus on part and reset it', function (test) {
+		
+		test.equal(Session.get('matryoshka__focused-nestable'), undefined );
+		
+		test.throws(function () {
+			Matryoshka.DOMhelpers.focus.focusOnPagePart();
+		});
+
+		test.equal( Matryoshka.DOMhelpers.focus.focusOnPagePart('test'), 'test' );
+		test.equal( Matryoshka.DOMhelpers.focus.focusOnPagePart('test'), false );
+		test.equal( Matryoshka.DOMhelpers.focus.focusOnPagePart(123), 123 );
+		test.equal( Matryoshka.DOMhelpers.focus.reset(), false );
+		
+	});
+
+	Tinytest.addAsync('Matryoshka Client Async - remove a saved document from the server', function (test, next) {
 		// There should be a current nestable
 		var currentNestable = Matryoshka.currentNestable.get();
 		var idOfDoc = currentNestable._id;
@@ -240,7 +255,7 @@ if (Meteor.isClient) {
 		}, 75);
 	});
 
-	Tinytest.addAsync('Matryoshka Client - clean up DB', function (test, next) {
+	Tinytest.addAsync('Matryoshka Client Async - clean up DB', function (test, next) {
 		Meteor.call('matryoshkaTests/cleanUpDB', 1, function (error, result) {
 			test.equal(result, true);
 			next();
