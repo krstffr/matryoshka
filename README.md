@@ -1,4 +1,4 @@
-Matryoshka
+Matryoshka [![Build Status](https://travis-ci.org/krstffr/matryoshka.svg?branch=users)](https://travis-ci.org/krstffr/matryoshka)
 ==========
 
 **This package (and this README file) is not done yet, and might contain stuff which is not true or do not work.**
