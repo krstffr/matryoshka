@@ -16,11 +16,11 @@ if (Meteor.isClient) {
 		});
 	});
 
-	Tinytest.add('Matryoshka Client - Matryoshka should be set', function (test) {
+	Tinytest.add('Matryoshka Client Startup - Matryoshka should be set', function (test) {
 		test.instanceOf(Matryoshka, MatryoshkaHandler);
 	});
 
-	Tinytest.addAsync('Matryoshka Client - main menu subscription', function (test, next) {
+	Tinytest.addAsync('Matryoshka Client Main menu - main menu subscription', function (test, next) {
 		Meteor.subscribe('matryoshkaNestablePartsForMenu', {
 			onReady: function () {
 				next();
@@ -28,7 +28,77 @@ if (Meteor.isClient) {
 		});
 	});
 
-	Tinytest.add('Matryoshka Client - nestablePartModifiers.getCurrentIndexOfNestablePart', function (test) {
+
+	// .filter
+
+	Tinytest.add('Matryoshka Client filter - isActive should start out false', function (test) {
+		test.equal( Matryoshka.filter.isActive, false );
+	});
+
+	Tinytest.add('Matryoshka Client filter - set filter', function (test) {
+		test.equal( Matryoshka.filter.set('test-value'), 'test-value' );
+	});
+
+	Tinytest.add('Matryoshka Client filter - get filter', function (test) {
+		Matryoshka.filter.set('a-new-value');
+		test.equal( Matryoshka.filter.get(), 'a-new-value' );
+	});
+
+	Tinytest.add('Matryoshka Client filter - reset filter', function (test) {
+		test.equal( Matryoshka.filter.reset(), false );
+	});
+
+	Tinytest.add('Matryoshka Client filter - filterCollection', function (test) {
+
+		var testCollection = [{
+			something: 'Kristoffer Klintberg',
+			somethingElse: 'Node js'
+		},{
+			something: 'Steve McQueen',
+			somethingElse: 'Clothes?'
+		},{
+			something: 'Steven Jobs',
+			somethingElse: 'Kris'
+		}];
+
+		// Set the filter
+		Matryoshka.filter.set('ris');
+
+		// Get the results
+		var filteredResult = Matryoshka.filter.filterCollection(testCollection, ['something', 'somethingElse'] );
+
+		test.equal( filteredResult[0].something, testCollection[0].something );
+		test.equal( filteredResult[1].somethingElse, testCollection[2].somethingElse );
+
+		var collection2 = [{
+			what: 'this is cool'
+		},{
+			is: 'cool'
+		},{
+			what: 'hat'
+		},{
+			chat: 'cat'
+		}];
+
+		// Set a new filter
+		Matryoshka.filter.set('at');
+
+		var newFilteredResults = Matryoshka.filter.filterCollection( collection2, ['what'] );
+
+		test.equal( newFilteredResults[0].what, collection2[2].what );
+		test.equal( newFilteredResults.length, 1 );
+
+		// And a third filter
+		Matryoshka.filter.set('t');
+
+		test.equal( Matryoshka.filter.filterCollection( collection2, ['what'] ).length, 2 );
+
+	});
+
+
+	// .nestablePart
+
+	Tinytest.add('Matryoshka Client nestablePart - nestablePartModifiers.getCurrentIndexOfNestablePart', function (test) {
 		var nestables = [
 		{ matryoshkaId: 'abc' },
 		{ matryoshkaId: 'bcd' },
@@ -39,14 +109,14 @@ if (Meteor.isClient) {
 		test.equal( Matryoshka.nestablePartModifiers.getCurrentIndexOfNestablePart(nestables, 'cde'), 2 );
 	});
 
-	Tinytest.add('Matryoshka Client - nestablePart.generateId() should generate unique ids', function (test) {
+	Tinytest.add('Matryoshka Client nestablePart - nestablePart.generateId() should generate unique ids', function (test) {
 		test.notEqual( Matryoshka.nestablePart.generateId(), Matryoshka.nestablePart.generateId() );
 		test.notEqual( Matryoshka.nestablePart.generateId(), Matryoshka.nestablePart.generateId() );
 		test.notEqual( Matryoshka.nestablePart.generateId(), Matryoshka.nestablePart.generateId() );
 		test.notEqual( Matryoshka.nestablePart.generateId(), Matryoshka.nestablePart.generateId() );
 	});
 
-	Tinytest.add('Matryoshka Client - should be able to add non creatable nestable types', function (test) {
+	Tinytest.add('Matryoshka Client nestablePart - should be able to add non creatable nestable types', function (test) {
 		// create a non createble nestable type
 		var nameOfNonCreatebleType = 'nonCreatableType';
 		var nonCreatebleType = { name: nameOfNonCreatebleType };
@@ -57,7 +127,7 @@ if (Meteor.isClient) {
 		test.equal( Matryoshka.nestablesCreatable.length, 0 );
 	});
 
-	Tinytest.add('Matryoshka Client - should be able to add creatable nestable types', function (test) {
+	Tinytest.add('Matryoshka Client nestablePart - should be able to add creatable nestable types', function (test) {
 		// Check how many creatables we have initially (probably 0 but it depends on above tests)
 		var numOfCreatableTypes = Matryoshka.nestablesCreatable.length;
 		// create a createble nestable type
@@ -71,7 +141,7 @@ if (Meteor.isClient) {
 	});
 
 
-	Tinytest.add('Matryoshka Client - should NOT be able to add nestable types without name', function (test) {
+	Tinytest.add('Matryoshka Client nestablePart - should NOT be able to add nestable types without name', function (test) {
 		// options.name must be set
 		var failingTypeOptions = {};
 		test.throws(function () {
@@ -79,7 +149,7 @@ if (Meteor.isClient) {
 		});
 	});
 
-	Tinytest.add('Matryoshka Client - should be able to add (and get!) nestable', function (test) {
+	Tinytest.add('Matryoshka Client nestablePart - should be able to add (and get!) nestable', function (test) {
 
 		var typeName = 'page';
 		var nestableName = 'normalPage';
@@ -104,12 +174,12 @@ if (Meteor.isClient) {
 
 	});
 
-	Tinytest.add('Matryoshka Client - nestablePart.getNestablePartData should return "undefined" for nestable which does not exist', function (test) {
+	Tinytest.add('Matryoshka Client nestablePart - nestablePart.getNestablePartData should return "undefined" for nestable which does not exist', function (test) {
 		var nestablePartWhichDoesNotExist = Matryoshka.nestablePart.getNestablePartData('nonExistingType', 'nonExistingName');
 		test.equal( nestablePartWhichDoesNotExist, undefined );
 	});
 
-	Tinytest.addAsync('Matryoshka Client - creating two new nestables', function (test, next) {
+	Tinytest.addAsync('Matryoshka Client nestablePart - creating two new nestables', function (test, next) {
 
 		// This should increase by the end of this sesson by 1
 		var docsFromTheStart = MatryoshkaNestables.find().fetch().length;
@@ -143,7 +213,7 @@ if (Meteor.isClient) {
 
 	});
 
-	Tinytest.addAsync('Matryoshka Client - get a nestable from the DB and set to current nestable', function (test, next) {
+	Tinytest.addAsync('Matryoshka Client nestablePart - get a nestable from the DB and set to current nestable', function (test, next) {
 
 		// There should now be docs in the DB from the tests above
 		var randomDocId = MatryoshkaNestables.findOne()._id;
@@ -159,7 +229,7 @@ if (Meteor.isClient) {
 		});
 	});
 
-	Tinytest.add('Matryoshka Client - add nested nestables to the current nestable', function (test) {
+	Tinytest.add('Matryoshka Client nestablePart - add nested nestables to the current nestable', function (test) {
 
 		// There should be a current nestable
 		var currentNestable = Matryoshka.currentNestable.get();
@@ -195,7 +265,7 @@ if (Meteor.isClient) {
 
 	});
 
-	Tinytest.add('Matryoshka Client - update "ordinary" value in current nestable', function (test) {
+	Tinytest.add('Matryoshka Client nestablePart - update "ordinary" value in current nestable', function (test) {
 		// There should be a current nestable
 		var currentNestable = Matryoshka.currentNestable.get();
 		// Make sure there are nested nestables
