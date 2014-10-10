@@ -1,0 +1,17 @@
+@import "compass";
+@import "../base/matryoshka__vars";
+
+.matryoshka__body {
+
+	.matryoshka__container {
+		float: left;
+	}
+
+	.matryoshka__container--1-2 {
+		width: 48%;
+		&:nth-child(even) {
+			margin-left: 4%;
+		}
+	}
+
+}

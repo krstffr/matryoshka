@@ -4,6 +4,9 @@ $color-green: #80DA9D;
 $color-green-light: #d9f3e1;
 $color-green-dark: adjust-lightness($color-green, -5%);
 $color-red: #D55;
+$color-gray-lines: #ddd;
+$color-gray-light: #F9F9F9;
+$color-gray-lightest: #FAFAFA;
 $border-radius-def: 3px;
 
 .matryoshka__body {
@@ -37,7 +40,7 @@ $border-radius-def: 3px;
 	text-align: center;
 	cursor: pointer;
 	margin: 0;
-	border: 1px solid #ccc;
+	border: 1px solid $color-gray-lines;
 
 	@include box-shadow( none );
 	@include border-radius( $border-radius-def );

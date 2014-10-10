@@ -11,7 +11,7 @@ Package.onUse(function (api) {
   api.versionsFrom("METEOR@0.9.0");
 
   // Server/Client stuff
-  api.use('underscore', ['client', 'server']);
+  api.use(['underscore', 'accounts-base', 'accounts-password'], ['client', 'server']);
 
   // Client stuff
   api.use([
@@ -60,6 +60,7 @@ Package.onUse(function (api) {
   api.add_files('lib/views/matryoshka__partLooper.js', 'client');
 
   api.add_files('lib/views/matryoshka__users.html', 'client');
+  api.add_files('lib/views/matryoshka__users__user.html', 'client');
   api.add_files('lib/views/matryoshka__users.js', 'client');
 
   api.add_files('lib/views/matryoshka__fields.html', 'client');
@@ -81,11 +82,16 @@ Package.onUse(function (api) {
 });
 
 Package.on_test(function (api) {
+  
   api.use('krstffr:matryoshka');
   api.use('krstffr:msgs');
-  api.use(['underscore', 'accounts-base'], ['client', 'server']);
+
+  api.use(['underscore', 'accounts-base', 'accounts-password', 'iron:router@0.9.0'], ['client', 'server']);
+
   api.use('tinytest');
   api.use('test-helpers');
+
   api.add_files('lib/matryoshka__matryoshkaHandler.js', ['client', 'server']);
   api.add_files('tests/matryoshkaHandler-tests.js', ['client', 'server']);
+
 });

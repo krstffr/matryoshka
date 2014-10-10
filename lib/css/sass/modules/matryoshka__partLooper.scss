@@ -39,7 +39,7 @@
 
 	.matryoshka__nestable__container__col {
 
-		$border-color: #ccc;
+		$border-color: $color-gray-lines;
 
 		float: left;
 		padding: 0.9em 0.8em 0.1em;
@@ -49,7 +49,7 @@
 			position: relative;
 			padding-bottom: 0;
 			overflow: hidden;
-			background: #fafafa;
+			background: $color-gray-lightest;
 			cursor: pointer;
 
 			&:hover {
@@ -97,7 +97,7 @@
 			top: 0;
 			left: 0;
 			overflow: auto;
-			background: #fafafa;
+			background: $color-gray-lightest;
 			border-bottom: 2px solid #B1B1B1;
 
 			@include box-shadow( 0 0 300px 300px $color-green-light );
@@ -124,7 +124,7 @@
 				width: $widthAndHeight;
 				background: #fff;
 				z-index: 90;
-				background: #fafafa;
+				background: $color-gray-lightest;
 				border-bottom: 1px solid $border-color;
 			}
 
@@ -207,7 +207,7 @@
 
 		border: none;
 		font-size: 0.7em;
-		padding: 0.8em 1.2em 0.8em 1em;
+		padding: 0.8em 1.2em 0.75em 1em;
 		cursor: pointer;
 		font-family: inherit;
 		background: $color-green;

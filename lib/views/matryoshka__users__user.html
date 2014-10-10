@@ -1,0 +1,18 @@
+<template name="matryoshka__users__user">
+
+	<p>
+		<strong>{{ username }}</strong>
+
+		<button class="matryoshka__nestable__container__button delete-user">Delete user</button>
+
+		{{#if profile.name }}
+			<br />name: <em>{{ profile.name }}</em>
+		{{/if}}
+
+		{{#if profile.matryoshkaLevel }}
+			<br />matryoshkaLevel: <em>{{ profile.matryoshkaLevel }}</em>
+		{{/if}}
+		
+	</p>
+
+</template>

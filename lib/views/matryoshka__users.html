@@ -1,6 +1,6 @@
 <template name="matryoshka__users">
 
-	<div class="matryoshka__nestable__container">
+	<div class="matryoshka__nestable__container matryoshka__users">
 
 		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--left">
 
@@ -8,23 +8,82 @@
 
 		</div>
 
-		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--right matryoshka__nestable__container__col--{{ this.matryoshkaId }}">
+		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--right">
 
-			<h2>Authorized users</h2>
-			
-			{{#each authorizedUsers }}
+			<h2>Logged in user</h2>
 
-				<p>Username: <strong>{{ username }}</strong></p>
+			<div class="matryoshka__users__user-li">
 
-			{{/each}}
+				<button class="matryoshka__nestable__container__button logout">Log out</button>
 
-			<h2>Non authorized users</h2>
+				{{> matryoshka__users__user currentUser }}
 
-			{{#each nonAuthorizedUsers }}
+			</div>
 
-				<p>Username: <strong>{{ username }}</strong></p>
-			
-			{{/each}}
+			{{#if authorizedUsers }}
+
+				<div class="matryoshka__container matryoshka__container--1-2">
+
+					<h2>Authorized users</h2>
+
+					<ol>
+						
+						{{#each authorizedUsers }}
+
+							<li class="matryoshka__users__user-li">
+								{{> matryoshka__users__user this }}
+							</li>
+
+						{{/each}}
+
+					</ol>
+
+				</div>
+
+			{{/if}}
+
+			{{#if nonAuthorizedUsers }}
+
+				<div class="matryoshka__container matryoshka__container--1-2">
+
+					<h2>Non authorized users</h2>
+
+					<ol>
+
+						{{#each nonAuthorizedUsers }}
+
+							<li class="matryoshka__users__user-li">
+								{{> matryoshka__users__user this }}
+							</li>
+						
+						{{/each}}
+
+					</ol>
+
+				</div>
+
+			{{/if}}
+
+			<div class="matryoshka__clearfix"></div>
+
+			<h2>Create new user</h2>
+
+			<label class="matryoshka__form__label" for="username">Username</label>
+			<input type="text" id="username" value="" placeholder="john_smith" />
+
+			<label class="matryoshka__form__label" for="name">Name</label>
+			<input type="text" id="name" value="" placeholder="John Smith" />
+
+			<label class="matryoshka__form__label" for="password">Password</label>
+			<input type="password" id="password" value="" placeholder="password" />
+	
+			<label class="matryoshka__form__label" for="matryoshka-level">User level</label>
+			<select id="matryoshka-level">
+				<option value="unauth">Unauthorized</option>
+				<option value="admin">Admin</option>
+			</select>
+
+			<button class="matryoshka__nestable__container__button create-user">Create user</button>
 
 		</div>
 

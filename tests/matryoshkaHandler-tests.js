@@ -1,8 +1,5 @@
-// Stub router
-Router = {
-	go: function () {
-		return true;
-	}
+Router.go = function () {
+	return true;
 };
 
 // Stub confirm
@@ -11,6 +8,13 @@ confirm = function () {
 };
 
 if (Meteor.isClient) {
+
+	Tinytest.addAsync('Matryoshka Client Async START - clean up DB', function (test, next) {
+		Meteor.call('matryoshkaTests/cleanUpDB', 1, function (error, result) {
+			test.equal(result, true);
+			next();
+		});
+	});
 
 	Tinytest.add('Matryoshka Client - Matryoshka should be set', function (test) {
 		test.instanceOf(Matryoshka, MatryoshkaHandler);
@@ -225,50 +229,66 @@ if (Meteor.isClient) {
 		test.equal( Matryoshka.users.allowAllUsers, true );
 	});
 
-	Tinytest.add('Matryoshka Client Users - users.userIsPermitted() should be return correct', function (test) {
-
-		// Let's mock the userId and user
-		Meteor.userId = function () {
-			return true;
-		};
-		Meteor.user = function () {
-			return {
-				matryoshkaLevel: 'unauth'
-			};
-		};
-
-		Matryoshka.users.requireLogin( true );
-		test.equal( Matryoshka.users.userIsPermitted(), false);
-		Matryoshka.users.requireLogin( false );
-		test.equal( Matryoshka.users.userIsPermitted(), true);
-		Matryoshka.users.requireLogin( true, false );
-		test.equal( Matryoshka.users.userIsPermitted(), false);
-
-		// Now let's pretend we're logged in and authorized
-		Meteor.user = function () {
-			return {
-				matryoshkaLevel: 'admin'
-			};
-		};
-
-		test.equal( Matryoshka.users.userIsPermitted(), true);
-
-	});
+	// Use these for creating/loggin in with the user!
+	var userUsername = 'test-user';
+	var userPassword = 'test-password';
 
 	Tinytest.addAsync('Matryoshka Client Users - users.createUser', function (test, next) {
+		// Only object's should be creatable
 		test.throws(function () {
 			Matryoshka.users.createUser('string');
 		});
-		Matryoshka.users.createUser({ username: 'test-user', password: 'test-password' });
+		test.throws(function () {
+			Matryoshka.users.createUser({ noUsername: true });
+		});
+		test.throws(function () {
+			Matryoshka.users.createUser({}, 'not a boolean');
+		});
+		test.throws(function () {
+			Matryoshka.users.createUser({}, true, 'not a function');
+		});
+		// How many users are there now? There should be one more soon!
+		var currentUsers = Meteor.users.find().count();
+		// Call the createUser method
+		Matryoshka.users.createUser({ username: userUsername, password: userPassword }, true );
 		// Give the test some time to pass
 		Meteor.setTimeout(function () {
-			console.log( Meteor.users.find().count() );
 			Meteor.subscribe('matryoshkaUsers', {
 				onReady: function () {
-					console.log( Meteor.users.find().count() );
+					// There should be one more user now
+					test.equal( Meteor.users.find().count(), currentUsers+1 );
+					// The new user should have a profile.matryoshkaLevel
+					test.equal( typeof Meteor.users.findOne().profile.matryoshkaLevel, 'string' );
 					next();
 				}
 			});
+		}, 250);
+	});
+
+	Tinytest.addAsync('Matryoshka Client Users - users.createUser on server (no auto login)', function (test, next) {
+
+		var userIdBefore = Meteor.userId();
+
+		// Let's try creating a new user ON THE SERVER
+		Matryoshka.users.createUser({ username: 'a-user-created-on-the-server', password: 'test-password' }, false );
+
+		// Give the time for the creation
+		Meteor.setTimeout(function () {
+			// Now we should have the same user, not a new one!
+			test.equal( Meteor.userId(), userIdBefore );
+			next();
+		}, 250);
+
+	});
+
+	Tinytest.addAsync('Matryoshka Client Users - login user again', function (test, next) {
+		// Log out the current users (if one)
+		Meteor.logout();
+		Meteor.loginWithPassword( userUsername, userPassword );
+		Meteor.setTimeout(function () {
+			// There should be a logged in user!
+			test.notEqual( Meteor.userId(), null );
+			next();
 		}, 250);
 	});
 
@@ -288,10 +308,62 @@ if (Meteor.isClient) {
 		});
 	});
 
+	Tinytest.add('Matryoshka Client Users - users.userIsPermitted() should be return correct', function (test) {
+
+		// Login is required AND matryoshka level must be set
+		Matryoshka.users.requireLogin( true, false );
+		test.equal( Matryoshka.users.userIsPermitted(), true);
+
+		Matryoshka.users.requireLogin( true, true );
+		test.equal( Matryoshka.users.userIsPermitted(), true);
+
+		// Now let's pretend we're logged in but don't have a matryoshka level
+		Meteor.user = function () {
+			return {
+				profile: {}
+			};
+		};
+
+		// Shuold still be allowed to be logged in!
+		test.equal( Matryoshka.users.userIsPermitted(), false );
+
+		// But not when only matryoshka level users are allowed…
+		Matryoshka.users.requireLogin( true, false );
+		test.equal( Matryoshka.users.userIsPermitted(), true );
+
+		// And not when "logged out"
+		Meteor.user = function() { return false; };
+		Matryoshka.users.requireLogin( true, true );
+		test.equal( Matryoshka.users.userIsPermitted(), false);
+
+	});
+
+	Tinytest.addAsync('Matryoshka Client Users - users.removeUser', function (test, next) {
+
+		var currentUserId = Meteor.userId();
+
+		test.throws(function () {
+			Matryoshka.users.deleteUser({ not: 'a string but rather an object' });
+		});
+		test.throws(function () {
+			Matryoshka.users.deleteUser(currentUserId, 'no a callback function, but a string');
+		});
+
+		// Delte the actual user
+		Matryoshka.users.deleteUser(currentUserId);
+
+		// Wait some time
+		// Give the time for the creation
+		Meteor.setTimeout(function () {
+			// Now we should not have a user!
+			test.equal( Meteor.userId(), null );
+			next();
+		}, 250);
+
+	});
+
 	Tinytest.add('Matryoshka Client DOMhelpers - focus on part and reset it', function (test) {
-		
-		test.equal( Session.get('matryoshka__focused-nestable'), undefined || false );
-		
+				
 		test.throws(function () {
 			Matryoshka.DOMhelpers.focus.focusOnPagePart();
 		});
@@ -319,7 +391,7 @@ if (Meteor.isClient) {
 		}, 75);
 	});
 
-	Tinytest.addAsync('Matryoshka Client Async - clean up DB', function (test, next) {
+	Tinytest.addAsync('Matryoshka Client Async END - clean up DB', function (test, next) {
 		Meteor.call('matryoshkaTests/cleanUpDB', 1, function (error, result) {
 			test.equal(result, true);
 			next();
