@@ -4,16 +4,24 @@
 
 		<img src="/packages/krstffr_matryoshka/lib/img/matryoshka-logo.png" alt="Matryoshka logo" class="matryoshka__loadingTemplate__logo" />
 		
-		<h1>Loading, please wait…</h1>
+		<h1>
+			<i class="fa fa-cog fa-spin fa-fw"></i>
+			Loading, please wait…
+		</h1>
 
 	</div>
 	
 	<script>
+		
+		$('.matryoshka__loadingTemplate')
+		.removeClass('matryoshka__loadingTemplate--visible');
+
 		setTimeout(function () {
 			$('.matryoshka__loadingTemplate')
 			.removeClass('matryoshka__loadingTemplate--visible')
 			.addClass('matryoshka__loadingTemplate--visible');
-		}, 350);
+		}, 500);
+
 	</script>
 
 </template>

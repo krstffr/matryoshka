@@ -6,12 +6,21 @@
 	.matryoshka__loadingTemplate {
 		
 		opacity: 0;
+		top: 2em;
 		text-align: center;
+		position: relative;
+		letter-spacing: -0.02em;
 
-		@include transition( opacity 0.5s ease );
+		@include transition( all 0.5s ease );
 
 		&--visible {
 			opacity: 1;
+			top: 0;
+		}
+		
+		.fa {
+			color: $color-green-darkest;
+			margin-right: -0.2em;
 		}
 
 		&__logo {
