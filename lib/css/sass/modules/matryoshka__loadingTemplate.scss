@@ -6,11 +6,20 @@
 	.matryoshka__loadingTemplate {
 		
 		opacity: 0;
+		text-align: center;
 
-		@include transition( opacity 0.3s ease );
+		@include transition( opacity 0.5s ease );
 
 		&--visible {
 			opacity: 1;
+		}
+
+		&__logo {
+			max-width: 337px;
+			margin: 6.5em 0 1.5em;
+			background: $color-green-darkest;
+			padding: 2em;
+			@include border-radius( 5px );
 		}
 
 	}

@@ -1,8 +1,10 @@
 <template name="matryoshka__loadingTemplate">
 
 	<div class="matryoshka__loadingTemplate">
+
+		<img src="/packages/krstffr_matryoshka/lib/img/matryoshka-logo.png" alt="Matryoshka logo" class="matryoshka__loadingTemplate__logo" />
 		
-		<h1>Loading, please wait</h1>
+		<h1>Loading, please wait…</h1>
 
 	</div>
 	
@@ -11,7 +13,7 @@
 			$('.matryoshka__loadingTemplate')
 			.removeClass('matryoshka__loadingTemplate--visible')
 			.addClass('matryoshka__loadingTemplate--visible');
-		}, 100);
+		}, 350);
 	</script>
 
 </template>
