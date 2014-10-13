@@ -1,0 +1,17 @@
+<template name="matryoshka__loadingTemplate">
+
+	<div class="matryoshka__loadingTemplate">
+		
+		<h1>Loading, please wait</h1>
+
+	</div>
+	
+	<script>
+		setTimeout(function () {
+			$('.matryoshka__loadingTemplate')
+			.removeClass('matryoshka__loadingTemplate--visible')
+			.addClass('matryoshka__loadingTemplate--visible');
+		}, 100);
+	</script>
+
+</template>

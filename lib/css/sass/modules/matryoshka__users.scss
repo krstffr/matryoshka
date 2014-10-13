@@ -5,18 +5,12 @@
 
 	.matryoshka__users {
 
-		.matryoshka__nestable__container__col--right {
-			// For the first headline
-			& > h2:first-child {
-				margin-top: -0.8em;
-			}
-		}
-
 		h2 {
 			padding-top: 1em;
 		}
 
 		&__user-li {
+			
 			background: $color-gray-light;
 			margin-bottom: .4em;
 			padding: 0.6em 0.7em 0.7em;
@@ -28,10 +22,35 @@
 				padding: 0;
 			}
 
-			button {
+		}
+
+		&__user-list {
+			margin-top: -1em;
+		}
+
+		&__user {
+
+			overflow: hidden;
+
+			&__buttons {
+				
 				float: right;
-				margin: 0 0 0 0.4em;
+				
+				button {
+
+					clear: both;
+					margin: 0 0 0.4em;
+					float: right;
+					padding: 0.4em 0.7em;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+
+				}
+
 			}
+
 		}
 
 	}

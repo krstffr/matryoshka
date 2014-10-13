@@ -1,9 +1,32 @@
 <template name="matryoshka__users__user">
 
-	<p>
+	<div class="matryoshka__users__user">
+
 		<strong>{{ username }}</strong>
 
-		<button class="matryoshka__nestable__container__button delete-user">Delete user</button>
+		{{#if ifValueEquals username currentUser.username }}
+			(that's you!)
+		{{/if}}
+
+		<div class="matryoshka__users__user__buttons">
+
+			{{#if ifValueEquals username currentUser.username }}
+				<button class="matryoshka__nestable__container__button logout">Log out</button>
+			{{/if}}
+
+			<button class="matryoshka__nestable__container__button delete-user">Delete user</button>
+
+			{{#if ifValueEquals profile.matryoshkaLevel 'unauth' }}
+				<button class="matryoshka__nestable__container__button change-level" data-new-level="admin">
+					Make user authorized
+				</button>
+			{{else}}
+				<button class="matryoshka__nestable__container__button change-level" data-new-level="unauth">
+					Make user unauthorized
+				</button>
+			{{/if}}
+
+		</div>
 
 		{{#if profile.name }}
 			<br />name: <em>{{ profile.name }}</em>
@@ -13,6 +36,6 @@
 			<br />matryoshkaLevel: <em>{{ profile.matryoshkaLevel }}</em>
 		{{/if}}
 		
-	</p>
+	</div>
 
 </template>

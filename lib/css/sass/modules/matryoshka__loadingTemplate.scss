@@ -1,0 +1,18 @@
+@import "compass";
+@import "../base/matryoshka__vars";
+
+.matryoshka__body {
+
+	.matryoshka__loadingTemplate {
+		
+		opacity: 0;
+
+		@include transition( opacity 0.3s ease );
+
+		&--visible {
+			opacity: 1;
+		}
+
+	}
+
+}

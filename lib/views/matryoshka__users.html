@@ -10,59 +10,41 @@
 
 		<div class="matryoshka__nestable__container__col matryoshka__nestable__container__col--right">
 
-			<h2>Logged in user</h2>
+			<div class="matryoshka__container matryoshka__container--1-2 matryoshka__users__user-list">
 
-			<div class="matryoshka__users__user-li">
+				<h2>Authorized users</h2>
 
-				<button class="matryoshka__nestable__container__button logout">Log out</button>
+				<ol>
+					
+					{{#each authorizedUsers }}
 
-				{{> matryoshka__users__user currentUser }}
+						<li class="matryoshka__users__user-li">
+							{{> matryoshka__users__user this }}
+						</li>
+
+					{{/each}}
+
+				</ol>
 
 			</div>
 
-			{{#if authorizedUsers }}
+			<div class="matryoshka__container matryoshka__container--1-2 matryoshka__users__user-list">
 
-				<div class="matryoshka__container matryoshka__container--1-2">
+				<h2>Non authorized users</h2>
 
-					<h2>Authorized users</h2>
+				<ol>
 
-					<ol>
-						
-						{{#each authorizedUsers }}
+					{{#each nonAuthorizedUsers }}
 
-							<li class="matryoshka__users__user-li">
-								{{> matryoshka__users__user this }}
-							</li>
+						<li class="matryoshka__users__user-li">
+							{{> matryoshka__users__user this }}
+						</li>
+					
+					{{/each}}
 
-						{{/each}}
+				</ol>
 
-					</ol>
-
-				</div>
-
-			{{/if}}
-
-			{{#if nonAuthorizedUsers }}
-
-				<div class="matryoshka__container matryoshka__container--1-2">
-
-					<h2>Non authorized users</h2>
-
-					<ol>
-
-						{{#each nonAuthorizedUsers }}
-
-							<li class="matryoshka__users__user-li">
-								{{> matryoshka__users__user this }}
-							</li>
-						
-						{{/each}}
-
-					</ol>
-
-				</div>
-
-			{{/if}}
+			</div>
 
 			<div class="matryoshka__clearfix"></div>
 

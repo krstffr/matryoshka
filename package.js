@@ -33,6 +33,8 @@ Package.onUse(function (api) {
 
   api.add_files('lib/css/stylesheets/matryoshka__main.css', 'client');
 
+  api.add_files('lib/views/matryoshka__loadingTemplate.html', 'client');
+
   api.add_files('lib/views/matryoshka__firstPageTemplate.html', 'client');
 
   api.add_files('lib/views/matryoshka__login.html', 'client');
