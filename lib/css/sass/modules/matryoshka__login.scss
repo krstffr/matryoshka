@@ -1,0 +1,22 @@
+@import "../base/matryoshka__vars";
+
+.matryoshka__body {
+
+  .matryoshka__login {
+    width: 30em;
+    margin: 22% auto;
+
+    .msgs__container {
+      position: relative;
+      bottom: 0;
+      margin-bottom: 0.7em;
+      background: $color-gray-light;
+    }
+
+    .matryoshka__button--create-user {
+      display: none;
+    }
+
+  }
+
+}
