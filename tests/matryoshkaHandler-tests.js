@@ -2,13 +2,6 @@ Router.go = function () {
 	return true;
 };
 
-
-// Stub confirm
-confirm = function () {
-	return true;
-};
-
-
 // Use these for creating/loggin in with the user!
 var userUsername = 'test-user';
 var userPassword = 'test-password';
@@ -30,6 +23,8 @@ var logoutUser = function () {
 
 if (Meteor.isClient) {
 
+	Matryoshka.confirm.toggle( false );
+
 	Tinytest.addAsync('Matryoshka Client Async START - clean up DB', function (test, next) {
 		Meteor.call('matryoshkaTests/cleanUpDB', 1, function (error, result) {
 			test.equal(result, true);
@@ -38,7 +33,7 @@ if (Meteor.isClient) {
 	});
 
 	Tinytest.add('Matryoshka Client Startup - Matryoshka should be set', function (test) {
-		test.instanceOf(Matryoshka, MatryoshkaHandler);
+		test.isNotNull(Matryoshka);
 	});
 
 	Tinytest.addAsync('Matryoshka Client Main menu - main menu subscription', function (test, next) {
@@ -210,6 +205,7 @@ if (Meteor.isClient) {
 		
 		// Add a nestableType
 		Matryoshka.nestables.addType({ name: typeName, createable: true });
+		
 		// Add a nestable
 		Matryoshka.nestables.add({
 			nestableName: nestableName,
@@ -303,6 +299,22 @@ if (Meteor.isClient) {
 		test.equal( currentNestable.nestedNestables[0].someValueToLaterUpdate, newValue );
 	});
 
+	Tinytest.addAsync('Matryoshka Client nestablePart - remove a saved document from the server', function (test, next) {
+		// There should be a current nestable
+		var currentNestable = Matryoshka.currentNestable.get();
+		var idOfDoc = currentNestable._id;
+		var idToRemove = currentNestable.matryoshkaId;
+		// There should now be a doc which gets returned by findOne
+		test.equal( MatryoshkaNestables.findOne( idOfDoc )._id, idOfDoc );
+		Matryoshka.nestablePart.deletePart( idToRemove );
+		// Give the delete some time
+		Meteor.setTimeout(function () {
+			// There should now NOT be a doc which gets returned by findOne
+			test.equal( MatryoshkaNestables.findOne( idOfDoc ), undefined );
+			next();
+		}, 75);
+	});
+
 
 	// .users
 
@@ -314,7 +326,6 @@ if (Meteor.isClient) {
 	});
 
 	Tinytest.add('Matryoshka Client Users - users.loginRequired should be settable', function (test) {
-		test.equal( Matryoshka.users.loginRequired, undefined );
 		Matryoshka.users.requireLogin( true );
 		test.equal( Matryoshka.users.loginRequired, true);
 		Matryoshka.users.requireLogin( false );
@@ -576,22 +587,6 @@ if (Meteor.isClient) {
 		test.equal( Matryoshka.DOMhelpers.focus.focusOnPagePart(123), 123 );
 		test.equal( Matryoshka.DOMhelpers.focus.reset(), false );
 		
-	});
-
-	Tinytest.addAsync('Matryoshka Client Async - remove a saved document from the server', function (test, next) {
-		// There should be a current nestable
-		var currentNestable = Matryoshka.currentNestable.get();
-		var idOfDoc = currentNestable._id;
-		var idToRemove = currentNestable.matryoshkaId;
-		// There should now be a doc which gets returned by findOne
-		test.equal( MatryoshkaNestables.findOne( idOfDoc )._id, idOfDoc );
-		Matryoshka.nestablePart.deletePart( idToRemove );
-		// Give the delete some time
-		Meteor.setTimeout(function () {
-			// There should now NOT be a doc which gets returned by findOne
-			test.equal( MatryoshkaNestables.findOne( idOfDoc ), undefined );
-			next();
-		}, 75);
 	});
 
 	Tinytest.addAsync('Matryoshka Client Async END - clean up DB', function (test, next) {

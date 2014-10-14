@@ -93,7 +93,7 @@ Package.on_test(function (api) {
   api.use('tinytest');
   api.use('test-helpers');
 
-  api.add_files('lib/matryoshka__matryoshkaHandler.js', ['client', 'server']);
   api.add_files('tests/matryoshkaHandler-tests.js', ['client', 'server']);
+  api.add_files('tests/matryoshkaHandler-security-tests.js', ['client', 'server']);
 
 });
