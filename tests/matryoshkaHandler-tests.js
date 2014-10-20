@@ -584,10 +584,97 @@ if (Meteor.isClient) {
 
 		test.equal( Matryoshka.DOMhelpers.focus.focusOnPagePart('test'), 'test' );
 		test.equal( Matryoshka.DOMhelpers.focus.focusOnPagePart('test'), false );
-		test.equal( Matryoshka.DOMhelpers.focus.focusOnPagePart(123), 123 );
+		test.equal( Matryoshka.DOMhelpers.focus.focusOnPagePart('häst'), 'häst' );
 		test.equal( Matryoshka.DOMhelpers.focus.reset(), false );
+
+		test.throws(function () {
+			Matryoshka.DOMhelpers.focus.focusOnPagePart(123);
+		});
 		
 	});
+
+
+	// .userDefinedFields
+
+	Tinytest.add('Matryoshka Client User Defined Fields - that.userDefinedFields.add', function (test) {
+
+		var fieldTypeObject =  {
+			name: 'select-overview',
+			templateFileName: 'matryoshka__customField__selectOverview',
+			initMethod: function() {
+				Session.setDefault('listViewStyle', 'grid');
+			},
+			saveMethod: function ( doc ) {
+				doc.modifiedByMethod = true;
+				return doc;
+			}
+		};
+
+		// There should be no added fields to begin with
+		test.length( Matryoshka.userDefinedFields.fields, 0 );
+		// The field type should not be allowed to begin with
+		test.isTrue( Matryoshka.allowedFieldTypes.indexOf( fieldTypeObject.name ) < 0 );
+			
+		// Now let's add the user defined field type
+		Matryoshka.userDefinedFields.add( fieldTypeObject );
+
+		// Now there should be one!
+		test.length( Matryoshka.userDefinedFields.fields, 1 );
+		// The field type should not be allowed to begin with
+		test.isTrue( Matryoshka.allowedFieldTypes.indexOf( fieldTypeObject.name ) > -1 );
+		
+	});
+
+	Tinytest.add('Matryoshka Client User Defined Fields - that.userDefinedFields.add, errors', function (test) {
+
+		var correctFieldTypeObject =  {
+			name: 'select-overview',
+			templateFileName: 'matryoshka__customField__selectOverview',
+			initMethod: function() {
+				Session.setDefault('listViewStyle', 'grid');
+			},
+			saveMethod: function ( doc ) {
+				doc.modifiedByMethod = true;
+				return doc;
+			}
+		};
+
+		var incorrectName = _.clone(correctFieldTypeObject);
+		incorrectName.name = { not: 'a string, but an object' };
+		
+		test.throws(function () {
+			// Now let's add the user defined field type
+			Matryoshka.userDefinedFields.add( incorrectName );
+		});
+
+		var incorrectTemplateFileName = _.clone(correctFieldTypeObject);
+		incorrectTemplateFileName.templateFileName = { not: 'a string, but an object' };
+		test.throws(function () {
+			// Now let's add the user defined field type
+			Matryoshka.userDefinedFields.add( incorrectTemplateFileName );
+		});
+
+		var incorrectInit = _.clone(correctFieldTypeObject);
+		incorrectInit.initMethod = 'not a function, but a string';
+		test.throws(function () {
+			// Now let's add the user defined field type
+			Matryoshka.userDefinedFields.add( incorrectInit );
+		});
+
+		var incorrectSaveMethod = _.clone(correctFieldTypeObject);
+		incorrectSaveMethod.saveMethod = function ( doc ) {
+			// This method does not return an object which it has to
+			return 100;
+		};
+		test.throws(function () {
+			// Now let's add the user defined field type
+			Matryoshka.userDefinedFields.add( incorrectSaveMethod );
+		});
+		
+	});
+
+
+	// Clean up
 
 	Tinytest.addAsync('Matryoshka Client Async END - clean up DB', function (test, next) {
 		Meteor.call('matryoshkaTests/cleanUpDB', 1, function (error, result) {
