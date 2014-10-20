@@ -1,7 +1,7 @@
 Package.describe({
   summary: "A GUI for nesting and linking objects inside other objects.",
   name: "krstffr:matryoshka",
-  version: "1.0.15",
+  version: "1.0.16",
   git: "https://github.com/krstffr/matryoshka.git"
 });
 
@@ -32,6 +32,8 @@ Package.onUse(function (api) {
   api.add_files('lib/matryoshka__globalHelpers.js', 'client');
 
   api.add_files('lib/css/stylesheets/matryoshka__main.css', 'client');
+
+  api.add_files('lib/views/matryoshka__statusMessage.html', 'client');
 
   api.add_files('lib/views/matryoshka__loadingTemplate.html', 'client');
 
