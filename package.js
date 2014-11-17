@@ -1,7 +1,7 @@
 Package.describe({
   summary: "A GUI for nesting and linking objects inside other objects.",
   name: "krstffr:matryoshka",
-  version: "1.0.18",
+  version: "1.1.0",
   git: "https://github.com/krstffr/matryoshka.git"
 });
 
@@ -19,7 +19,7 @@ Package.onUse(function (api) {
     'handlebars',
     'jquery',
     'krstffr:msgs@0.0.3',
-    'iron:router@0.9.0',
+    'iron:router@1.0.0',
     'pfafman:font-awesome-4@4.2.0'
     ], 'client');
 
@@ -90,7 +90,7 @@ Package.on_test(function (api) {
   api.use('krstffr:matryoshka');
   api.use('krstffr:msgs');
 
-  api.use(['underscore', 'accounts-base', 'accounts-password', 'iron:router@0.9.0'], ['client', 'server']);
+  api.use(['underscore', 'accounts-base', 'accounts-password', 'iron:router@1.0.0'], ['client', 'server']);
 
   api.use('tinytest');
   api.use('test-helpers');
