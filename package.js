@@ -1,7 +1,7 @@
 Package.describe({
   summary: "A GUI for nesting and linking objects inside other objects.",
   name: "krstffr:matryoshka",
-  version: "1.0.22",
+  version: "1.0.23",
   git: "https://github.com/krstffr/matryoshka.git"
 });
 
@@ -18,7 +18,7 @@ Package.onUse(function (api) {
     'templating',
     'handlebars',
     'jquery',
-    'krstffr:msgs@0.0.3',
+    'krstffr:msgs@0.0.6',
     'iron:router@1.0.0',
     'pfafman:font-awesome-4@4.2.0'
     ], 'client');

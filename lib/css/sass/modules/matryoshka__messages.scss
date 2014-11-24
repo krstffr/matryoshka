@@ -32,6 +32,18 @@
         font-weight: bold;
       }
 
+      &__hide-message-link {
+        
+        color: #000;
+        margin-left: 0.7em;
+        float: right;
+
+        &:hover {
+          opacity: 0.5;
+        }
+
+      }
+
     }
 
   }
