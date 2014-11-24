@@ -33,7 +33,7 @@ iron:router@1.0.1
 iron:url@1.0.0
 jquery@1.0.1
 json@1.0.1
-krstffr:matryoshka@1.0.19
+krstffr:matryoshka@1.0.20
 krstffr:msgs@0.0.3
 launch-screen@1.0.0
 livedata@1.0.11

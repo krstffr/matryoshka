@@ -299,6 +299,47 @@ if (Meteor.isClient) {
 		test.equal( currentNestable.nestedNestables[0].someValueToLaterUpdate, newValue );
 	});
 
+	Tinytest.add('Matryoshka Client nestablePart - remove nested nestable from current nestable', function (test) {
+		
+		// There should be a current nestable
+		var currentNestable = Matryoshka.currentNestable.get();
+		
+		// Make sure there are nested nestables
+		test.equal( currentNestable.nestedNestables.length > 0, true );
+
+		// Stor the number of nested nestables for comparison after the delete
+		var nestedNestablesBeforeDelete = currentNestable.nestedNestables.length;
+		
+		// Get the matryoshkaId of a nested nestable
+		var matryoshkaIdToRemove = currentNestable.nestedNestables[0].matryoshkaId;
+
+		// Make sure the nestable with the ID is findable among the nestables
+		test.equal(
+			Matryoshka.nestablePartModifiers.getCurrentIndexOfNestablePart(
+				currentNestable.nestedNestables, matryoshkaIdToRemove
+				) > -1,
+			true
+			);
+
+		// Remove a nested nestable
+		Matryoshka.currentNestable.update( matryoshkaIdToRemove, 'deletePart' );
+
+		// Get the current nesatble again
+		currentNestable = Matryoshka.currentNestable.get();
+
+		// Make sure one item has been removed
+		test.equal( currentNestable.nestedNestables.length, (nestedNestablesBeforeDelete - 1) );
+
+		// Make sure the nestable with the ID we removed is no longer findable in the nested nestables
+		test.equal(
+			Matryoshka.nestablePartModifiers.getCurrentIndexOfNestablePart(
+				currentNestable.nestedNestables, matryoshkaIdToRemove
+				),
+			-1
+			);
+
+	});
+
 	Tinytest.addAsync('Matryoshka Client nestablePart - remove a saved document from the server', function (test, next) {
 		// There should be a current nestable
 		var currentNestable = Matryoshka.currentNestable.get();
