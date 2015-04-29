@@ -151,19 +151,31 @@
 	.matryoshka__nestable__container__add-part-container__inner {
 		position: absolute;
 		top: 0;
-		margin: 2em 0;
+		margin: 3em 0;
 		left: 10%;
 		background: #FFF;
 		width: 80%;
 		z-index: 200;
 		padding: 1em;
-		text-align: center;
 
 		@include border-radius(0.3em);
 		@include box-shadow(0 7px 15px rgba(black, 0.5));
 
 		& .matryoshka__nestable__container__button {
-			margin: 0.2em 0.2em 0.4em;
+
+			margin: 0;
+		  background: none;
+		  width: 100%;
+		  text-align: left;
+		  padding: 0.5em 0.7em 0.4em;
+		  border-top: 1px solid #EEE;
+
+		  @include border-radius( 0 );
+
+		  &:last-child{
+		  	border-bottom: 1px solid #EEE;
+		  }
+
 		}
 
 		&__part {
