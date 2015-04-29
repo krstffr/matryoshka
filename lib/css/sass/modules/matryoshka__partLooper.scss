@@ -151,11 +151,11 @@
 	.matryoshka__nestable__container__add-part-container__inner {
 		position: absolute;
 		top: 0;
-		margin: 3em 0;
+		margin: 3em 0 7em;
 		left: 10%;
 		background: #FFF;
 		width: 80%;
-		z-index: 200;
+		z-index: 140;
 		padding: 1em;
 
 		@include border-radius(0.3em);
