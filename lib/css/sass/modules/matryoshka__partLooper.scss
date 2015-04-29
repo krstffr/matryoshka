@@ -149,8 +149,9 @@
 	}
 
 	.matryoshka__nestable__container__add-part-container__inner {
-		position: fixed;
-		top: 20%;
+		position: absolute;
+		top: 0;
+		margin: 2em 0;
 		left: 10%;
 		background: #FFF;
 		width: 80%;
