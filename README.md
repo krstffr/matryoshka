@@ -16,7 +16,7 @@ First you'll define what kinds of nestable documents you want, and which documen
 **Installation**
 
 ```
-$ mrt add matryoshka
+$ meteor add krstffr:matryoshka
 ```
 
 Matryoshka (and it's dependencies) should now be added to your Meteor.js app. If you start your app and go to http://localhost:3000/matryoshka you should now see the GUI (but without any nestables to create as you've yet to do define those (example below!)).
